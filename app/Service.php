@@ -8,6 +8,6 @@ class Service extends Model
 {
     //Un Servicio Pertenece a una Categoria
     public function categoria(){
-    	return $this->belongsTo(Category::class);
+    	return $this->belongsTo('App\Category','category_id');
     }
 }

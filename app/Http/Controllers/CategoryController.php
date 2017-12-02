@@ -8,7 +8,7 @@ class CategoryController extends Controller
 {
 	//Lista las categorias por orden ascendente y paginado en 10 registros
     public function index(){
-    	$categorias = Category::orderBy('category','asc')->paginate(10);
+    	$categorias = Category::orderBy('category','asc')->paginate(15);
     	return view('administrador.categorias.index')->with(compact('categorias'));
     }
 

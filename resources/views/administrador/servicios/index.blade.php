@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('titulo','Mantenedor de Categorias')
+@section('titulo','Mantenedor de Servicios')
 @section('contenido')
 	<div class="row">
 		<div class="col-12 col-sm-2">
@@ -14,28 +14,29 @@
 								<thead>
 									<tr>
 										<th>ID</th>
+										<th>Servicio</th>
 										<th>Categoria</th>
 										<th>Opcion</th>
 							    	</tr>
 							    </thead>
 							    <tbody>
-							    	@foreach($categorias as $categoria)
+							    	@foreach($servicios as $servicio)
 							    	<tr>
-							    		<td>{{$categoria->id}}</td>
-						    			<td>{{$categoria->category}}</td>
+							    		<td>{{$servicio->id}}</td>
+						    			<td>{{$servicio->service}}</td>
+						    			<td>{{$servicio->categoria->category}}</td>
 						    			<td></td>
 							    	</tr>
 						    		@endforeach	    		
 							    </tbody>
 							</table>
-							<div>	
-								{{$categorias->links()}}
+							<div>
+								{{$servicios->links()}}
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-								
 		</div>
 	</div>	
 @endsection
