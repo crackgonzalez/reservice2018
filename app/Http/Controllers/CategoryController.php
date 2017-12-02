@@ -6,10 +6,18 @@ use App\Category;
 
 class CategoryController extends Controller
 {
-	//Lista las categorias por orden ascendente 
+	//Lista las categorias por orden ascendente y paginado en 10 registros
     public function index(){
-    	$categorias = Category::orderBy('category','asc')->get();
+    	$categorias = Category::orderBy('category','asc')->paginate(10);
     	return view('administrador.categorias.index')->with(compact('categorias'));
+    }
+
+    public function create(){
+    	//return view('');
+    }
+
+    public function store(){
+    	//return view('');
     }
 }
 

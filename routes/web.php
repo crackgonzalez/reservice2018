@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('/administrador/categorias','CategoryController@index');//Listado de Categorias
+Route::get('/administrador/categorias/create','CategoryController@create');//Crear Categoria
+Route::post('/administrador/categorias','CategoryController@store');//CAlmacenar Categoria
