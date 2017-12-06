@@ -1,16 +1,16 @@
 @extends('layouts.app')
 @section('titulo','Mantenedor de Servicios')
+@section('estilo-footer')
+	<link rel="stylesheet" href="{{asset('css/footer-with-button-logo-white.css')}}">
+@endsection
 @section('contenido')
 	<div class="row">
-		<div class="col-12 col-sm-2">
-			<!-- menu-lateral -->
-		</div>
-		<div class="col-12 col-sm-10">
+		<div class="col-12 col-sm-12 col-md-12">
 			<div class="row">
-				<div class="col-12 col-sm-12">
+				<div class="col-12 col-sm-12 col-md-12">
 					<div class="card">
 						<div class="card-block">
-						    <table class="table">
+						    <table class="table table-responsive">
 								<thead>
 									<tr>
 										<th>ID</th>
@@ -25,7 +25,7 @@
 							    		<td>{{$servicio->id}}</td>
 						    			<td>{{$servicio->service}}</td>
 						    			<td>{{$servicio->categoria->category}}</td>
-						    			<td></td>
+						    			<td>Agregar | Modificar | Eliminar</td>
 							    	</tr>
 						    		@endforeach	    		
 							    </tbody>

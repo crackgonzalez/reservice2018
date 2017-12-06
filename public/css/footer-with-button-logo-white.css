@@ -1,0 +1,121 @@
+#myFooter {
+    background-color: #ccc;
+    color: white;
+    padding-top: 30px;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+#myFooter .footer-copyright {
+    background-color: #343a40;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: center;
+}
+
+#myFooter .row {
+    margin-bottom: 60px;
+}
+
+#myFooter .navbar-brand {
+    margin-top: 45px;
+    height: 65px;
+}
+
+#myFooter .footer-copyright p {
+    margin: 10px;
+    color: #ccc;
+}
+
+#myFooter ul {
+    list-style-type: none;
+    padding-left: 0;
+    line-height: 1.7;
+}
+
+#myFooter h5 {
+    font-size: 18px;
+    color: #343a40;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+#myFooter h2 a {
+    font-size: 50px;
+    text-align: center;
+    color: #343a40;
+}
+
+#myFooter a {
+    color: #343a40;
+    text-decoration: none;
+}
+
+#myFooter a:hover, #myFooter a:focus {
+    text-decoration: none;
+    color: #fff;
+}
+
+#myFooter .social-networks {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 16px;
+}
+
+#myFooter .social-networks a {
+    font-size: 32px;
+    color: #343a40;
+    padding: 10px;
+    transition: 0.2s;
+}
+
+#myFooter .social-networks a:hover {
+    text-decoration: none;
+}
+
+#myFooter .facebook:hover {
+    color: #fff;
+}
+
+#myFooter .google:hover {
+    color: #fff;
+}
+
+#myFooter .twitter:hover {
+    color: #fff;
+}
+
+#myFooter .btn {
+    color: #333333;
+    background-color: #ccc;
+    border-radius: 5px;
+    border: none;
+    border: 1px solid #333333;
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    line-height: 25px;
+}
+
+#myFooter .btn:hover, #myFooter .btn:focus {
+    text-decoration: none;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.logo-footer-gris {
+    border-bottom: 1px solid #333333;
+}
+
+@media screen and (max-width: 767px) {
+    #myFooter {
+        text-align: center;
+    }
+}
+
+
+/* CSS used for positioning the footers at the bottom of the page. */
+
+
+/* You can remove this. */
