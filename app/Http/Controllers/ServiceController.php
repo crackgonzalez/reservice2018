@@ -11,5 +11,9 @@ class ServiceController extends Controller
     	$servicios = Service::orderBy('service','asc')->paginate(15);
     	return view('administrador.servicios.index')->with(compact('servicios'));
     }
+
+    public function create(){
+    	return view('administrador.servicios.create');
+    }
     
 }

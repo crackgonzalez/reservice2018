@@ -11,7 +11,7 @@
 				<div class="col-12 col-sm-3 col-md-3"></div>
 				<div class="col-12 col-sm-6 col-md-6">
 					@if($errors->any())
-						<div class="alert alert-danger">
+						<div class="alert alert-danger margin-arriba">
 							<ul>
 								@foreach($errors->all() as $error)
 									<li>{{$error}}</li>
@@ -19,8 +19,8 @@
 							</ul>
 						</div>
 					@endif
-					<div class="card">
-						<div class="card-header">
+					<div class="card margin-arriba margin-abajo card-raised">						
+						<div class="card-header text-center">
 							<h4 class="card-title">Crear una Categoria</h4>
 						</div>
 						<div class="card-body">
@@ -36,14 +36,14 @@
 									<input type="file" class="form-control-file" name="image">
 								</div>
 								<div class="form-group">
-									<a href="{{url('/administrador/categorias')}}" class="btn btn-default">Cancelar</a>
-									<button type="submit" class="btn btn-warning pull-right">Enviar</button>
+									<a href="{{url('/administrador/categorias')}}" class="btn btn-secondary pull-right">Cancelar</a>
+									<button type="submit" class="btn btn-warning pull-right margin-derecho">Agregar</button>
 								</div>
 							</form>
 						</div>
 					</div>
 				</div>
-				<div class="col-12 col-sm-3 col-md-2"></div>
+				<div class="col-12 col-sm-3 col-md-3"></div>
 			</div>
 		</div>
 	</div>
