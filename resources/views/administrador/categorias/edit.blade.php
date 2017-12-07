@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('titulo','Crear una Categoria')
+@section('titulo','Modificar una Categoria')
 @section('fondo','fondo-foto')
 @section('estilo-footer')
 	<link rel="stylesheet" href="{{asset('css/footer-with-button-logo-white.css')}}">
@@ -21,23 +21,26 @@
 					@endif
 					<div class="card margin-arriba margin-abajo card-raised">						
 						<div class="card-header text-center">
-							<h4 class="card-title">Crear una Categoria</h4>
+							<h4 class="card-title">Modificar una Categoria</h4>
 						</div>
 						<div class="card-body">
-							<form action="{{url('/administrador/categorias')}}" method="POST" enctype="multipart/form-data">
+							<form action="{{url('/administrador/categorias/'.$categoria->id.'/edit')}}" method="POST" enctype="multipart/form-data">
 								{{csrf_field()}}
 								<div class="form-group">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="material-icons">work</i></span>
-										<input type="text" class="form-control" name="category" placeholder="Categoria" value="{{ old('category') }}">
+										<input type="text" class="form-control" name="category" placeholder="Categoria" value="{{old('category',$categoria->category)}}">
 									</div>
 								</div>
 								<div class="form-group">
 									<input type="file" class="form-control-file" name="image">
+									@if($categoria->image)
+									<small>Subir una nueva imagen solo si desea reemplazar la imagen anterior</small>
+									@endif
 								</div>
 								<div class="form-group">
 									<a href="{{url('/administrador/categorias')}}" class="btn btn-secondary pull-right">Cancelar</a>
-									<button type="submit" class="btn btn-warning pull-right margin-derecho">Agregar</button>
+									<button type="submit" class="btn btn-warning pull-right margin-derecho">Actualizar</button>
 								</div>
 							</form>
 						</div>

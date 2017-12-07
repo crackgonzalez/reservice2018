@@ -17,18 +17,23 @@
 				<div class="card-body">
 					<div class="row">
 						@foreach($categorias as $categoria)
-						<div class="col-12 col-sm-4 col-md-3 col-lg-2">
-							<div class="text-center">
+						<div class="col-12 col-sm-4 col-md-3">
+							<div class="text-center" style="margin-bottom: 60px;">
 								<img src="{{$categoria->url}}" class="img-raised rounded-circle tamaño-imagen margin-arriba margin-abajo">
-								<h5>{{$categoria->category}}</h5>
-								<a href=""><i class="material-icons actualizar">refresh</i></a>
+								<h6>{{$categoria->category}}</h6>
+								<a href="{{url('/administrador/categorias/'.$categoria->id.'/edit')}}"><i class="material-icons actualizar">refresh</i></a>
 								<a href=""><i class="material-icons eliminar">delete</i></a>
+								<br>
+								<small>Modificado: {{$categoria->updated_at}}</small>
 							</div>
 						</div>
 						@endforeach
 					</div>
 				</div>
+				{{$categorias->links('vendor.pagination.bootstrap-4')}}
 			</div>
 		</div>
 	</div>	
 @endsection
+
+

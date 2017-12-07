@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+
+    protected $fillable = ['category'];
+
     //Una Categoria Tiene Muchos Servicios
     public function servicios(){
     	return $this->hasMany('App\Service');
