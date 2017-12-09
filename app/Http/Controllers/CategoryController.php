@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use File;
 use Exception;
+use Alert;
 
 class CategoryController extends Controller
 {
@@ -49,9 +50,11 @@ class CategoryController extends Controller
             if($movido){
                 $categoria->image = $nombreFoto;
                 $categoria->save();
+                alert()->success('La categoria fue ingresada correctamente','Categoria Agregada')->autoclose(3000);
+            }else{
+                alert()->error('La categoria no pudo ser ingresada','Ocurrio un Error')->autoclose(3000);
             }
         }
-
         return redirect('administrador/categorias');
     }
 
@@ -76,7 +79,6 @@ class CategoryController extends Controller
 
         $this->validate($requerimiento,$reglas,$mensajes);
             try {
-                $categoria ->update($requerimiento->only('category'));
 
                 if($requerimiento->hasFile('image')){
                     $foto = $requerimiento->file('image');
@@ -87,14 +89,35 @@ class CategoryController extends Controller
                     if($movido){
                         $imagenAnterior = $ruta.'/'.$categoria->image;
                         $categoria->image = $nombreFoto;
-                        $exito = $categoria->save();
+                        $exito = $categoria->save();                        
                         if($exito){
                             File::delete($imagenAnterior);
+                            alert()->success('La categoria fue modificada correctamente','Categoria Modificada')->autoclose(3000);
                         }
+                    }
+                }else{
+                    $modificada = $categoria ->update($requerimiento->only('category'));
+                    if($modificada){
+                        alert()->success('La categoria fue modificada correctamente','Categoria Modificada')->autoclose(3000);
+                    }else{
+                        alert()->error('La categoria no pudo ser modificada','Ocurrio un Error')->autoclose(3000);
                     }
                 }
             } catch (Exception $e) {
+                alert()->warning('La categoria ya se encuentra registrada','Advetencia')->autoclose(3000);
             }
+        return redirect('administrador/categorias');
+    }
+
+    public function destroy($id){
+        $categoria = Category::find($id);
+        $ruta = public_path().'/imagenes/categorias';
+        $rutaImagen = $ruta.'/'.$categoria->image;
+        $exito = $categoria->delete();
+        if($exito){
+            File::delete($rutaImagen);
+            alert()->success('La categoria fue eliminada correctamente','Categoria Eliminada')->autoclose(3000);
+        }
         return redirect('administrador/categorias');
     }
 }

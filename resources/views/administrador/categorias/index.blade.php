@@ -20,11 +20,13 @@
 						<div class="col-12 col-sm-4 col-md-3">
 							<div class="text-center" style="margin-bottom: 60px;">
 								<img src="{{$categoria->url}}" class="img-raised rounded-circle tamaño-imagen margin-arriba margin-abajo">
-								<h6>{{$categoria->category}}</h6>
-								<a href="{{url('/administrador/categorias/'.$categoria->id.'/edit')}}"><i class="material-icons actualizar">refresh</i></a>
-								<a href=""><i class="material-icons eliminar">delete</i></a>
-								<br>
-								<small>Modificado: {{$categoria->updated_at}}</small>
+								<h5>{{$categoria->category}}</h5>								
+								<form method="post" action="{{url('/administrador/categorias/'.$categoria->id)}}">
+									{{csrf_field()}}
+									{{method_field('DELETE')}}
+									<a class="btn btn-simple btn-sm" href="{{url('/administrador/categorias/'.$categoria->id.'/edit')}}" data-toggle="tooltip" data-placement="bottom" title="Modificar la Categoria"><i class="material-icons actualizar">refresh</i></a>
+									<button type="submit" class="btn btn-simple btn-sm" data-toggle="tooltip" data-placement="bottom" title="Eliminar la Categoria"><i class="material-icons eliminar">delete</i></i></button>										
+								</form>
 							</div>
 						</div>
 						@endforeach

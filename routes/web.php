@@ -20,7 +20,7 @@ Route::get('/administrador/categorias/create','CategoryController@create');//Cre
 Route::post('/administrador/categorias','CategoryController@store');//Almacenar Categoria
 Route::get('/administrador/categorias/{categoria}/edit','CategoryController@edit'); //Formulario para editar
 Route::post('/administrador/categorias/{categoria}/edit','CategoryController@update');
-
+Route::delete('/administrador/categorias/{id}','CategoryController@destroy');
 
 Route::get('/administrador/servicios','ServiceController@index');//Listado de Servicios
 Route::get('/administrador/servicios/create','ServiceController@create');//Crear Servicio
