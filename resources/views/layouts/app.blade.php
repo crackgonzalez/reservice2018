@@ -17,7 +17,8 @@
 			<a class="navbar-brand" href="#">
 				<img src="{{asset('imagenes/logo.png')}}" width="30" height="30" alt="Icono Reservice">
 			</a>
-		</nav>		
+			@yield('login')
+		</nav>	
 	</header>
 	<div class="container-fluid">
 		@yield('contenido')

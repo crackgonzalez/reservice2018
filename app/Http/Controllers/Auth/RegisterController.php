@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Account;
 
 class RegisterController extends Controller
 {
@@ -36,7 +37,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        //$this->middleware('guest');
     }
 
     /**
@@ -47,11 +48,27 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $mensajes =[
+            'name.required' =>'El campo nombre es obligatorio',
+            'name.min' =>'El campo nombre debe tener al menos 2 caracteres',
+            'name.max' =>'El campo nombre debe tener como maximo 30 caracteres',
+            'name.regex' => 'El campo nombre solo acepta cadenas de texto y valores numericos',
+            'email.required' =>'El campo email es obligatorio',
+            'email.max'=>'El campo email debe tener como maximo 50 caracteres',
+            'email.unique' =>'El email ya ha sido registrado en la base de datos',
+            'password.required'=>'El campo contraseña es obligatorio',
+            'password.confirmed'=>'La contraseña ingresada no coincide con su confirmacion',
+            'password.min'=>'El campo nombre debe tener al menos 6 caracteres',
+            'account_id.in'=>'Debe seleccionar un tipo de cuenta (Empresa o Cliente)',
+         
+        ];
+
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'name' => 'required|string|min:2|max:30|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ]*)*)+$/',
+            'email' => 'required|string|email|max:50|unique:users',
             'password' => 'required|string|min:6|confirmed',
-        ]);
+            'account_id' => 'required|in:3,4',
+        ],$mensajes);
     }
 
     /**
@@ -66,6 +83,14 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'account_id' => $data['account_id'],
         ]);
+    }
+
+    //Metodo sobreescrito para inyectar los tipos cuentas a la vista.
+    public function showRegistrationForm()
+    {
+        $cuentas = Account::all()->where('id','>',2);
+        return view('auth.register')->with(compact('cuentas'));;
     }
 }

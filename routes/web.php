@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+	
 Route::get('/administrador/categorias','CategoryController@index');//Listado de Categorias
 Route::get('/administrador/categorias/create','CategoryController@create');//Crear Categoria
 Route::post('/administrador/categorias','CategoryController@store');//Almacenar Categoria
@@ -24,3 +25,8 @@ Route::delete('/administrador/categorias/{id}','CategoryController@destroy');
 
 Route::get('/administrador/servicios','ServiceController@index');//Listado de Servicios
 Route::get('/administrador/servicios/create','ServiceController@create');//Crear Servicio
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
