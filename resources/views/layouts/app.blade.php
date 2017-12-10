@@ -16,9 +16,17 @@
 		<nav class="navbar navbar-light bg-dark">
 			<a class="navbar-brand" href="#">
 				<img src="{{asset('imagenes/logo.png')}}" width="30" height="30" alt="Icono Reservice">
-			</a>
-			@yield('login')
-		</nav>	
+			</a>				
+		</nav>
+		@if (Auth::check())
+			<nav class="navbar navbar-expand-md navbar-light bg-light">
+				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<a class="navbar-brand" href="#">@yield('usuario','Inicio')</a>
+				@yield('barra-navegacion')
+			</nav>		
+		@endif
 	</header>
 	<div class="container-fluid">
 		@yield('contenido')
@@ -62,7 +70,7 @@
 		                        <button type="button" class="btn btn-default">Contactanos</button>
 		                    </div>
 		                </div>
-		                <p class="text-center color-texto">santiago-chile</p>
+		                <p class="text-center color-texto">Santiago-Chile</p>
 		            </div>
 		            <div class="footer-copyright">
 		                <p>Reservice, Todos los derechos reservados &copy; 2017.</p>

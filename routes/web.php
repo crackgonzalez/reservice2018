@@ -15,16 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-	
-Route::get('/administrador/categorias','CategoryController@index');//Listado de Categorias
-Route::get('/administrador/categorias/create','CategoryController@create');//Crear Categoria
-Route::post('/administrador/categorias','CategoryController@store');//Almacenar Categoria
-Route::get('/administrador/categorias/{categoria}/edit','CategoryController@edit'); //Formulario para editar
-Route::post('/administrador/categorias/{categoria}/edit','CategoryController@update');
-Route::delete('/administrador/categorias/{id}','CategoryController@destroy');
+Route::middleware(['auth'])->group(function () {
+	Route::get('/administrador/categorias','CategoryController@index');//Listado de Categorias
+	Route::get('/administrador/categorias/create','CategoryController@create');//Crear Categoria
+	Route::post('/administrador/categorias','CategoryController@store');//Almacenar Categoria
+	Route::get('/administrador/categorias/{categoria}/edit','CategoryController@edit'); //Formulario para editar
+	Route::post('/administrador/categorias/{categoria}/edit','CategoryController@update');
+	Route::delete('/administrador/categorias/{id}','CategoryController@destroy');
 
-Route::get('/administrador/servicios','ServiceController@index');//Listado de Servicios
-Route::get('/administrador/servicios/create','ServiceController@create');//Crear Servicio
+	Route::get('/administrador/servicios','ServiceController@index');//Listado de Servicios
+	Route::get('/administrador/servicios/create','ServiceController@create');//Crear Servicio
+});	
+
+
 
 
 Auth::routes();

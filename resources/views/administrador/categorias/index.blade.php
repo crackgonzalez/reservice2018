@@ -1,5 +1,14 @@
 @extends('layouts.app')
 @section('titulo','Mantenedor de Categorias')
+@section('usuario','Administrador')
+@section('barra-navegacion')
+	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		<div class="navbar-nav">
+			<a class="nav-item nav-link active" href="{{url('/administrador/categorias')}}">Categorias <span class="sr-only">(current)</span></a>
+			<a class="nav-item nav-link" href="{{url('/administrador/servicios')}}">Servicios</a>			
+		</div>
+	</div>
+@endsection
 @section('estilo-footer')
 	<link rel="stylesheet" href="{{asset('css/footer-with-button-logo-white.css')}}">
 @endsection

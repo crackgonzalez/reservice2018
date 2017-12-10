@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -34,13 +34,34 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except('logout');
     }
 
+
+    protected function validateLogin()
+    {
+        $mensajes = [
+            'email.required' =>'El campo email es obligatorio',
+            'email.max'=>'El campo email debe tener como maximo 50 caracteres',
+
+        ];
+
+        $reglas = [
+             'email' => 'required|string|email|max:50',
+        ];
+
+        $this->validate(request(),$reglas,$mensajes);
+    }
+
+    //redirecion de prueba
     protected function redirectTo()
     {
-        if(auth()->)
-        return '/administrador/categorias';
+        if(\Auth::user()->account_id == 1){
+            return '/administrador/categorias';    
+        }else{
+            return '/';
+        }
+        
     }
 
 }
