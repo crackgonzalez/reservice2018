@@ -56,5 +56,10 @@ class ServiceController extends Controller
         }
         return redirect('administrador/servicios');
     }
+
+    public function edit(Service $servicio){
+        $categorias = Category::orderBy('category','asc')->get();
+        return view('administrador.servicios.edit')->with(compact('servicio','categorias'));
+    }
     
 }

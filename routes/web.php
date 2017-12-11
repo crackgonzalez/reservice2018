@@ -29,6 +29,9 @@ Route::delete('/administrador/categorias/{id}','CategoryController@destroy');
 Route::get('/administrador/servicios','ServiceController@index');//Listado de Servicios
 Route::get('/administrador/servicios/create','ServiceController@create');//Crear Servicio
 Route::post('/administrador/servicios','ServiceController@store');//Almacenar Servicio
+Route::get('/administrador/servicios/{servicio}/edit','ServiceController@edit'); //Formulario para editar
+Route::post('/administrador/servicios/{servicio}/edit','ServiceController@update');
+Route::delete('/administrador/servicios/{id}','ServiceController@destroy');
 
 
 
