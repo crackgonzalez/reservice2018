@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="{{asset('css/estilo.css')}}"> 
 	@yield('estilo-footer')
 </head>
-<body class="@yield('fondo','fondo-plomo')">
+<body class="">
 	<header>
 		<nav class="navbar navbar-light bg-dark">
 			<a class="navbar-brand" href="#">
@@ -23,12 +23,12 @@
 				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<a class="navbar-brand" href="#">@yield('usuario','Inicio')</a>
+				<a class="navbar-brand" href="#">@yield('usuario')</a>
 				@yield('barra-navegacion')
 			</nav>		
 		@endif
 	</header>
-	<div class="container-fluid">
+	<div class="container-fluid @yield('fondo','fondo-plomo')">
 		@yield('contenido')
 		<div class="row">
 		    <div class="col-12">

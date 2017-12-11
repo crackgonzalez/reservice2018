@@ -110,14 +110,18 @@ class CategoryController extends Controller
     }
 
     public function destroy($id){
-        $categoria = Category::find($id);
-        $ruta = public_path().'/imagenes/categorias';
-        $rutaImagen = $ruta.'/'.$categoria->image;
-        $exito = $categoria->delete();
-        if($exito){
-            File::delete($rutaImagen);
-            alert()->success('La categoria fue eliminada correctamente','Categoria Eliminada')->autoclose(3000);
-        }
+        try {
+            $categoria = Category::find($id);
+            $ruta = public_path().'/imagenes/categorias';
+            $rutaImagen = $ruta.'/'.$categoria->image;
+            $exito = $categoria->delete();
+            if($exito){
+                File::delete($rutaImagen);
+                alert()->success('La categoria fue eliminada correctamente','Categoria Eliminada')->autoclose(3000);
+            }
+        } catch (Exception $e) {
+            alert()->warning('La categoria se encuentra asociada a un servicio','No se Puede Eliminar')->autoclose(3000);
+        }        
         return redirect('administrador/categorias');
     }
 }

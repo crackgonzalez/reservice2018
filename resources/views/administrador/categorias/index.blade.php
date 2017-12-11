@@ -14,9 +14,6 @@
 @endsection
 @section('contenido')
 	<div class="row">
-		<!-- <div class="col-12 col-sm-2 col-md-2">
-			Por definir la barra de menu
-		</div> -->
 		<div class="col-12 col-sm-12 col-md-12">
 			<div class="card margin-arriba margin-abajo card-raised">
 				<div class="card-header text-center">
@@ -27,14 +24,14 @@
 					<div class="row">
 						@foreach($categorias as $categoria)
 						<div class="col-12 col-sm-4 col-md-3">
-							<div class="text-center" style="margin-bottom: 60px;">
-								<img src="{{$categoria->url}}" class="img-raised rounded-circle tamaño-imagen margin-arriba margin-abajo">
+							<div class="text-center separacion-fotos">
+								<img src="{{$categoria->url}}" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo">
 								<h5>{{$categoria->category}}</h5>								
 								<form method="post" action="{{url('/administrador/categorias/'.$categoria->id)}}">
 									{{csrf_field()}}
 									{{method_field('DELETE')}}
 									<a class="btn btn-simple btn-sm" href="{{url('/administrador/categorias/'.$categoria->id.'/edit')}}" data-toggle="tooltip" data-placement="bottom" title="Modificar la Categoria"><i class="material-icons actualizar">refresh</i></a>
-									<button type="submit" class="btn btn-simple btn-sm" data-toggle="tooltip" data-placement="bottom" title="Eliminar la Categoria"><i class="material-icons eliminar">delete</i></i></button>										
+									<button type="submit" class="btn btn-simple btn-sm" data-toggle="tooltip" data-placement="bottom" title="Eliminar la Categoria"><i class="material-icons eliminar">delete</i></i></button>									
 								</form>
 							</div>
 						</div>
