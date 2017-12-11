@@ -37,8 +37,12 @@
                                         <span class="input-group-addon"><i class="material-icons">work</i></span>
                                         <select name="category_id" class="form-control">
                                         	<option value="0">Seleccione Categoria</option>
-                                           @foreach($categorias as $categoria)
-                                            <option value=""></option>
+                                    		@foreach($categorias as $categoria)
+                                            <option value="{{$categoria->id}}"
+												@if($servicio->category_id == $categoria->id)
+													selected=""
+												@endif
+                                            	>{{$categoria->category}}</option>
                                 			@endforeach
                                         </select>
                                     </div>
@@ -50,7 +54,7 @@
 									@endif
 								</div>
 								<div class="form-group">
-									<a href="{{url('/administrador/categorias')}}" class="btn btn-secondary pull-right">Cancelar</a>
+									<a href="{{url('/administrador/servicios')}}" class="btn btn-secondary pull-right">Cancelar</a>
 									<button type="submit" class="btn btn-warning pull-right margin-derecho">Actualizar</button>
 								</div>
 							</form>
