@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Service;
 use App\Category;
+use File;
+use Alert;
 
 class ServiceController extends Controller
 {
@@ -60,6 +62,51 @@ class ServiceController extends Controller
     public function edit(Service $servicio){
         $categorias = Category::orderBy('category','asc')->get();
         return view('administrador.servicios.edit')->with(compact('servicio','categorias'));
+    }
+
+    public function update(Request $requerimiento, Service $servicio){  
+        
+        $mensajes =[
+            'service.required' =>'El campo servicio es obligatorio',
+            'service.min' =>'El campo servicio debe tener al menos 2 caracteres',
+            'service.max' =>'El campo servicio debe tener como maximo 30 caracteres',
+            'service.regex' => 'El campo servicio solo acepta cadenas de texto y valores numericos',
+            'image.mimes' => 'La imagen debe ser un archivo de tipo: jpg, jpeg, bmp, png.',
+            'category_id.exists' =>'Debe seleccionar una categoria',
+        ];
+
+        $reglas = [
+            'service' => 'required|min:2|max:30|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ]*)*)+$/',
+            'image' => 'mimes:jpg,jpeg,bmp,png',
+            'category_id' => 'exists:categories,id'     
+        ];
+
+        $this->validate($requerimiento,$reglas,$mensajes);
+
+        if($requerimiento->hasFile('image')){
+            $foto = $requerimiento->file('image');
+            $ruta = public_path().'/imagenes/servicios';
+            $nombreFoto = uniqid().$foto->getClientOriginalName();
+            $movido = $foto->move($ruta,$nombreFoto);
+
+            if($movido){
+                $imagenAnterior = $ruta.'/'.$servicio->image;
+                $servicio->image = $nombreFoto;
+                $exito = $servicio->save();                        
+                if($exito){
+                    File::delete($imagenAnterior);
+                    alert()->success('El servicio fue modificado correctamente','Servicio Modificado')->autoclose(3000);
+                }
+            }
+        }else{
+            $modificada = $servicio->update($requerimiento->only('service','category_id'));
+            if($modificada){
+                alert()->success('El servicio fue modificado correctamente','Servicio Modificado')->autoclose(3000);
+            }else{
+                alert()->error('El servicio no pudo ser modificado','Ocurrio un Error')->autoclose(3000);
+            }
+        }            
+        return redirect('administrador/servicios');
     }
     
 }
