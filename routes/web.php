@@ -15,26 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth'])->group(function () {
-	
+Route::middleware(['auth','admin'])->group(function () {
+	Route::get('/administrador/categorias','CategoryController@index');
+	Route::get('/administrador/categorias/create','CategoryController@create');
+	Route::post('/administrador/categorias','CategoryController@store');
+	Route::get('/administrador/categorias/{categoria}/edit','CategoryController@edit');
+	Route::post('/administrador/categorias/{categoria}/edit','CategoryController@update');
+	Route::delete('/administrador/categorias/{id}','CategoryController@destroy');
+
+	Route::get('/administrador/servicios','ServiceController@index');
+	Route::get('/administrador/servicios/create','ServiceController@create');
+	Route::post('/administrador/servicios','ServiceController@store');
+	Route::get('/administrador/servicios/{servicio}/edit','ServiceController@edit');
+	Route::post('/administrador/servicios/{servicio}/edit','ServiceController@update');
+	Route::delete('/administrador/servicios/{id}','ServiceController@destroy');	
 });	
-
-Route::get('/administrador/categorias','CategoryController@index');//Listado de Categorias
-Route::get('/administrador/categorias/create','CategoryController@create');//Crear Categoria
-Route::post('/administrador/categorias','CategoryController@store');//Almacenar Categoria
-Route::get('/administrador/categorias/{categoria}/edit','CategoryController@edit'); //Formulario para editar
-Route::post('/administrador/categorias/{categoria}/edit','CategoryController@update');
-Route::delete('/administrador/categorias/{id}','CategoryController@destroy');
-
-Route::get('/administrador/servicios','ServiceController@index');//Listado de Servicios
-Route::get('/administrador/servicios/create','ServiceController@create');//Crear Servicio
-Route::post('/administrador/servicios','ServiceController@store');//Almacenar Servicio
-Route::get('/administrador/servicios/{servicio}/edit','ServiceController@edit'); //Formulario para editar
-Route::post('/administrador/servicios/{servicio}/edit','ServiceController@update');
-Route::delete('/administrador/servicios/{id}','ServiceController@destroy');
-
-
-
 
 Auth::routes();
 

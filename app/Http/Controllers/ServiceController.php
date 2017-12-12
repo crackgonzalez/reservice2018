@@ -108,5 +108,18 @@ class ServiceController extends Controller
         }            
         return redirect('administrador/servicios');
     }
+
+    public function destroy($id){
+
+        $servicio = Service::find($id);
+        $ruta = public_path().'/imagenes/servicios';
+        $rutaImagen = $ruta.'/'.$servicio->image;
+        $exito = $servicio->delete();
+        if($exito){
+            File::delete($rutaImagen);
+            alert()->success('El servicio fue eliminado correctamente','Servicio Eliminado')->autoclose(3000);
+        }       
+        return redirect('administrador/servicios');
+    }
     
 }
