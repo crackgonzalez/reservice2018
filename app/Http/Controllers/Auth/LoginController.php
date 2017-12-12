@@ -58,7 +58,10 @@ class LoginController extends Controller
     {
         if(\Auth::user()->account_id == 1){
             return '/administrador/categorias';    
-        }else{
+        }elseif (\Auth::user()->account_id == 2) {
+            return '/'; 
+        }
+        else{
             return '/';
         }
         

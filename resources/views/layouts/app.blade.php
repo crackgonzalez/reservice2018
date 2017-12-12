@@ -16,6 +16,7 @@
 		<nav class="navbar navbar-light bg-dark">
 			<a class="navbar-brand" href="#">
 				<img src="{{asset('imagenes/logo.png')}}" width="30" height="30" alt="Icono Reservice">
+				@yield('login')
 			</a>				
 		</nav>
 		@if (Auth::check())
