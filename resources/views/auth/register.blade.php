@@ -49,13 +49,7 @@
                                         <span class="input-group-addon"><i class="material-icons">lock_open</i></span>
                                         <input type="password" class="form-control" name="password_confirmation" placeholder="Confirmar Contraseña">
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="material-icons">add_location</i></span>
-                                        <input type="text" class="form-control" name="address" placeholder="Direccion">
-                                    </div>
-                                </div>
+                                </div>                                
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="material-icons">supervisor_account</i></span>

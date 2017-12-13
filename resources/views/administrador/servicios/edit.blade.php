@@ -7,6 +7,7 @@
 			<a class="nav-item nav-link" href="{{url('/administrador/categorias')}}">Categorias <span class="sr-only">(current)</span></a>
 			<a class="nav-item nav-link active" href="{{url('/administrador/servicios')}}">Servicios</a>
 			<a class="nav-item nav-link" href="{{url('/administrador/regiones')}}">Regiones</a>
+			<a class="nav-item nav-link" href="{{url('/administrador/comunas')}}">Comunas</a>
 		</div>
 	</div>
 @endsection

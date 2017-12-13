@@ -6,7 +6,8 @@
 		<div class="navbar-nav">
 			<a class="nav-item nav-link" href="{{url('/administrador/categorias')}}">Categorias <span class="sr-only">(current)</span></a>
 			<a class="nav-item nav-link" href="{{url('/administrador/servicios')}}">Servicios</a>
-			<a class="nav-item nav-link active" href="{{url('/administrador/regiones')}}">Regiones</a>			
+			<a class="nav-item nav-link active" href="{{url('/administrador/regiones')}}">Regiones</a>	
+			<a class="nav-item nav-link" href="{{url('/administrador/comunas')}}">Comunas</a>		
 		</div>
 	</div>
 @endsection
@@ -31,8 +32,8 @@
 								<form method="post" action="{{url('/administrador/regiones/'.$region->id)}}">
 									{{csrf_field()}}
 									{{method_field('DELETE')}}
-									<a class="btn btn-simple btn-sm" href="{{url('/administrador/regiones/'.$region->id.'/edit')}}" data-toggle="tooltip" data-placement="bottom" title="Modificar la Categoria"><i class="material-icons actualizar">refresh</i></a>
-									<button type="submit" class="btn btn-simple btn-sm" data-toggle="tooltip" data-placement="bottom" title="Eliminar la Categoria"><i class="material-icons eliminar">delete</i></i></button>
+									<a class="btn btn-simple btn-sm" href="{{url('/administrador/regiones/'.$region->id.'/edit')}}" data-toggle="tooltip" data-placement="bottom" title="Modificar la Region"><i class="material-icons actualizar">refresh</i></a>
+									<button type="submit" class="btn btn-simple btn-sm" data-toggle="tooltip" data-placement="bottom" title="Eliminar la Region"><i class="material-icons eliminar">delete</i></i></button>
 								</form>
 							</div>
 						</div>

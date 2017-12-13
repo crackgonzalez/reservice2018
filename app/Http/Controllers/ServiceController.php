@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Service;
 use App\Category;
 use File;
+use Exception;
 use Alert;
 
 class ServiceController extends Controller

@@ -8,6 +8,6 @@ class Account extends Model
 {
     //Una cuenta tiene un usuario
     public function usuario(){
-    	return $this->hasOne('App\User');
+    	return $this->belongsTo('App\User','account_id');
     }
 }

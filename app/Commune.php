@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Region extends Model
+class Commune extends Model
 {
-	protected $fillable = ['region'];
+    protected $fillable = ['commune','region_id'];
 
-	//Una Region Tiene Muchas Comunas
-    public function comunas(){
-    	return $this->hasMany('App\Commune');
+    //Una Comuna Pertenece a una Region
+    public function region(){
+    	return $this->belongsTo('App\Region','region_id');
     }
 
     //retorna la ruta completa para mostrar la imagen
@@ -18,6 +18,6 @@ class Region extends Model
     	if(substr($this->image,0,4)==="http"){
     		return $this->image;
     	}
-    	return '/imagenes/regiones/'.$this->image;
+    	return '/imagenes/comunas/'.$this->image;
     }
 }
