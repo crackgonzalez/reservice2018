@@ -62,8 +62,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <a href="{{url('/')}}" class="btn btn-secondary pull-right">Cancelar</a>
-                                    <button type="submit" class="btn btn-warning pull-right margin-derecho">Crear cuenta</button>
+                                    <a href="{{url('/')}}" class="btn btn-secondary btn-sm pull-right">Cancelar</a>
+                                    <button type="submit" class="btn btn-warning btn-sm pull-right margin-derecho link-1">Crear cuenta</button>
                                 </div>
                             </form>
                         </div>

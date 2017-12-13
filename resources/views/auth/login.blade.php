@@ -53,8 +53,8 @@
                                     <!-- <a class="btn btn-link" href="{{ route('password.request') }}">
                                         ¿Olvido su Contraseña?
                                     </a>
- -->                                    <a href="{{url('/')}}" class="btn btn-secondary pull-right">Cancelar</a>
-                                    <button type="submit" class="btn btn-warning pull-right margin-derecho">Iniciar Sesion</button>
+ -->                                <a href="{{url('/')}}" class="btn btn-secondary btn-sm pull-right">Cancelar</a>
+                                    <button type="submit" class="btn btn-warning btn-sm pull-right margin-derecho link-1">Iniciar Sesion</button>
                                 </div>
                             </form>
                         </div>

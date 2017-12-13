@@ -18,7 +18,7 @@
 			<div class="card margin-arriba margin-abajo card-raised">
 				<div class="card-header text-center">
 					<h4 class="card-title">Listado de Categorias</h4>
-					<a href="{{url('/administrador/categorias/create')}}" class="btn btn-warning">Agregar Categoria</a>
+					<a href="{{url('/administrador/categorias/create')}}" class="btn btn-warning btn-sm link-1">Agregar Categoria</a>
 				</div>
 				<div class="card-body">
 					<div class="row">

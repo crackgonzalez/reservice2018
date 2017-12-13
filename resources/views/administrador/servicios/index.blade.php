@@ -18,7 +18,7 @@
 			<div class="card margin-arriba margin-abajo card-raised">
 				<div class="card-header text-center">
 					<h4 class="card-title">Listado de Servicios</h4>
-					<a href="{{url('/administrador/servicios/create')}}" class="btn btn-warning">Agregar Servicio</a>
+					<a href="{{url('/administrador/servicios/create')}}" class="btn btn-warning btn-sm link-1">Agregar Servicio</a>
 				</div>
 				<div class="card-body">
 					<div class="row">

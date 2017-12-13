@@ -16,11 +16,30 @@
 		<nav class="navbar navbar-light bg-dark">
 			<a class="navbar-brand" href="#">
 				<img src="{{asset('imagenes/logo.png')}}" width="30" height="30" alt="Icono Reservice">
-				@yield('login')
-			</a>				
+			</a>
+			<div class="pull-right">
+		        @if (Auth::check())
+		    	<div class="btn-group">
+					<button type="button" class="btn btn-warning btn-sm link-1">{{ Auth::user()->name }}</button>
+					<button type="button" class="btn btn-warning btn-sm dropdown-toggle dropdown-toggle-split link-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<span class="sr-only">Toggle Dropdown</span>
+					</button>
+		            <div class="dropdown-menu">
+		            	<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesion
+		            	</a>
+		            	<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+		            		{{ csrf_field() }}
+		            	</form>
+		            </div>
+		        </div>
+		        @else
+		        	<a class="btn btn-warning btn-sm link-1" href="{{ route('login') }}">Iniciar Sesion</a>
+                    <a class="btn btn-warning btn-sm link-1" href="{{ route('register') }}">Registrarse</a>
+		    	@endif
+			</div>			
 		</nav>
 		@if (Auth::check())
-			<nav class="navbar navbar-expand-md navbar-light bg-light">
+			<nav class="navbar navbar-expand-md navbar-light bg-light sombra-navbar">
 				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>

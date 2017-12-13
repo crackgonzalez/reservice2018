@@ -1,5 +1,14 @@
 @extends('layouts.app')
 @section('titulo','Modificar una Categoria')
+@section('usuario','Administrador')
+@section('barra-navegacion')
+	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		<div class="navbar-nav">
+			<a class="nav-item nav-link active" href="{{url('/administrador/categorias')}}">Categorias <span class="sr-only">(current)</span></a>
+			<a class="nav-item nav-link" href="{{url('/administrador/servicios')}}">Servicios</a>			
+		</div>
+	</div>
+@endsection
 @section('fondo','fondo-foto')
 @section('estilo-footer')
 	<link rel="stylesheet" href="{{asset('css/footer-with-button-logo-white.css')}}">
@@ -39,8 +48,8 @@
 									@endif
 								</div>
 								<div class="form-group">
-									<a href="{{url('/administrador/categorias')}}" class="btn btn-secondary pull-right">Cancelar</a>
-									<button type="submit" class="btn btn-warning pull-right margin-derecho">Actualizar</button>
+									<a href="{{url('/administrador/categorias')}}" class="btn btn-secondary btn-sm pull-right">Cancelar</a>
+									<button type="submit" class="btn btn-warning btn-sm pull-right margin-derecho link-1">Actualizar</button>
 								</div>
 							</form>
 						</div>
