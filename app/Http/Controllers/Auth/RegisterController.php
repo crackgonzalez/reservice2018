@@ -59,6 +59,10 @@ class RegisterController extends Controller
             'password.required'=>'El campo contraseña es obligatorio',
             'password.confirmed'=>'La contraseña ingresada no coincide con su confirmacion',
             'password.min'=>'El campo nombre debe tener al menos 6 caracteres',
+            'address.required' => 'El campo direccion es obligatorio',
+            'address.min' =>'El campo direccion debe tener al menos 5 caracteres',
+            'address.max' =>'El campo direccion debe tener como maximo 100 caracteres',
+            'address.regex' => 'El campo nombre solo acepta cadenas de texto y valores numericos',
             'account_id.in'=>'Debe seleccionar un tipo de cuenta (Empresa o Cliente)',
          
         ];
@@ -67,6 +71,7 @@ class RegisterController extends Controller
             'name' => 'required|string|min:2|max:30|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ]*)*)+$/',
             'email' => 'required|string|email|max:50|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'address' => 'required|min:5|max:100|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ]*)*)+$/',
             'account_id' => 'required|in:3,4',
         ],$mensajes);
     }
@@ -83,6 +88,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'address' => $data['address'],
             'account_id' => $data['account_id'],
         ]);
     }

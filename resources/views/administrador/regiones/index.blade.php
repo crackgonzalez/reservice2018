@@ -27,19 +27,19 @@
 						<div class="col-12 col-sm-4 col-md-3">
 							<div class="text-center separacion-fotos">
 								<img src="{{$region->url}}" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo">
-								<h5>{{$region->category}}</h5>								
+								<h5>{{$region->region}}</h5>								
 								<form method="post" action="{{url('/administrador/regiones/'.$region->id)}}">
 									{{csrf_field()}}
 									{{method_field('DELETE')}}
 									<a class="btn btn-simple btn-sm" href="{{url('/administrador/regiones/'.$region->id.'/edit')}}" data-toggle="tooltip" data-placement="bottom" title="Modificar la Categoria"><i class="material-icons actualizar">refresh</i></a>
-									<button type="submit" class="btn btn-simple btn-sm" data-toggle="tooltip" data-placement="bottom" title="Eliminar la Categoria"><i class="material-icons eliminar">delete</i></i></button>									
+									<button type="submit" class="btn btn-simple btn-sm" data-toggle="tooltip" data-placement="bottom" title="Eliminar la Categoria"><i class="material-icons eliminar">delete</i></i></button>
 								</form>
 							</div>
 						</div>
 						@endforeach
 					</div>
 				</div>
-				{{$categorias->links('vendor.pagination.bootstrap-4')}}
+				{{$regiones->links('vendor.pagination.bootstrap-4')}}
 			</div>
 		</div>
 	</div>

@@ -52,6 +52,12 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group">
+                                        <span class="input-group-addon"><i class="material-icons">add_location</i></span>
+                                        <input type="text" class="form-control" name="address" placeholder="Direccion">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
                                         <span class="input-group-addon"><i class="material-icons">supervisor_account</i></span>
                                         <select name="account_id" class="form-control">
                                             <option value="0">Seleccione Cuenta</option>

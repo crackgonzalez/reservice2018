@@ -33,7 +33,7 @@ Route::middleware(['auth','admin'])->group(function () {
 
 	Route::get('/administrador/regiones','RegionController@index');
 	Route::get('/administrador/regiones/create','RegionController@create');
-	// Route::post('/administrador/regiones','RegionController@store');
+	Route::post('/administrador/regiones','RegionController@store');
 	// Route::get('/administrador/regiones/{region}/edit','RegionController@edit');
 	// Route::post('/administrador/regiones/{region}/edit','RegionController@update');
 	// Route::delete('/administrador/regiones/{id}','RegionController@destroy');
