@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth','admin'])->group(function () {
+
 	Route::get('/administrador/categorias','CategoryController@index');
 	Route::get('/administrador/categorias/create','CategoryController@create');
 	Route::post('/administrador/categorias','CategoryController@store');
@@ -28,7 +29,15 @@ Route::middleware(['auth','admin'])->group(function () {
 	Route::post('/administrador/servicios','ServiceController@store');
 	Route::get('/administrador/servicios/{servicio}/edit','ServiceController@edit');
 	Route::post('/administrador/servicios/{servicio}/edit','ServiceController@update');
-	Route::delete('/administrador/servicios/{id}','ServiceController@destroy');	
+	Route::delete('/administrador/servicios/{id}','ServiceController@destroy');
+
+	Route::get('/administrador/regiones','RegionController@index');
+	Route::get('/administrador/regiones/create','RegionController@create');
+	// Route::post('/administrador/regiones','RegionController@store');
+	// Route::get('/administrador/regiones/{region}/edit','RegionController@edit');
+	// Route::post('/administrador/regiones/{region}/edit','RegionController@update');
+	// Route::delete('/administrador/regiones/{id}','RegionController@destroy');
+
 });	
 
 Auth::routes();

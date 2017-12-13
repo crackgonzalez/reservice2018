@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('titulo','Mantenedor de Categorias')
+@section('titulo','Mantenedor de Regiones')
 @section('usuario','Administrador')
 @section('barra-navegacion')
 	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 		<div class="navbar-nav">
-			<a class="nav-item nav-link active" href="{{url('/administrador/categorias')}}">Categorias <span class="sr-only">(current)</span></a>
+			<a class="nav-item nav-link" href="{{url('/administrador/categorias')}}">Categorias <span class="sr-only">(current)</span></a>
 			<a class="nav-item nav-link" href="{{url('/administrador/servicios')}}">Servicios</a>
-			<a class="nav-item nav-link" href="{{url('/administrador/regiones')}}">Regiones</a>
+			<a class="nav-item nav-link active" href="{{url('/administrador/regiones')}}">Regiones</a>			
 		</div>
 	</div>
 @endsection
@@ -18,20 +18,20 @@
 		<div class="col-12 col-sm-12 col-md-12">
 			<div class="card margin-arriba margin-abajo card-raised">
 				<div class="card-header text-center">
-					<h4 class="card-title">Listado de Categorias</h4>
-					<a href="{{url('/administrador/categorias/create')}}" class="btn btn-warning btn-sm link-1">Agregar Categoria</a>
+					<h4 class="card-title">Listado de Regiones</h4>
+					<a href="{{url('/administrador/regiones/create')}}" class="btn btn-warning btn-sm link-1">Agregar Region</a>
 				</div>
 				<div class="card-body">
 					<div class="row">
-						@foreach($categorias as $categoria)
+						@foreach($regiones as $region)
 						<div class="col-12 col-sm-4 col-md-3">
 							<div class="text-center separacion-fotos">
-								<img src="{{$categoria->url}}" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo">
-								<h5>{{$categoria->category}}</h5>								
-								<form method="post" action="{{url('/administrador/categorias/'.$categoria->id)}}">
+								<img src="{{$region->url}}" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo">
+								<h5>{{$region->category}}</h5>								
+								<form method="post" action="{{url('/administrador/regiones/'.$region->id)}}">
 									{{csrf_field()}}
 									{{method_field('DELETE')}}
-									<a class="btn btn-simple btn-sm" href="{{url('/administrador/categorias/'.$categoria->id.'/edit')}}" data-toggle="tooltip" data-placement="bottom" title="Modificar la Categoria"><i class="material-icons actualizar">refresh</i></a>
+									<a class="btn btn-simple btn-sm" href="{{url('/administrador/regiones/'.$region->id.'/edit')}}" data-toggle="tooltip" data-placement="bottom" title="Modificar la Categoria"><i class="material-icons actualizar">refresh</i></a>
 									<button type="submit" class="btn btn-simple btn-sm" data-toggle="tooltip" data-placement="bottom" title="Eliminar la Categoria"><i class="material-icons eliminar">delete</i></i></button>									
 								</form>
 							</div>
@@ -42,7 +42,5 @@
 				{{$categorias->links('vendor.pagination.bootstrap-4')}}
 			</div>
 		</div>
-	</div>	
+	</div>
 @endsection
-
-
