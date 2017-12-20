@@ -29,7 +29,13 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="material-icons">account_circle</i></span>
-                                        <input type="text" class="form-control" name="name" placeholder="Nombre" value="{{ old('name') }}">
+                                        <input type="text" class="form-control" name="name" placeholder="Nombre Usuario" value="{{ old('name') }}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="material-icons">account_circle</i></span>
+                                        <input type="text" class="form-control" name="rut" placeholder="Rut" value="{{ old('rut') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">

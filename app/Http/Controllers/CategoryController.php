@@ -9,17 +9,18 @@ use Alert;
 
 class CategoryController extends Controller
 {
-	//Lista las categorias por orden ascendente y paginado en 10 registros
+	//Lista las Categorias por Orden Ascendente y Paginado en 12 Registros
     public function index(){
     	$categorias = Category::orderBy('category','asc')->paginate(12);
-        //$categorias = Category::orderBy('category')->get();
     	return view('administrador.categorias.index')->with(compact('categorias'));
     }
 
+    //Envia a Formulario para Crear una Categoria
     public function create(){
     	return view('administrador.categorias.create');
     }
 
+    //Crea una Categoria
     public function store(Request $requerimiento){  
 
         $mensajes =[
@@ -58,10 +59,12 @@ class CategoryController extends Controller
         return redirect('administrador/categorias');
     }
 
+    //Envia a Formulario para Editar una Categoria
     public function edit(Category $categoria){
         return view('administrador.categorias.edit')->with(compact('categoria'));
     }
 
+    //Edita la Categoria
     public function update(Request $requerimiento, Category $categoria){  
         
         $mensajes =[
@@ -109,6 +112,7 @@ class CategoryController extends Controller
         return redirect('administrador/categorias');
     }
 
+    //Elimina una Categoria
     public function destroy($id){
         try {
             $categoria = Category::find($id);

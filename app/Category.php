@@ -9,12 +9,14 @@ class Category extends Model
 
     protected $fillable = ['category'];
 
+    //Relaciones
+
     //Una Categoria Tiene Muchos Servicios
     public function servicios(){
     	return $this->hasMany('App\Service');
     }
 
-    //retorna la ruta completa para mostrar la imagen
+    //Retorna la Imagen
     public function getUrlAttribute(){
     	if(substr($this->image,0,4)==="http"){
     		return $this->image;

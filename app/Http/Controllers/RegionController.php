@@ -10,15 +10,18 @@ use Alert;
 
 class RegionController extends Controller
 {
+    //Lista las Regiones por Orden Ascendente y Paginado en 12 Registros
     public function index(){
     	$regiones = Region::orderBy('region','asc')->paginate(12);
     	return view('administrador.regiones.index')->with(compact('regiones'));
     }
 
+    //Envia a Formulario para Crear una Region
     public function create(){
     	return view('administrador.regiones.create');
     }
 
+    //Crea una Region
     public function store(Request $requerimiento){  
 
         $mensajes =[
@@ -57,10 +60,12 @@ class RegionController extends Controller
         return redirect('administrador/regiones');
     }
 
+    //Envia a Formulario para Editar una Region
     public function edit(Region $region){
         return view('administrador.regiones.edit')->with(compact('region'));
     }
 
+    //Edita la Region
     public function update(Request $requerimiento, Region $region){  
         
         $mensajes =[
@@ -108,6 +113,7 @@ class RegionController extends Controller
         return redirect('administrador/regiones');
     }
 
+    //Elimina una Region
     public function destroy($id){
         try {
             $region = Region::find($id);

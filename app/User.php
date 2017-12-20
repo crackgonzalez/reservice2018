@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','account_id',
+        'name','rut','email', 'password','account_id',
     ];
 
     /**
@@ -27,8 +27,20 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    //Una usuario tiene un cuenta
+    //Relaciones
+
+    //Un Usuario Pertenece a un Tipo de Cuenta
     public function cuenta(){
-        return $this->hasOne('App\Account');
+       return $this->belongsTo('App\Account','account_id');
     }
+
+    //Una Cuenta de Usuario Pertenece a una Empresa
+    public function empresa(){
+        return $this->hasOne('App\Company');
+    }
+
+    //Eventos Para el Usuario
+    protected $dispatchesEvents = [
+        'created' => Events\CrearEmpresaEvent::class,        
+    ];
 }

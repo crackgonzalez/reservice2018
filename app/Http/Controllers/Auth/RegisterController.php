@@ -48,6 +48,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        // falta validar el rut
         $mensajes =[
             'name.required' =>'El campo nombre es obligatorio',
             'name.min' =>'El campo nombre debe tener al menos 2 caracteres',
@@ -57,10 +58,9 @@ class RegisterController extends Controller
             'email.max'=>'El campo email debe tener como maximo 50 caracteres',
             'email.unique' =>'El email ya ha sido registrado en la base de datos',
             'password.required'=>'El campo contraseña es obligatorio',
-            'password.confirmed'=>'La contraseña ingresada no coincide con su confirmacion',
             'password.min'=>'El campo nombre debe tener al menos 6 caracteres',
-            'account_id.in'=>'Debe seleccionar un tipo de cuenta (Empresa o Cliente)',
-         
+            'password.confirmed'=>'La contraseña ingresada no coincide con su confirmacion',
+            'account_id.in'=>'Debe seleccionar un tipo de cuenta (Empresa o Cliente)',         
         ];
 
         return Validator::make($data, [
@@ -81,6 +81,7 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'rut' =>$data['rut'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'account_id' => $data['account_id'],
@@ -92,5 +93,20 @@ class RegisterController extends Controller
     {
         $cuentas = Account::all()->where('id','>',2);
         return view('auth.register')->with(compact('cuentas'));;
+    }
+
+    //Redireciona segun el usuario registrado
+    protected function redirectTo()
+    {
+        if(\Auth::user()->account_id == 1){
+            return '/administrador/categorias';    
+        }elseif (\Auth::user()->account_id == 2) {
+            return '/'; 
+        }elseif (\Auth::user()->account_id == 3) {
+            return 'empresa/perfil'; 
+        }else{
+            return '/';
+        }
+        
     }
 }

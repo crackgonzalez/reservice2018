@@ -10,17 +10,19 @@ use Alert;
 
 class ServiceController extends Controller
 {
-    //
+    //Lista los Servicios por Orden Ascendente y Paginado en 12 Registros
     public function index(){
     	$servicios = Service::orderBy('service','asc')->paginate(12);
     	return view('administrador.servicios.index')->with(compact('servicios'));
     }
 
+    //Envia a Formulario para Crear un Servicio y Carga las Categorias
     public function create(){
     	$categorias = Category::orderBy('category','asc')->get();
     	return view('administrador.servicios.create')->with(compact('categorias'));
     }
 
+    //Crea un Servicio
     public function store(Request $requerimiento){
 
     	$mensajes =[
@@ -60,11 +62,13 @@ class ServiceController extends Controller
         return redirect('administrador/servicios');
     }
 
+    //Envia a Formulario para Editar un Servicio y Carga las Categorias
     public function edit(Service $servicio){
         $categorias = Category::orderBy('category','asc')->get();
         return view('administrador.servicios.edit')->with(compact('servicio','categorias'));
     }
 
+    //Edita el Servicio
     public function update(Request $requerimiento, Service $servicio){  
         
         $mensajes =[
@@ -110,6 +114,7 @@ class ServiceController extends Controller
         return redirect('administrador/servicios');
     }
 
+    //Elimina el Servicio
     public function destroy($id){
 
         $servicio = Service::find($id);

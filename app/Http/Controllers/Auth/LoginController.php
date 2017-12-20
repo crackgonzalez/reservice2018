@@ -43,25 +43,27 @@ class LoginController extends Controller
         $mensajes = [
             'email.required' =>'El campo email es obligatorio',
             'email.max'=>'El campo email debe tener como maximo 50 caracteres',
-
+            'password.required'=>'El campo contraseña es obligatorio',
         ];
 
         $reglas = [
              'email' => 'required|string|email|max:50',
+             'password' => 'required',
         ];
 
         $this->validate(request(),$reglas,$mensajes);
     }
 
-    //redirecion de prueba
+    //Redireciona segun el usuario logeado
     protected function redirectTo()
     {
         if(\Auth::user()->account_id == 1){
             return '/administrador/categorias';    
         }elseif (\Auth::user()->account_id == 2) {
             return '/'; 
-        }
-        else{
+        }elseif (\Auth::user()->account_id == 3) {
+            return 'empresa/perfil'; 
+        }else{
             return '/';
         }
         

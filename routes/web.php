@@ -49,7 +49,14 @@ Route::middleware(['auth','admin'])->group(function () {
 	Route::get('/administrador/comunas/{comuna}/edit','CommuneController@edit');
 	Route::post('/administrador/comunas/{comuna}/edit','CommuneController@update');
 	Route::delete('/administrador/comunas/{id}','CommuneController@destroy');
-});	
+});
+
+//Empresa
+Route::middleware(['auth','empresa'])->group(function () {
+
+	//Perfil
+	Route::get('/empresa/perfil','CompanyController@index');
+});
 
 Auth::routes();
 

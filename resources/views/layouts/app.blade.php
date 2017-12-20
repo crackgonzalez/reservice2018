@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>@yield('titulo','Reservice')</title>
+	<link rel="icon" type="image/png" href="{{asset('imagenes/logo.png')}}">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 	<link rel="stylesheet" href="{{asset('css/estilo.css')}}"> 
 	@yield('estilo-footer')
 </head>
-<body class="">
+<body class="@yield('perfil-fondo')">
 	<header>
 		<nav class="navbar navbar-light bg-dark">
 			<a class="navbar-brand" href="#">
@@ -24,8 +25,8 @@
 					<button type="button" class="btn btn-warning btn-sm dropdown-toggle dropdown-toggle-split link-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<span class="sr-only">Toggle Dropdown</span>
 					</button>
-		            <div class="dropdown-menu">
-		            	<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesion
+		            <div class="dropdown-menu dropdown-menu-right">
+		            	<a class="dropdown-item btn-sm" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesion
 		            	</a>
 		            	<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 		            		{{ csrf_field() }}

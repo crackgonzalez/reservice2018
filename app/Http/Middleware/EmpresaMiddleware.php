@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Auth;
 
-class AdministradorMiddleware
+class EmpresaMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,15 +15,15 @@ class AdministradorMiddleware
      * @return mixed
      */
 
-    //Middleware para Administradores
+    //Middleware para Empresas
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->account_id == 1){
+        if(Auth::user()->account_id == 3){
             return $next($request);            
         }else{
             Auth::logout();
             alert()->error('Intentaste acceder a una ruta a la cual no tienes permisos','No Autorizado')->autoclose(5000);
         } 
-        return redirect('/');      
+        return redirect('/');  
     }
 }
