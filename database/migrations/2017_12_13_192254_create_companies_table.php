@@ -15,10 +15,10 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('image')->nullable();
-            $table->string('phone')->default('999999999');
-            $table->string('address')->default('direccion');
-            $table->string('description')->default('descripcion');
+            $table->string('image')->nullable()->default('fotoperfil.jpg');
+            $table->string('phone')->default('+56999999999');
+            $table->string('address')->default('Direccion de la empresa');
+            $table->string('description',500)->default('Descripcion de la empresa');
             $table->integer('user_id')->unsigned()->unique();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
             $table->timestamps();

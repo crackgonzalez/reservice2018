@@ -56,6 +56,8 @@ Route::middleware(['auth','empresa'])->group(function () {
 
 	//Perfil
 	Route::get('/empresa/perfil','CompanyController@index');
+	Route::get('/empresa/perfil/{empresa}/edit','CompanyController@edit');
+	Route::post('/empresa/perfil/{empresa}/edit','CompanyController@update');
 });
 
 Auth::routes();

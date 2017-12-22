@@ -1,114 +1,49 @@
 @extends('layouts.app')
 @section('titulo','Perfil de la Empresa')
+@section('usuario','Empresa')
 @section('barra-navegacion')
-	<h3>Barra de Navegacion</h3>
+	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		<div class="navbar-nav">
+			<a class="nav-item nav-link active" href="{{url('/empresa/perfil')}}">Perfil <span class="sr-only">(current)</span></a>
+		</div>
+	</div>
 @endsection
 @section('perfil-fondo','profile-page')
 @section('estilo-footer')
-	<link rel="stylesheet" href="{{asset('css/footer-with-button-logo-white.css')}}">
+	<link rel="stylesheet" href="{{asset('css/footer-with-button-logo-black.css')}}">
 @endsection
 @section('contenido')
-	<!-- <div class="wrapper">
-		<div class="header header-filter" style="background-image: url('../imagenes/ciudad.jpg'); margin-left: -15px; margin-right: -15px;"></div>
-	</div> -->
-	<!-- 
-	<div class="wrapper">
-		<div class="header header-filter" style="background-image: url('../assets/img/examples/city.jpg');"></div>
-
-		<div class="main main-raised">
-			<div class="profile-content">
-	            <div class="container">
-	                <div class="row">
-	                    <div class="profile">
-	                        <div class="avatar">
-	                            <img src="../assets/img/christian.jpg" alt="Circle Image" class="img-circle img-responsive img-raised">
-	                        </div>
-	                        <div class="name">
-	                            <h3 class="title">Christian Louboutin</h3>
-								<h6>Designer</h6>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="description text-center">
-                        <p>An artist of considerable range, Chet Faker — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
-	                </div>
-
-					<div class="row">
-						<div class="col-md-6 col-md-offset-3">
-							<div class="profile-tabs">
-			                    <div class="nav-align-center">
-									<ul class="nav nav-pills" role="tablist">
-										<li class="active">
-											<a href="#studio" role="tab" data-toggle="tab">
-												<i class="material-icons">camera</i>
-												Studio
-											</a>
-										</li>
-										<li>
-				                            <a href="#work" role="tab" data-toggle="tab">
-												<i class="material-icons">palette</i>
-												Work
-				                            </a>
-				                        </li>
-				                        <li>
-				                            <a href="#shows" role="tab" data-toggle="tab">
-												<i class="material-icons">favorite</i>
-				                                Favorite
-				                            </a>
-				                        </li>
-				                    </ul>
-
-				                    <div class="tab-content gallery">
-										<div class="tab-pane active" id="studio">
-				                            <div class="row">
-												<div class="col-md-6">
-													<img src="../assets/img/examples/chris1.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris0.jpg" class="img-rounded" />
-												</div>
-												<div class="col-md-6">
-													<img src="../assets/img/examples/chris3.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris4.jpg" class="img-rounded" />
-												</div>
-				                            </div>
-				                        </div>
-				                        <div class="tab-pane text-center" id="work">
-											<div class="row">
-												<div class="col-md-6">
-													<img src="../assets/img/examples/chris5.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris7.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris9.jpg" class="img-rounded" />
-												</div>
-												<div class="col-md-6">
-													<img src="../assets/img/examples/chris6.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris8.jpg" class="img-rounded" />
-												</div>
-											</div>
-				                        </div>
-										<div class="tab-pane text-center" id="shows">
-											<div class="row">
-												<div class="col-md-6">
-													<img src="../assets/img/examples/chris4.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris6.jpg" class="img-rounded" />
-												</div>
-												<div class="col-md-6">
-													<img src="../assets/img/examples/chris7.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris5.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris9.jpg" class="img-rounded" />
-												</div>
-											</div>
-				                        </div>
-
-				                    </div>
+	<div class="row">
+		<div class="col-12 col-sm-12 col-md-12">
+			<div class="card margin-arriba margin-abajo card-raised">
+				@foreach($empresas as $empresa)
+					@if($empresa->user_id == Auth::user()->id)
+						<div class="wrapper">
+							<div class="header header-filter" style="background-image:url('../imagenes/ciudad.jpg');">
+								<div class="container">
+                					<div class="row">
+                						<div class="col-12 col-sm-2 col-md-3">
+                						</div>
+										<div class="col-12 col-sm-8 col-md-6 text-center">
+											<img class="img-raised rounded-circle tamaño-imagen-normal img-thumbnail" src="{{$empresa->url}}" style="background: #fff; margin-top: 15px;" alt="">
+											<h2 class="link-1 margin-arriba">{{$empresa->usuario->name}}</h2>	
+											<h6 class="link-1">{{$empresa->usuario->email}}</h6>
+											<h6 class="link-1">{{$empresa->phone}}</h6>
+											<h6 class="link-1">{{$empresa->address}}</h6>
+											<h6 class="link-1">Pedro Aguirre Cerda (Prueba)</h6>
+											<form method="post" action="{{url('/empresa/perfil/'.$empresa->id)}}">
+												<a class="btn btn-warning btn-sm link-1" href="{{url('/empresa/perfil/'.$empresa->id.'/edit')}}">Administrar Perfil</a>
+											</form>											
+										</div>										
+									</div>
 								</div>
 							</div>
-						
 						</div>
-	                </div>
-
-	            </div>
-	        </div>
+						<div class="card-body">				
+						</div>
+					@endif
+				@endforeach	
+			</div>
 		</div>
-
-    </div>
-	 -->
+	</div>
 @endsection

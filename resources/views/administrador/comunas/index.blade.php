@@ -12,7 +12,7 @@
 	</div>
 @endsection
 @section('estilo-footer')
-	<link rel="stylesheet" href="{{asset('css/footer-with-button-logo-white.css')}}">
+	<link rel="stylesheet" href="{{asset('css/footer-with-button-logo-black.css')}}">
 @endsection
 @section('contenido')
 	<div class="row">

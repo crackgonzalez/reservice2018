@@ -13,7 +13,7 @@
 @endsection
 @section('fondo','fondo-foto')
 @section('estilo-footer')
-	<link rel="stylesheet" href="{{asset('css/footer-with-button-logo-white.css')}}">
+	<link rel="stylesheet" href="{{asset('css/footer-with-button-logo-black.css')}}">
 @endsection
 @section('contenido')
 	<div class="row">
@@ -32,7 +32,7 @@
 					@endif
 					<div class="card margin-arriba margin-abajo card-raised">						
 						<div class="card-header text-center">
-							<h4 class="card-title">Modificar una Region</h4>
+							<h4 class="card-title">Modificar la {{$region->region}}</h4>
 						</div>
 						<div class="card-body">
 							<form action="{{url('/administrador/regiones/'.$region->id.'/edit')}}" method="POST" enctype="multipart/form-data">
