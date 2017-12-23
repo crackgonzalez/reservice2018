@@ -29,7 +29,7 @@
 					@endif
 					<div class="card margin-arriba margin-abajo card-raised">						
 						<div class="card-header text-center">
-							<h4 class="card-title">Modificando perfil de {{$usuario->name}}</h4>
+							<h4 class="card-title">Modificando el Perfil de {{$usuario->name}}</h4>
 						</div>
 						<div class="card-body">
 							<form action="{{url('/empresa/perfil/'.$empresa->id.'/edit')}}" method="POST" enctype="multipart/form-data">
@@ -56,6 +56,27 @@
 									<div class="input-group">
 										<span class="input-group-addon"><i class="material-icons">person_pin_circle</i></span>
 										<input type="text" class="form-control" name="address" placeholder="Direccion" value="{{old('address',$empresa->address)}}">
+									</div>
+								</div>
+								<div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="material-icons">terrain</i></span>
+                                        <select name="commune_id" class="form-control">
+                                        	<option value="">Seleccione Comuna</option>
+                                    		@foreach($comunas as $comuna)
+                                            <option value="{{$comuna->id}}"
+												@if($empresa->commune_id == $comuna->id)
+													selected=""
+												@endif
+                                            	>{{$comuna->commune}}</option>
+                                			@endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="material-icons">description</i></span>
+										<textarea name="description" placeholder="Descripcion" class="form-control" cols="30" rows="4">{{old('description',$empresa->description)}}</textarea>
 									</div>
 								</div>
 								<div class="form-group">

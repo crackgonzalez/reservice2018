@@ -26,11 +26,17 @@
                 						</div>
 										<div class="col-12 col-sm-8 col-md-6 text-center">
 											<img class="img-raised rounded-circle tamaño-imagen-normal img-thumbnail" src="{{$empresa->url}}" style="background: #fff; margin-top: 15px;" alt="">
-											<h2 class="link-1 margin-arriba">{{$empresa->usuario->name}}</h2>	
-											<h6 class="link-1">{{$empresa->usuario->email}}</h6>
+											<h2 class="link-1">{{$empresa->usuario->name}}</h2>	
+											<small class="link-1 text-justify">{{$empresa->description}}</small>
+											<h6 class="link-1 margin-arriba">{{$empresa->usuario->email}}</h6>
 											<h6 class="link-1">{{$empresa->phone}}</h6>
 											<h6 class="link-1">{{$empresa->address}}</h6>
-											<h6 class="link-1">Pedro Aguirre Cerda (Prueba)</h6>
+											@empty($empresa->comuna->commune)
+											<h6 class="link-1">Ingrese una comuna</h6>
+											@endempty
+											@isset($empresa->comuna->commune)
+											<h6 class="link-1">{{$empresa->comuna->commune}}</h6>
+											@endisset
 											<form method="post" action="{{url('/empresa/perfil/'.$empresa->id)}}">
 												<a class="btn btn-warning btn-sm link-1" href="{{url('/empresa/perfil/'.$empresa->id.'/edit')}}">Administrar Perfil</a>
 											</form>											
@@ -47,3 +53,80 @@
 		</div>
 	</div>
 @endsection
+
+
+
+
+<!-- <div class="row">
+						<div class="col-md-6 col-md-offset-3">
+							<div class="profile-tabs">
+			                    <div class="nav-align-center">
+									<ul class="nav nav-pills" role="tablist">
+										<li class="active">
+											<a href="#studio" role="tab" data-toggle="tab">
+												<i class="material-icons">camera</i>
+												Studio
+											</a>
+										</li>
+										<li>
+				                            <a href="#work" role="tab" data-toggle="tab">
+												<i class="material-icons">palette</i>
+												Work
+				                            </a>
+				                        </li>
+				                        <li>
+				                            <a href="#shows" role="tab" data-toggle="tab">
+												<i class="material-icons">favorite</i>
+				                                Favorite
+				                            </a>
+				                        </li>
+				                    </ul>
+
+				                    <div class="tab-content gallery">
+										<div class="tab-pane active" id="studio">
+				                            <div class="row">
+												<div class="col-md-6">
+													<img src="../assets/img/examples/chris1.jpg" class="img-rounded" />
+													<img src="../assets/img/examples/chris0.jpg" class="img-rounded" />
+												</div>
+												<div class="col-md-6">
+													<img src="../assets/img/examples/chris3.jpg" class="img-rounded" />
+													<img src="../assets/img/examples/chris4.jpg" class="img-rounded" />
+												</div>
+				                            </div>
+				                        </div>
+				                        <div class="tab-pane text-center" id="work">
+											<div class="row">
+												<div class="col-md-6">
+													<img src="../assets/img/examples/chris5.jpg" class="img-rounded" />
+													<img src="../assets/img/examples/chris7.jpg" class="img-rounded" />
+													<img src="../assets/img/examples/chris9.jpg" class="img-rounded" />
+												</div>
+												<div class="col-md-6">
+													<img src="../assets/img/examples/chris6.jpg" class="img-rounded" />
+													<img src="../assets/img/examples/chris8.jpg" class="img-rounded" />
+												</div>
+											</div>
+				                        </div>
+										<div class="tab-pane text-center" id="shows">
+											<div class="row">
+												<div class="col-md-6">
+													<img src="../assets/img/examples/chris4.jpg" class="img-rounded" />
+													<img src="../assets/img/examples/chris6.jpg" class="img-rounded" />
+												</div>
+												<div class="col-md-6">
+													<img src="../assets/img/examples/chris7.jpg" class="img-rounded" />
+													<img src="../assets/img/examples/chris5.jpg" class="img-rounded" />
+													<img src="../assets/img/examples/chris9.jpg" class="img-rounded" />
+												</div>
+											</div>
+				                        </div>
+
+				                    </div>
+								</div>
+							</div>
+						
+						</div>
+	                </div> -->
+
+
