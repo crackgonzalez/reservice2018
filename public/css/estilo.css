@@ -142,11 +142,62 @@
   position: relative;
 
 }
-
 .profile-page .header {
   height: 470px;
   background-position: top center;
 }
 
 /**/
+.profile-page .profile-tabs {
+  margin-top: 60px;
+}
+.nav-align-center {
+  text-align: center;
+}
+.nav-align-center .nav-pills {
+  display: inline-block;
+}
+.nav-pills > li > a {
+  line-height: 24px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 500;
+  min-width: 100px;
+  text-align: center;
+  color: #555555;
+  text-decoration:none;
+}
+
+.nav-pills > li i {
+  display: block;
+  font-size: 30px;
+  padding: 15px 0;
+}
+.nav-pills>li {
+    float: left;
+}
+.nav>li {
+    position: relative;
+    display: block;
+}
+.nav-pills-estilo{
+  background: #ecf0f5;
+  padding: 5px 15px 5px 15px;
+  margin:5px;
+  color: #fff;
+  border-radius: 0.25rem;
+  transition: background 0.5s;
+}
+.nav-pills-estilo:hover{
+  background: #ffc107;  
+  box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+.mapa{
+    border-radius: 15px;
+    height: 400px;
+    width: 100%;
+    box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+
 

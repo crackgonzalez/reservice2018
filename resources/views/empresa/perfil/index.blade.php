@@ -45,7 +45,53 @@
 								</div>
 							</div>
 						</div>
-						<div class="card-body">				
+						<div class="card-body">
+							<div class="row">
+								<div class="col-12 col-sm-2 col-md-2"></div>
+								<div class="col-12 col-sm-8 col-md-8">
+									<div class="profile-tabs">
+										<div class="nav-align-center">
+											<ul class="nav nav-pills" role="tablist">
+												<li class="nav-pills-estilo active">
+													<a href="#mapa" role="tab" data-toggle="tab">
+														<i class="material-icons">pin_drop</i>Mapa
+													</a>													
+												</li>
+												<li class="nav-pills-estilo">
+													<a href="#servicios" role="tab" data-toggle="tab">
+														<i class="material-icons">work</i>Servicios
+													</a>
+												</li>
+												<li class="nav-pills-estilo">
+													<a href="#galeria" role="tab" data-toggle="tab">
+														<i class="material-icons">add_a_photo</i>
+														Galeria
+													</a>
+												</li>
+											</ul>
+											<div class="tab-content">
+												<div class="tab-pane text-center active" id="mapa">
+				                            		<div class="row">				                            			
+	    												<input id="address" type="hidden" value="{{$empresa->address}},{{$empresa->comuna->commune}}">
+	    												<div id="map" class="mapa"></div>
+				                            		</div>
+				                        		</div>
+				                        		<div class="tab-pane text-center" id="servicios">
+													<div class="row">
+														<h1>Servicio</h1>
+													</div>
+				                        		</div>
+												<div class="tab-pane text-center" id="galeria">
+													<div class="row">
+														<h1>Galeria</h1>
+													</div>
+				                        		</div>
+
+				                    		</div>
+										</div>
+									</div>
+								</div>
+							</div>				
 						</div>
 					@endif
 				@endforeach	
@@ -53,80 +99,34 @@
 		</div>
 	</div>
 @endsection
+@section('scripts')
+		<script>
+			function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 17,
+          center: {lat: -33.4378394, lng: -70.6526683}
+        });
+        var geocoder = new google.maps.Geocoder();
+        geocodeAddress(geocoder, map);        
+      }
 
-
-
-
-<!-- <div class="row">
-						<div class="col-md-6 col-md-offset-3">
-							<div class="profile-tabs">
-			                    <div class="nav-align-center">
-									<ul class="nav nav-pills" role="tablist">
-										<li class="active">
-											<a href="#studio" role="tab" data-toggle="tab">
-												<i class="material-icons">camera</i>
-												Studio
-											</a>
-										</li>
-										<li>
-				                            <a href="#work" role="tab" data-toggle="tab">
-												<i class="material-icons">palette</i>
-												Work
-				                            </a>
-				                        </li>
-				                        <li>
-				                            <a href="#shows" role="tab" data-toggle="tab">
-												<i class="material-icons">favorite</i>
-				                                Favorite
-				                            </a>
-				                        </li>
-				                    </ul>
-
-				                    <div class="tab-content gallery">
-										<div class="tab-pane active" id="studio">
-				                            <div class="row">
-												<div class="col-md-6">
-													<img src="../assets/img/examples/chris1.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris0.jpg" class="img-rounded" />
-												</div>
-												<div class="col-md-6">
-													<img src="../assets/img/examples/chris3.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris4.jpg" class="img-rounded" />
-												</div>
-				                            </div>
-				                        </div>
-				                        <div class="tab-pane text-center" id="work">
-											<div class="row">
-												<div class="col-md-6">
-													<img src="../assets/img/examples/chris5.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris7.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris9.jpg" class="img-rounded" />
-												</div>
-												<div class="col-md-6">
-													<img src="../assets/img/examples/chris6.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris8.jpg" class="img-rounded" />
-												</div>
-											</div>
-				                        </div>
-										<div class="tab-pane text-center" id="shows">
-											<div class="row">
-												<div class="col-md-6">
-													<img src="../assets/img/examples/chris4.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris6.jpg" class="img-rounded" />
-												</div>
-												<div class="col-md-6">
-													<img src="../assets/img/examples/chris7.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris5.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris9.jpg" class="img-rounded" />
-												</div>
-											</div>
-				                        </div>
-
-				                    </div>
-								</div>
-							</div>
-						
-						</div>
-	                </div> -->
-
-
+      function geocodeAddress(geocoder, resultsMap) {
+        // var address = document.getElementById('address').value;
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+    </script>
+	<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmodiJXhAJMxo-fS9PMpxiNd2JvaDt7Fs&callback=initMap">
+    </script>
+@endsection
