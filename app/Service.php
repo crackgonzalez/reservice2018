@@ -16,6 +16,11 @@ class Service extends Model
     	return $this->belongsTo('App\Category','category_id');
     }
 
+    //
+    public function empresas(){
+        return $this->belongsToMany('App\Company')->withTimestamps();
+    }
+
     //Retorna la Imagen
     public function getUrlAttribute(){
     	if(substr($this->image,0,4)==="http"){

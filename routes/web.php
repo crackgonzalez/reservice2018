@@ -53,11 +53,13 @@ Route::middleware(['auth','admin'])->group(function () {
 
 //Empresa
 Route::middleware(['auth','empresa'])->group(function () {
-
 	//Perfil
 	Route::get('/empresa/perfil','CompanyController@index');
 	Route::get('/empresa/perfil/{empresa}/edit','CompanyController@edit');
 	Route::post('/empresa/perfil/{empresa}/edit','CompanyController@update');
+	Route::get('/empresa/perfil/createService','CompanyController@createService');
+	Route::post('/empresa/perfil/createService','CompanyController@storeService');
+	Route::delete('/empresa/perfil/{id}','CompanyController@destroy');
 });
 
 Auth::routes();

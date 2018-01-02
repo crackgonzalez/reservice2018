@@ -19,6 +19,11 @@ class Company extends Model
         return $this->belongsTo('App\Commune','commune_id');
     }
 
+    //
+    public function servicios(){
+        return $this->belongsToMany('App\Service')->withTimestamps();;
+    }
+
     //Retorna la Imagen
     public function getUrlAttribute(){
     	if(substr($this->image,0,4)==="http"){

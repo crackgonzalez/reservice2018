@@ -47,8 +47,8 @@
 						</div>
 						<div class="card-body">
 							<div class="row">
-								<div class="col-12 col-sm-2 col-md-2"></div>
-								<div class="col-12 col-sm-8 col-md-8">
+								<div class="col-12 col-sm-1 col-md-1"></div>
+								<div class="col-12 col-sm-10 col-md-10">
 									<div class="profile-tabs">
 										<div class="nav-align-center">
 											<ul class="nav nav-pills" role="tablist">
@@ -63,6 +63,11 @@
 													</a>
 												</li>
 												<li class="nav-pills-estilo">
+													<a href="#comunas" role="tab" data-toggle="tab">
+														<i class="material-icons">my_location</i>Comunas
+													</a>
+												</li>
+												<li class="nav-pills-estilo">
 													<a href="#galeria" role="tab" data-toggle="tab">
 														<i class="material-icons">add_a_photo</i>
 														Galeria
@@ -71,14 +76,39 @@
 											</ul>
 											<div class="tab-content">
 												<div class="tab-pane text-center active" id="mapa">
-				                            		<div class="row">				                            			
+				                            		<div class="row">				                            		@isset($empresa->comuna->commune)
 	    												<input id="address" type="hidden" value="{{$empresa->address}},{{$empresa->comuna->commune}}">
-	    												<div id="map" class="mapa"></div>
+	    												<div id="map" class="mapa margin-arriba"></div>
+				                            			@endisset                  	
 				                            		</div>
 				                        		</div>
 				                        		<div class="tab-pane text-center" id="servicios">
+				                        			<form method="post" action="{{url('/empresa/perfil')}}">
+				                        				<a class="btn btn-warning btn-sm link-1 margin-arriba" href="{{url('/empresa/perfil/createService')}}">Agregar un Servicio</a>
+				                        			</form>
+													<div class="row">										
+														@foreach($empresa->servicios as $servicios)
+															<div class="col-12 col-sm-4 col-md-3">
+																<div class="text-center separacion-fotos">
+																	<img src="{{$servicios->url}}" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo">
+																	<h5>{{$servicios->service}}</h5>
+																	<h6>{{$servicios->categoria->category}}</h6>
+																	<img src="{{$servicios->categoria->url}}" class="img-raised rounded-circle tamaño-imagen-pequeño margin-arriba margin-abajo">
+
+																	<form method="post" action="{{url('/empresa/perfil/'.$servicios->id)}}" style="margin-top: -25px;">
+																		{{csrf_field()}}
+																		{{method_field('DELETE')}}
+																		<input name="company" class="form-control" type="hidden" value="{{Auth::user()->empresa->id}}">
+																		<button type="submit" class="btn btn-simple btn-sm" data-toggle="tooltip" data-placement="bottom" title="Eliminar el Servicio"><i class="material-icons eliminar">delete</i></i></button>
+																	</form>
+																</div>
+															</div>
+														@endforeach	
+													</div>
+				                        		</div>
+				                        		<div class="tab-pane text-center" id="comunas">
 													<div class="row">
-														<h1>Servicio</h1>
+														<h1>Comunas</h1>
 													</div>
 				                        		</div>
 												<div class="tab-pane text-center" id="galeria">
@@ -86,7 +116,6 @@
 														<h1>Galeria</h1>
 													</div>
 				                        		</div>
-
 				                    		</div>
 										</div>
 									</div>
@@ -111,7 +140,6 @@
       }
 
       function geocodeAddress(geocoder, resultsMap) {
-        // var address = document.getElementById('address').value;
         var address = document.getElementById('address').value;
         geocoder.geocode({'address': address}, function(results, status) {
           if (status === 'OK') {

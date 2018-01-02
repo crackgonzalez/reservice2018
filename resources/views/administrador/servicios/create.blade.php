@@ -47,7 +47,7 @@
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="material-icons">work</i></span>
                                         <select name="category_id" class="form-control">
-                                        	<option value="0">Seleccione Categoria</option>
+                                        	<option value="0">Seleccione una Categoria</option>
                                            @foreach($categorias as $categoria)
                                             <option value="{{$categoria->id}}">{{$categoria->category}}</option>
                                 			@endforeach
