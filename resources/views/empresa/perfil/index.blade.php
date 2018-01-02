@@ -107,8 +107,27 @@
 													</div>
 				                        		</div>
 				                        		<div class="tab-pane text-center" id="comunas">
-													<div class="row">
-														<h1>Comunas</h1>
+				                        			<form method="post" action="{{url('/empresa/perfil')}}">
+				                        				<a class="btn btn-warning btn-sm link-1 margin-arriba" href="{{url('/empresa/perfil/createCommune')}}">Agregar una Comuna</a>
+				                        			</form>
+													<div class="row">										
+														@foreach($empresa->comunas as $comunas)
+															<div class="col-12 col-sm-4 col-md-3">
+																<div class="text-center separacion-fotos">
+																	<img src="{{$comunas->url}}" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo">
+																	<h5>{{$comunas->commune}}</h5>
+																	<h6>{{$comunas->region->region}}</h6>
+																	<img src="{{$comunas->region->url}}" class="img-raised rounded-circle tamaño-imagen-pequeño margin-arriba margin-abajo">
+
+																	<form method="post" action="{{url('/empresa/perfil/'.$comunas->id)}}" style="margin-top: -25px;">
+																		{{csrf_field()}}
+																		{{method_field('DELETE')}}
+																		<input name="company" class="form-control" type="hidden" value="{{Auth::user()->empresa->id}}">
+																		<button type="submit" class="btn btn-simple btn-sm" data-toggle="tooltip" data-placement="bottom" title="Eliminar la Comuna"><i class="material-icons eliminar">delete</i></i></button>
+																	</form>
+																</div>
+															</div>
+														@endforeach	
 													</div>
 				                        		</div>
 												<div class="tab-pane text-center" id="galeria">
@@ -158,3 +177,4 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmodiJXhAJMxo-fS9PMpxiNd2JvaDt7Fs&callback=initMap">
     </script>
 @endsection
+

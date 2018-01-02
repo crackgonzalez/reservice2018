@@ -7,6 +7,7 @@ use App\Company;
 use App\Commune;
 use App\Service;
 use App\Category;
+use App\Region;
 use App\User;
 use Exception;
 use Alert;
@@ -120,7 +121,7 @@ class CompanyController extends Controller
             $empresa = Company::find($requerimiento->input('company'));
             $servicio = $requerimiento->input('service_id');
             $exito = $empresa->servicios()->attach($servicio);
-            if($exito){
+            if(!$exito){
                 alert()->success('El servicio fue ingresado correctamente','Servicio Agregado')->autoclose(3000);
             }
         } catch (Exception $e) {
@@ -133,12 +134,57 @@ class CompanyController extends Controller
         return Service::where('category_id',$id)->get();
     }
 
-    public function destroy($id,Request $requerimiento){
+    public function destroyService($id,Request $requerimiento){
         $empresa = Company::find($requerimiento->input('company'));
         $servicio = Service::find($id);
         $exito = $empresa->servicios()->detach($servicio);
         if($exito){
             alert()->success('El servicio fue eliminado correctamente','Servicio Eliminado')->autoclose(3000);
+        }
+        return redirect('empresa/perfil');
+    }
+
+    public function createCommune(){
+        $regiones = Region::orderBy('region','asc')->get();
+        return view('empresa.perfil.createCommune')->with(compact('regiones'));
+    }
+
+    public function storeCommune(Request $requerimiento){
+        $mensajes =[
+            'region_id.exists' =>'Debe seleccionar una Region',
+            'commune_id.exists' =>'Debe seleccionar una Comuna',
+        ];
+
+        $reglas = [
+            'region_id' => 'exists:regions,id',
+            'commune_id' => 'exists:communes,id' 
+        ];
+
+        $this->validate($requerimiento,$reglas,$mensajes);
+        try{
+            $empresa = Company::find($requerimiento->input('company'));
+            $comuna = $requerimiento->input('commune_id');
+            $exito = $empresa->comunas()->attach($comuna);
+            if(!$exito){
+                alert()->success('La comuna fue ingresada correctamente','Comuna Agregada')->autoclose(3000);
+            }
+        } catch (Exception $e) {
+                alert()->warning('La comuna ya se encuentra agregada','Advetencia')->autoclose(3000);
+            }
+        return redirect('empresa/perfil');
+    }
+
+
+    public function porRegion($id){
+        return Commune::where('region_id',$id)->get();
+    }
+
+    public function destroyCommune($id,Request $requerimiento){
+        $empresa = Company::find($requerimiento->input('company'));
+        $comuna = Commune::find($id);
+        $exito = $empresa->comunas()->detach($comuna);
+        if($exito){
+            alert()->success('La comuna fue eliminada correctamente','Comuna Eliminada')->autoclose(3000);
         }
         return redirect('empresa/perfil');
     }

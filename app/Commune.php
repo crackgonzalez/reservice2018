@@ -20,6 +20,10 @@ class Commune extends Model
         return $this->hasMany('App\Company');
     }
 
+    public function empresasMany(){
+        return $this->belongsToMany('App\Company')->withTimestamps();
+    }
+
     //Retorna la Imagen
     public function getUrlAttribute(){
     	if(substr($this->image,0,4)==="http"){

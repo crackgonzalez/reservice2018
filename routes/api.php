@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/empresa/perfil/{id}/servicios','CompanyController@porCategoria');
+Route::get('/empresa/perfil/{id}/comunas','CompanyController@porRegion');
