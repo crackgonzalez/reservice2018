@@ -63,6 +63,9 @@ Route::middleware(['auth','empresa'])->group(function () {
 	Route::get('/empresa/perfil/createCommune','CompanyController@createCommune');
 	Route::post('/empresa/perfil/createCommune','CompanyController@storeCommune');
 	Route::delete('/empresa/perfil/{id}','CompanyController@destroyCommune');
+	Route::get('/empresa/perfil/createGalery','CompanyController@createGalery');
+	Route::post('/empresa/perfil/createGalery','CompanyController@storeGalery');
+	Route::delete('/empresa/perfil/{id}','CompanyController@destroyGalery');
 });
 
 Auth::routes();

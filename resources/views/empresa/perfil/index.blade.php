@@ -131,8 +131,22 @@
 													</div>
 				                        		</div>
 												<div class="tab-pane text-center" id="galeria">
+													<form method="post" action="{{url('/empresa/perfil')}}">
+				                        				<a class="btn btn-warning btn-sm link-1 margin-arriba" href="{{url('/empresa/perfil/createGalery')}}">Agregar una Foto</a>
+				                        			</form>
 													<div class="row">
-														<h1>Galeria</h1>
+														@foreach($empresa->fotos as $fotos)
+															<div class="col-12 col-sm-4 col-md-4">
+																<div class="text-center ">
+																	<img src="{{$fotos->url}}" class="tamaño-imagen-grande margin-arriba margin-abajo img-raised">
+																	<form method="post" action="{{url('/empresa/perfil/'.$fotos->id)}}" style="margin-top: -25px;">
+																		{{csrf_field()}}
+																		{{method_field('DELETE')}}
+																		<button style="margin-top: 30px;" type="submit" class="btn btn-simple btn-sm" data-toggle="tooltip" data-placement="bottom" title="Eliminar Imagen"><i class="material-icons eliminar">delete</i></i></button>
+																	</form>
+																</div>
+															</div>
+														@endforeach	
 													</div>
 				                        		</div>
 				                    		</div>
