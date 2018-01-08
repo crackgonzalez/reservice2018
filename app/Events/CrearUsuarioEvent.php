@@ -11,7 +11,7 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use App\User;
 
-class CrearEmpresaEvent
+class CrearUsuarioEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $user;
@@ -23,7 +23,7 @@ class CrearEmpresaEvent
      */
     public function __construct(User $user)
     {
-        $this->user = $user;
+         $this->user = $user;
     }
 
     /**

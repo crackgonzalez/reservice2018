@@ -29,7 +29,7 @@
 					@endif
 					<div class="card margin-arriba margin-abajo card-raised">						
 						<div class="card-header text-center">
-							<h4 class="card-title">Modificando el Perfil de {{$usuario->name}}</h4>
+							<h4 class="card-title">{{$usuario->name}} Modifique su Perfil</h4>
 						</div>
 						<div class="card-body">
 							<form action="{{url('/empresa/perfil/'.$empresa->id.'/edit')}}" method="POST" enctype="multipart/form-data">

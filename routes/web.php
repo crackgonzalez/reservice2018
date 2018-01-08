@@ -68,6 +68,19 @@ Route::middleware(['auth','empresa'])->group(function () {
 	Route::delete('/empresa/perfil/{id}','CompanyController@destroyGalery');
 });
 
+//Cliente
+Route::middleware(['auth','cliente'])->group(function () {
+
+	//Perfil
+	Route::get('/cliente/perfil','ClientController@index');
+	Route::get('/cliente/perfil/{cliente}/edit','ClientController@edit');
+	Route::post('/cliente/perfil/{cliente}/edit','ClientController@update');
+
+	//Buscar
+	Route::get('/cliente/buscar','ClientController@buscar');
+});
+
+
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');

@@ -20,6 +20,11 @@ class Commune extends Model
         return $this->hasMany('App\Company');
     }
 
+    //Una Comuna Tiene varias Empresas
+    public function clientes(){
+        return $this->hasMany('App\Client');
+    }
+
     public function empresasMany(){
         return $this->belongsToMany('App\Company')->withTimestamps();
     }

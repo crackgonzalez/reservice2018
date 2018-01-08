@@ -28,4 +28,10 @@ class Service extends Model
     	}
     	return '/imagenes/servicios/'.$this->image;
     }
+
+    public function scopeServicio($query,$service_id){
+         if(trim($service_id) !="" && $service_id!=0){
+             return $query->where('id','=',$service_id)->orderBy('service','asc');
+         }        
+    }
 }
