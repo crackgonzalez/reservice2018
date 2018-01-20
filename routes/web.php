@@ -49,6 +49,9 @@ Route::middleware(['auth','admin'])->group(function () {
 	Route::get('/administrador/comunas/{comuna}/edit','CommuneController@edit');
 	Route::post('/administrador/comunas/{comuna}/edit','CommuneController@update');
 	Route::delete('/administrador/comunas/{id}','CommuneController@destroy');
+
+	//Empresa
+	Route::get('/administrador/empresas','CompanyController@empresas');
 });
 
 //Empresa
@@ -57,15 +60,18 @@ Route::middleware(['auth','empresa'])->group(function () {
 	Route::get('/empresa/perfil','CompanyController@index');
 	Route::get('/empresa/perfil/{empresa}/edit','CompanyController@edit');
 	Route::post('/empresa/perfil/{empresa}/edit','CompanyController@update');
-	Route::get('/empresa/perfil/createService','CompanyController@createService');
-	Route::post('/empresa/perfil/createService','CompanyController@storeService');
-	Route::delete('/empresa/perfil/{id}','CompanyController@destroyService');
-	Route::get('/empresa/perfil/createCommune','CompanyController@createCommune');
-	Route::post('/empresa/perfil/createCommune','CompanyController@storeCommune');
-	Route::delete('/empresa/perfil/{id}','CompanyController@destroyCommune');
-	Route::get('/empresa/perfil/createGalery','CompanyController@createGalery');
-	Route::post('/empresa/perfil/createGalery','CompanyController@storeGalery');
-	Route::delete('/empresa/perfil/{id}','CompanyController@destroyGalery');
+
+	Route::get('/empresa/perfil/createService','ServiceController@createService');
+	Route::post('/empresa/perfil/createService','ServiceController@storeService');
+	Route::delete('/empresa/perfil/{id}','ServiceController@destroyService')->name('delServicio');
+
+	Route::get('/empresa/perfil/createCommune','CommuneController@createCommune');
+	Route::post('/empresa/perfil/createCommune','CommuneController@storeCommune');
+	Route::delete('/empresa/perfil/{id}/{comuna}','CommuneController@destroyCommune')->name('delComuna');
+
+	Route::get('/empresa/perfil/createGalery','GaleryController@createGalery');
+	Route::post('/empresa/perfil/createGalery','GaleryController@storeGalery');
+	Route::delete('/empresa/perfil/{id}/{foto}/{fotos}','GaleryController@destroyGalery')->name('delGaleria');
 });
 
 //Cliente
@@ -87,7 +93,7 @@ Route::middleware(['auth','cliente'])->group(function () {
 Route::middleware(['auth','trabajador'])->group(function () {
 
 	//Perfil
-	Route::get('/trabajador/perfil','EmployeeController@index');
+	//Route::get('/trabajador/perfil','EmployeeController@index');
 	
 });
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Service;
 use App\Category;
+use App\Company;
 use File;
 use Exception;
 use Alert;
@@ -126,6 +127,50 @@ class ServiceController extends Controller
             alert()->success('El servicio fue eliminado correctamente','Servicio Eliminado')->autoclose(3000);
         }       
         return redirect('administrador/servicios');
+    }
+
+    public function createService(){
+        $categorias = Category::orderBy('category','asc')->get();
+        return view('empresa.perfil.createService')->with(compact('categorias'));
+    }
+
+    public function storeService(Request $requerimiento){
+        $mensajes =[
+            'category_id.exists' =>'Debe seleccionar una Categoria',
+            'service_id.exists' =>'Debe seleccionar un Servicio',
+        ];
+
+        $reglas = [
+            'category_id' => 'exists:categories,id',
+            'service_id' => 'exists:services,id' 
+        ];
+
+        $this->validate($requerimiento,$reglas,$mensajes);
+        try{
+            $empresa = Company::find($requerimiento->input('company'));
+            $servicio = $requerimiento->input('service_id');
+            $exito = $empresa->servicios()->attach($servicio);
+            if(!$exito){
+                alert()->success('El servicio fue ingresado correctamente','Servicio Agregado')->autoclose(3000);
+            }
+        } catch (Exception $e) {
+                alert()->warning('El servicio ya se encuentra agregado','Advetencia')->autoclose(3000);
+            }
+        return redirect('empresa/perfil');
+    }
+
+    public function porCategoria($id){
+        return Service::where('category_id',$id)->get();
+    }
+
+    public function destroyService($id,Request $requerimiento){
+        $empresa = Company::find($requerimiento->input('company'));
+        $servicio = Service::find($id);
+        $exito = $empresa->servicios()->detach($servicio);
+        if($exito){
+            alert()->success('El servicio fue eliminado correctamente','Servicio Eliminado')->autoclose(3000);
+        }
+        return redirect('empresa/perfil');
     }
     
 }

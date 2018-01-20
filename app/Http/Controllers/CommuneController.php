@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Commune;
 use App\Region;
+use App\Company;
 use File;
 use Exception;
 use Alert;
@@ -128,5 +129,50 @@ class CommuneController extends Controller
             alert()->success('El comuna fue eliminada correctamente','Comuna Eliminada')->autoclose(3000);
         }       
         return redirect('administrador/comunas');
+    }
+
+    public function createCommune(){
+        $regiones = Region::orderBy('region','asc')->get();
+        return view('empresa.perfil.createCommune')->with(compact('regiones'));
+    }
+
+    public function storeCommune(Request $requerimiento){
+        $mensajes =[
+            'region_id.exists' =>'Debe seleccionar una Region',
+            'commune_id.exists' =>'Debe seleccionar una Comuna',
+        ];
+
+        $reglas = [
+            'region_id' => 'exists:regions,id',
+            'commune_id' => 'exists:communes,id' 
+        ];
+
+        $this->validate($requerimiento,$reglas,$mensajes);
+        try{
+            $empresa = Company::find($requerimiento->input('company'));
+            $comuna = $requerimiento->input('commune_id');
+            $exito = $empresa->comunas()->attach($comuna);
+            if(!$exito){
+                alert()->success('La comuna fue ingresada correctamente','Comuna Agregada')->autoclose(3000);
+            }
+        } catch (Exception $e) {
+                alert()->warning('La comuna ya se encuentra agregada','Advetencia')->autoclose(3000);
+            }
+        return redirect('empresa/perfil');
+    }
+
+
+    public function porRegion($id){
+        return Commune::where('region_id',$id)->get();
+    }
+
+    public function destroyCommune($id,Request $requerimiento){
+        $empresa = Company::find($requerimiento->input('company'));
+        $comuna = Commune::find($id);
+        $exito = $empresa->comunas()->detach($comuna);
+        if($exito){
+            alert()->success('La comuna fue eliminada correctamente','Comuna Eliminada')->autoclose(3000);
+        }
+        return redirect('empresa/perfil');
     }
 }

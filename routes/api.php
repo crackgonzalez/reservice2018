@@ -17,5 +17,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/empresa/perfil/{id}/servicios','CompanyController@porCategoria');
-Route::get('/empresa/perfil/{id}/comunas','CompanyController@porRegion');
+Route::get('/empresa/perfil/{id}/servicios','ServiceController@porCategoria');
+Route::get('/empresa/perfil/{id}/comunas','CommuneController@porRegion');

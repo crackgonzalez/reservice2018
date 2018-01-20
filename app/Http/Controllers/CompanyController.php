@@ -22,6 +22,11 @@ class CompanyController extends Controller
     	return view('empresa.perfil.index')->with(compact('empresas'));
     }
 
+    public function empresas(){
+        $empresas = Company::all();
+        return view('administrador.empresas.index')->with(compact('empresas'));
+    }
+
     //
     public function edit(Company $empresa){
     	$usuario = User::find($empresa->user_id);
@@ -99,146 +104,6 @@ class CompanyController extends Controller
             }
         }            
         return redirect('empresa/perfil');
-    }
-
-    public function createService(){
-        $categorias = Category::orderBy('category','asc')->get();
-        return view('empresa.perfil.createService')->with(compact('categorias'));
-    }
-
-    public function storeService(Request $requerimiento){
-        $mensajes =[
-            'category_id.exists' =>'Debe seleccionar una Categoria',
-            'service_id.exists' =>'Debe seleccionar un Servicio',
-        ];
-
-        $reglas = [
-            'category_id' => 'exists:categories,id',
-            'service_id' => 'exists:services,id' 
-        ];
-
-        $this->validate($requerimiento,$reglas,$mensajes);
-        try{
-            $empresa = Company::find($requerimiento->input('company'));
-            $servicio = $requerimiento->input('service_id');
-            $exito = $empresa->servicios()->attach($servicio);
-            if(!$exito){
-                alert()->success('El servicio fue ingresado correctamente','Servicio Agregado')->autoclose(3000);
-            }
-        } catch (Exception $e) {
-                alert()->warning('El servicio ya se encuentra agregado','Advetencia')->autoclose(3000);
-            }
-        return redirect('empresa/perfil');
-    }
-
-    public function porCategoria($id){
-        return Service::where('category_id',$id)->get();
-    }
-
-    public function destroyService($id,Request $requerimiento){
-        $empresa = Company::find($requerimiento->input('company'));
-        $servicio = Service::find($id);
-        $exito = $empresa->servicios()->detach($servicio);
-        if($exito){
-            alert()->success('El servicio fue eliminado correctamente','Servicio Eliminado')->autoclose(3000);
-        }
-        return redirect('empresa/perfil');
-    }
-
-    public function createCommune(){
-        $regiones = Region::orderBy('region','asc')->get();
-        return view('empresa.perfil.createCommune')->with(compact('regiones'));
-    }
-
-    public function storeCommune(Request $requerimiento){
-        $mensajes =[
-            'region_id.exists' =>'Debe seleccionar una Region',
-            'commune_id.exists' =>'Debe seleccionar una Comuna',
-        ];
-
-        $reglas = [
-            'region_id' => 'exists:regions,id',
-            'commune_id' => 'exists:communes,id' 
-        ];
-
-        $this->validate($requerimiento,$reglas,$mensajes);
-        try{
-            $empresa = Company::find($requerimiento->input('company'));
-            $comuna = $requerimiento->input('commune_id');
-            $exito = $empresa->comunas()->attach($comuna);
-            if(!$exito){
-                alert()->success('La comuna fue ingresada correctamente','Comuna Agregada')->autoclose(3000);
-            }
-        } catch (Exception $e) {
-                alert()->warning('La comuna ya se encuentra agregada','Advetencia')->autoclose(3000);
-            }
-        return redirect('empresa/perfil');
-    }
-
-
-    public function porRegion($id){
-        return Commune::where('region_id',$id)->get();
-    }
-
-    public function destroyCommune($id,Request $requerimiento){
-        $empresa = Company::find($requerimiento->input('company'));
-        $comuna = Commune::find($id);
-        $exito = $empresa->comunas()->detach($comuna);
-        if($exito){
-            alert()->success('La comuna fue eliminada correctamente','Comuna Eliminada')->autoclose(3000);
-        }
-        return redirect('empresa/perfil');
-    }
-
-    public function createGalery(){
-        return view('empresa.perfil.createGalery');
-    }
-
-    public function storeGalery(Request $requerimiento){
-        $mensajes =[
-            'image.required' =>'La imagen es obligatoria',
-            'image.mimes' => 'La imagen debe ser un archivo de tipo: jpg, jpeg, bmp, png.',
-        ];
-
-        $reglas = [
-            'image' => 'required|mimes:jpg,jpeg,bmp,png',
-        ];
-
-        $this->validate($requerimiento,$reglas,$mensajes);
-
-        if($requerimiento->hasFile('image')){   
-            $galeria = new Galery;
-
-            $foto = $requerimiento->file('image');
-            $ruta = public_path().'/imagenes/galeria';
-            $nombreFoto = uniqid().$foto->getClientOriginalName();
-            $movido = $foto->move($ruta,$nombreFoto);
-
-            if($movido){
-                $galeria->image = $nombreFoto;
-                $galeria->company_id = $requerimiento->input('company');
-                $exito = $galeria->save();                       
-                if($exito){
-                    alert()->success('La imagen fue agregada correctamente','Imagen Agregada')->autoclose(3000);
-                }
-            }else{
-                alert()->error('La imagen no pudo ser agregada','Ocurrio un Error')->autoclose(3000);
-            }       
-            return redirect('empresa/perfil');
-        }
-
-    }
-
-    public function destroyGalery($id,Request $requerimiento){
-        $galeria = Galery::find($id);
-        $exito = $galeria->delete();
-        if($exito){
-            $ruta = public_path().'/imagenes/galeria';
-            $imagenAnterior = $ruta.'/'.$galeria->image;
-            File::delete($imagenAnterior);
-            alert()->success('La imagen fue eliminada correctamente','Imagen Eliminada')->autoclose(3000);
-        }
-        return redirect('empresa/perfil');
-    }
+    }    
 }
 

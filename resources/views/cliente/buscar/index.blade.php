@@ -61,22 +61,24 @@
 			<div class="row">
 				@foreach($servicios as $servicio)
 					@foreach($servicio->empresas as $empresas)
-					<div class="col-12 col-sm-3 col-md-3">
-						<div class="card margin-arriba margin-abajo card-raised">
-							<img class="card-img-top" style="height:210px" src="{{$servicio->url}}">			
-							<div class="card-body">							
-								<h2>{{$servicio->service}}</h2>
-								<img class="img-raised rounded-circle" style="height: 35px; width: 35px;" src="{{$empresas->url}}">
-								<h4 class="d-inline">{{$empresas->usuario->name}}</h4>
-								<br><br>
-								<small class="text-justify">{{$empresas->description}}</small>
-								<br><br>	
-								<form method="post" action="{{url('/cliente/solicitud/'.$empresas->id)}}">
-									<a class="btn btn-warning btn-sm pull-right link-1" href="{{url('/cliente/solicitud/'.$empresas->id.'/show')}}">Ver Empresa</a>
-								</form>
+						@if($empresas->usuario->state)
+						<div class="col-12 col-sm-3 col-md-3">
+							<div class="card margin-arriba margin-abajo card-raised">
+								<img class="card-img-top" style="height:210px" src="{{$servicio->url}}">			
+								<div class="card-body">							
+									<h2>{{$servicio->service}}</h2>
+									<img class="img-raised rounded-circle" style="height: 35px; width: 35px;" src="{{$empresas->url}}">
+									<h4 class="d-inline">{{$empresas->usuario->name}}</h4>
+									<br><br>
+									<small class="text-justify">{{$empresas->description}}</small>
+									<br><br>	
+									<form method="post" action="{{url('/cliente/solicitud/'.$empresas->id)}}">
+										<a class="btn btn-warning btn-sm pull-right link-1" href="{{url('/cliente/solicitud/'.$empresas->id.'/show')}}">Ver Empresa</a>
+									</form>
+								</div>
 							</div>
 						</div>
-					</div>
+						@endif
 					@endforeach	
 				@endforeach				
 			</div>				
