@@ -96,4 +96,9 @@ class ClientController extends Controller
         $categorias = Category::orderBy('category','asc')->get();       
         return view('cliente.buscar.index')->with(compact('servicios','categorias'));
     }
+
+    public function show(Company $empresa){
+        $compania = Company::find($empresa->id);
+        return view('cliente.solicitud.show')->with(compact('compania'));
+    }
 }

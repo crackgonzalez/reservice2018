@@ -23,5 +23,6 @@ class Client extends Model
     		return $this->image;
     	}
     	return '/imagenes/perfil/'.$this->image;
-    }        
+    }
+       
 }

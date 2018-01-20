@@ -78,6 +78,17 @@ Route::middleware(['auth','cliente'])->group(function () {
 
 	//Buscar
 	Route::get('/cliente/buscar','ClientController@buscar');
+
+	//Solicitud
+	Route::get('/cliente/solicitud/{empresa}/show','ClientController@show');
+});
+
+//Trabajador
+Route::middleware(['auth','trabajador'])->group(function () {
+
+	//Perfil
+	Route::get('/trabajador/perfil','EmployeeController@index');
+	
 });
 
 

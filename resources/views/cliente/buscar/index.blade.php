@@ -18,7 +18,7 @@
 		<div class="col-12 col-sm-7 col-md-7">
 			<div class="card margin-arriba margin-abajo card-raised">
 				<div class="card-body">
-					<form class="form-inline" action="" method="GET" enctype="multipart/form-data">
+					<form class="form-inline" action="" method="get" enctype="multipart/form-data">
 					{{csrf_field()}}
 						<div class="form-group">
 							<div class="input-group">
@@ -51,7 +51,7 @@
 		<div class="col-12 col-sm-5 col-md-5">
 			<div class="card margin-arriba margin-abajo card-raised">
 				<div class="card-body">
-					<h4>Colocar Algo ahi</h4>
+					<h4>Por definir</h4>
 				</div>
 			</div>
 		</div>		
@@ -70,8 +70,10 @@
 								<h4 class="d-inline">{{$empresas->usuario->name}}</h4>
 								<br><br>
 								<small class="text-justify">{{$empresas->description}}</small>
-								<br>	
-								<button class="btn btn-warning btn-sm pull-right link-1">Ver Empresa</button>
+								<br><br>	
+								<form method="post" action="{{url('/cliente/solicitud/'.$empresas->id)}}">
+									<a class="btn btn-warning btn-sm pull-right link-1" href="{{url('/cliente/solicitud/'.$empresas->id.'/show')}}">Ver Empresa</a>
+								</form>
 							</div>
 						</div>
 					</div>
