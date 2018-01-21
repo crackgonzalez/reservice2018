@@ -20,7 +20,7 @@
 						@foreach($regiones as $region)
 						<div class="col-12 col-sm-4 col-md-3">
 							<div class="text-center separacion-fotos">
-								<img src="{{$region->url}}" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo">
+								<img src="{{$region->url}}" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo img-thumbnail">
 								<h5>{{$region->region}}</h5>								
 								<form method="post" action="{{url('/administrador/regiones/'.$region->id)}}">
 									{{csrf_field()}}

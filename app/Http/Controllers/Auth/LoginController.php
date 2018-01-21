@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -57,18 +58,24 @@ class LoginController extends Controller
     //Redireciona segun el usuario logeado
     protected function redirectTo()
     {
-        if(\Auth::user()->account_id == 1){
-            return '/administrador/categorias';    
-        }elseif (\Auth::user()->account_id == 2) {
-            return '/'; 
-        }elseif (\Auth::user()->account_id == 3) {
-            return 'empresa/perfil'; 
-        }elseif(\Auth::user()->account_id == 4){
-            return 'cliente/perfil'; 
+        if(Auth::user()->state == true){
+            if(Auth::user()->account_id == 1){
+                return '/administrador/categorias';    
+            }elseif (Auth::user()->account_id == 2) {
+                return '/'; 
+            }elseif (Auth::user()->account_id == 3) {
+                return 'empresa/perfil'; 
+            }elseif(Auth::user()->account_id == 4){
+                return 'cliente/perfil'; 
+            }else{
+                Auth::logout();
+                return '/';
+            }
         }else{
+            alert()->error(' Tu Cuenta esta Desactivada',Auth::user()->name)->autoclose(5000);
+            Auth::logout();
             return '/';
         }
-        
     }
 
 }

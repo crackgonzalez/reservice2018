@@ -52,6 +52,8 @@ Route::middleware(['auth','admin'])->group(function () {
 
 	//Empresa
 	Route::get('/administrador/empresas','CompanyController@empresas');
+	Route::get('/administrador/empresas/{usuario}/edit','UserController@edit');
+	Route::post('administrador/empresas/{usuario}/edit','UserController@update');
 });
 
 //Empresa

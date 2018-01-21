@@ -20,7 +20,7 @@
 						@foreach($categorias as $categoria)
 						<div class="col-12 col-sm-4 col-md-3">
 							<div class="text-center separacion-fotos">
-								<img src="{{$categoria->url}}" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo">
+								<img src="{{$categoria->url}}" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo img-thumbnail">
 								<h5>{{$categoria->category}}</h5>								
 								<form method="post" action="{{url('/administrador/categorias/'.$categoria->id)}}">
 									{{csrf_field()}}

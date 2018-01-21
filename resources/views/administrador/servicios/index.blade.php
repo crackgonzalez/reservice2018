@@ -20,7 +20,7 @@
 						@foreach($servicios as $servicio)
 						<div class="col-12 col-sm-4 col-md-3">
 							<div class="text-center separacion-fotos">
-								<img src="{{$servicio->url}}" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo">
+								<img src="{{$servicio->url}}" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo img-thumbnail">
 								<h5>{{$servicio->service}}</h5>								
 								<h6>{{$servicio->categoria->category}}</h6>
 								<img src="{{$servicio->categoria->url}}" class="img-raised rounded-circle tamaño-imagen-pequeño margin-arriba margin-abajo">

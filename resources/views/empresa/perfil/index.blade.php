@@ -139,7 +139,7 @@
 												<div class="col-12 col-sm-4 col-md-4">
 													<div class="text-center ">
 														<img src="{{$fotos->url}}" class="tamaño-imagen-grande margin-arriba margin-abajo img-raised img-thumbnail">
-														<form method="post" action="{{url('/empresa/perfil/'.$fotos->id.'/'.$fotos->id.'/'.$fotos->id)}}" style="margin-top: -25px;">
+														<form method="post" action="{{url('/empresa/perfil/'.$fotos->id.'/'.$fotos->image.'/'.$fotos->company_id)}}" style="margin-top: -25px;">
 															{{csrf_field()}}
 															{{method_field('DELETE')}}
 															<button style="margin-top: 30px;" type="submit" class="btn btn-simple btn-sm" data-toggle="tooltip" data-placement="bottom" title="Eliminar Imagen"><i class="material-icons eliminar">delete</i></i></button>

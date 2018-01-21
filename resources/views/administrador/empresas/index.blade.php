@@ -23,7 +23,12 @@
 						@else
 						<h5>Cuenta Desactivada</h5>
 						<h6>Cuenta Creada el {{date('d-m-Y',strtotime($empresa->usuario->created_at))}}</h6>	
-						@endif						
+						@endif
+						<br>
+						<form action="{{url('/administrador/empresas/'.$empresa->usuario->id)}}" method="post">
+							{{csrf_field()}}
+							<a class="tn btn-warning btn-sm link-1 pull-right" style="text-decoration:none;"  href="{{url('/administrador/empresas/'.$empresa->usuario->id.'/edit')}}">Modificar Cuenta</a>                            
+						</form>					
 					</div>
 				</div>
 			</div>

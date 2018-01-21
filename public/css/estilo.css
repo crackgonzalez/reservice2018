@@ -30,14 +30,14 @@
   border-radius: 10px;
 }
 .tamaño-imagen-normal{
-  height: 150px; 
-  width: 150px;
+  height: 200px; 
+  width: 200px;
 }
 .tamaño-imagen-pequeño{
-  height: 35px; 
-  width: 35px;
+  height: 45px; 
+  width: 45px;
   margin-top: -200px; 
-  margin-left: 90px;
+  margin-left: 100px;
 }
 
 .separacion-fotos{

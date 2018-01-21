@@ -20,7 +20,7 @@
 						@foreach($comunas as $comuna)
 						<div class="col-12 col-sm-4 col-md-3">
 							<div class="text-center separacion-fotos">
-								<img src="{{$comuna->url}}" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo">
+								<img src="{{$comuna->url}}" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo img-thumbnail">
 								<h5>{{$comuna->commune}}</h5>								
 								<h6>{{$comuna->region->region}}</h6>
 								<img src="{{$comuna->region->url}}" class="img-raised rounded-circle tamaño-imagen-pequeño margin-arriba margin-abajo">
