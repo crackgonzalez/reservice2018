@@ -89,6 +89,10 @@ Route::middleware(['auth','cliente'])->group(function () {
 
 	//Solicitud
 	Route::get('/cliente/solicitud/{empresa}/show','ClientController@show');
+
+	Route::get('/cliente/solicitud/{empresa}/cotizar','ClientController@cotizar');
+	Route::post('/cliente/solicitud/{empresa}/cotizar','ClientController@solicitar');
+	
 });
 
 //Trabajador

@@ -33,9 +33,9 @@
 									@endempty
 									@isset($compania->comuna->commune)
 									<h6 class="link-1">{{$compania->comuna->commune}}</h6>
-									@endisset
-									<form action="">
-										<button class="btn btn-warning btn-sm link-1">Solicitar un Servicio</button>
+									@endisset									
+									<form action="" method="POST" enctype="multipart/form-data">
+										<a class="btn btn-warning btn-sm link-1 margin-arriba" href="{{url('/cliente/solicitud/'.$compania->id.'/cotizar')}}">Solicitar un Servicio</a>
 									</form>
 								</div>
                 			</div>

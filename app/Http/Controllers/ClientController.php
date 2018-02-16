@@ -101,4 +101,8 @@ class ClientController extends Controller
         $compania = Company::find($empresa->id);
         return view('cliente.solicitud.show')->with(compact('compania'));
     }
+
+    public function cotizar(){
+        return view('cliente.solicitud.cotizar');
+    }
 }
