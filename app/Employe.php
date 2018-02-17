@@ -4,19 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Client extends Model
+class Employe extends Model
 {
-    protected $fillable = ['phone','address','commune_id'];
 
-	
-    public function usuario(){
+	public function usuario(){
         return $this->belongsTo('App\User','user_id');
     }
 
-    public function comuna(){
-        return $this->belongsTo('App\Commune','commune_id');
+    public function empresa(){
+        return $this->belongsTo('App\Company','company_id');
     }
-    
+
     //Retorna la Imagen
     public function getUrlAttribute(){
     	if(substr($this->image,0,4)==="http"){
@@ -24,5 +22,4 @@ class Client extends Model
     	}
     	return '/imagenes/perfil/'.$this->image;
     }
-       
 }

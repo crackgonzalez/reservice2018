@@ -44,6 +44,10 @@ class User extends Authenticatable
         return $this->hasOne('App\Client');
     }
 
+    public function trabajador(){
+        return $this->hasOne('App\Employe');
+    }
+
     //Eventos Para el Usuario
     protected $dispatchesEvents = [
         'created' => Events\CrearUsuarioEvent::class,      

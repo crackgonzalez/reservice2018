@@ -99,9 +99,9 @@ class RegisterController extends Controller
     protected function redirectTo()
     {
         if(\Auth::user()->account_id == 1){
-            return '/administrador/categorias';    
+            return 'administrador/categorias';    
         }elseif (\Auth::user()->account_id == 2) {
-            return '/'; 
+            return 'empresa/trabajador'; 
         }elseif (\Auth::user()->account_id == 3) {
             return 'empresa/perfil'; 
         }elseif(\Auth::user()->account_id == 4){

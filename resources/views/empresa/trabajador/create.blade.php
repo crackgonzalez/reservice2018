@@ -1,16 +1,20 @@
 @extends('layouts.app')
-@section('titulo','Registro')
+@section('titulo','Crear un Trabajador')
+@section('usuario','Empresa')
+@section('barra-navegacion')
+	@include('includes.menu-empresa')
+@endsection
 @section('fondo','fondo-foto')
 @section('estilo-footer')
-    <link rel="stylesheet" href="{{asset('css/footer-with-button-logo-white.css')}}">
+	<link rel="stylesheet" href="{{asset('css/footer-with-button-logo-black.css')}}">
 @endsection
 @section('contenido')
-    <div class="row">
+	<div class="row">
         <div class="col-12 col-sm-12 col-md-12">
             <div class="row">
                 <div class="col-12 col-sm-3 col-md-3"></div>
                 <div class="col-12 col-sm-6 col-md-6">
-                    @if($errors->any())
+                	@if($errors->any())
                         <div class="alert alert-danger margin-arriba">
                             <ul>
                                 @foreach($errors->all() as $error)
@@ -19,14 +23,15 @@
                             </ul>
                         </div>
                     @endif
-                    <div class="card margin-arriba margin-abajo card-raised">                       
-                        <div class="card-header text-center">
-                            <h4 class="card-title">Registro</h4>
+                    <div class="card margin-arriba margin-abajo card-raised"> 
+                    	<div class="card-header text-center">
+                            <h4 class="card-title">Registrar un Trabajador</h4>
                         </div>
                         <div class="card-body">
-                            <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                                {{ csrf_field() }}
-                                <div class="form-group">
+                        	<form class="form-horizontal" method="POST" action="{{url('/empresa/trabajador')}}">
+                        		{{ csrf_field() }}
+                        		<input name="company_id" type="hidden" value="{{ Auth::user()->empresa->id}}">
+                        		<div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="material-icons">account_circle</i></span>
                                         <input type="text" class="form-control" name="name" placeholder="Nombre Usuario" value="{{ old('name') }}">
@@ -61,21 +66,18 @@
                                         <span class="input-group-addon"><i class="material-icons">supervisor_account</i></span>
                                         <select name="account_id" class="form-control">
                                             <option value="0">Seleccione Cuenta</option>
-                                            @foreach($cuentas as $cuenta)
-                                            <option value="{{$cuenta->id}}">{{$cuenta->profile}}</option>
-                                            @endforeach
+                                            <option value="2">Trabajador</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <a href="{{url('/')}}" class="btn btn-secondary btn-sm pull-right">Cancelar</a>
+                                    <a href="{{url('empresa/trabajador')}}" class="btn btn-secondary btn-sm pull-right">Cancelar</a>
                                     <button type="submit" class="btn btn-warning btn-sm pull-right margin-derecho link-1">Crear cuenta</button>
                                 </div>
-                            </form>
+                        	</form>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-3 col-md-3"></div>
             </div>
         </div>
     </div>

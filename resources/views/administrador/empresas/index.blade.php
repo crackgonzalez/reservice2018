@@ -16,6 +16,7 @@
 				<div class="card margin-arriba margin-abajo card-raised">
 					<img class="card-img-top" style="height:210px" src="{{$empresa->url}}">	
 					<div class="card-body">
+						@if($empresa->usuario->account_id === 3)
 						<h2>{{$empresa->usuario->name}}</h2>
 						@if($empresa->usuario->state === 1)
 						<h5>Cuenta Activa</h5>
@@ -27,8 +28,9 @@
 						<br>
 						<form action="{{url('/administrador/empresas/'.$empresa->usuario->id)}}" method="post">
 							{{csrf_field()}}
-							<a class="tn btn-warning btn-sm link-1 pull-right" style="text-decoration:none;"  href="{{url('/administrador/empresas/'.$empresa->usuario->id.'/edit')}}">Modificar Cuenta</a>                            
-						</form>					
+							<a class="tn btn-warning btn-sm link-1 pull-right" style="text-decoration:none;"  href="{{url('/administrador/empresas/'.$empresa->usuario->id.'/edit')}}">Modificar Cuenta</a>
+						</form>	
+						@endif				
 					</div>
 				</div>
 			</div>

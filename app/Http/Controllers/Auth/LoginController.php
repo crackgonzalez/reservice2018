@@ -62,7 +62,7 @@ class LoginController extends Controller
             if(Auth::user()->account_id == 1){
                 return '/administrador/categorias';    
             }elseif (Auth::user()->account_id == 2) {
-                return '/'; 
+                return 'trabajador/perfil'; 
             }elseif (Auth::user()->account_id == 3) {
                 return 'empresa/perfil'; 
             }elseif(Auth::user()->account_id == 4){

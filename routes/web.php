@@ -74,6 +74,13 @@ Route::middleware(['auth','empresa'])->group(function () {
 	Route::get('/empresa/perfil/createGalery','GaleryController@createGalery');
 	Route::post('/empresa/perfil/createGalery','GaleryController@storeGalery');
 	Route::delete('/empresa/perfil/{id}/{foto}/{fotos}','GaleryController@destroyGalery')->name('delGaleria');
+
+	//trabajadores
+	Route::get('/empresa/trabajador','EmployeController@index');
+	Route::get('/empresa/trabajador/create','UserController@create');
+	Route::post('/empresa/trabajador','UserController@store');
+	
+	
 });
 
 //Cliente
@@ -99,7 +106,7 @@ Route::middleware(['auth','cliente'])->group(function () {
 Route::middleware(['auth','trabajador'])->group(function () {
 
 	//Perfil
-	//Route::get('/trabajador/perfil','EmployeeController@index');
+	Route::get('/trabajador/perfil','EmployeController@inicio');
 	
 });
 

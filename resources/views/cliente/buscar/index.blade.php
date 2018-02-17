@@ -15,46 +15,44 @@
 @endsection
 @section('contenido')
 	<div class="row">
-		<div class="col-12 col-sm-7 col-md-7">
+		<div class="col-12 col-sm-12 col-md-12">
 			<div class="card margin-arriba margin-abajo card-raised">
 				<div class="card-body">
-					<form class="form-inline" action="" method="get" enctype="multipart/form-data">
-					{{csrf_field()}}
-						<div class="form-group">
-							<div class="input-group">
-								<span class="input-group-addon mb-3 mr-sm-0 mb-sm-0"><i class="material-icons">work</i></span>
-								<select name="category_id" class="form-control mb-3 mr-sm-3 mb-sm-0" id="category_id">
-									<option value="0">Seleccione la Categoria</option>
-									@foreach($categorias as $categoria)
-									<option value="{{old('category_id',$categoria->id)}}">{{$categoria->category}}</option>
-									@endforeach
-								</select>
-								
-							</div>
-	                    </div>	                    
-	                    <div class="form-group">
-							<div class="input-group">
-                                <span class="input-group-addon mb-3 mr-sm-0 mb-sm-0""><i class="material-icons">content_paste</i></span>
-                                <select name="service_id" class="form-control mb-3 mr-sm-3 mb-sm-0" id="service_id">
-                                	<option value="0">Seleccione un Servicio</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-							<button type="submit" class="btn btn-warning btn-sm pull-right margin-derecho link-1 ">Buscar</button>
-                        	<button type="submit" class="btn btn-secondary btn-sm pull-right margin-izquierdo">Limpiar</button>	
+					<div class="row">
+						<div class="col-12 col-sm-3 col-md-3">
 						</div>
-					</form>
+						<div class="col-12 col-sm-8 col-md-8">
+							<form class="form-inline" action="" method="get" enctype="multipart/form-data">
+								{{csrf_field()}}						
+								<div class="form-group">
+									<div class="input-group">
+										<span class="input-group-addon mb-3 mr-sm-0 mb-sm-0"><i class="material-icons">work</i></span>
+										<select name="category_id" class="form-control mb-3 mr-sm-3 mb-sm-0" id="category_id">
+											<option value="0">Seleccione la Categoria</option>
+											@foreach($categorias as $categoria)
+											<option value="{{old('category_id',$categoria->id)}}">{{$categoria->category}}</option>
+											@endforeach
+										</select>
+									</div>
+		                    	</div>	                    
+		                    	<div class="form-group">
+									<div class="input-group">
+	                                	<span class="input-group-addon mb-3 mr-sm-0 mb-sm-0""><i class="material-icons">content_paste</i></span>
+	                                	<select name="service_id" class="form-control mb-3 mr-sm-3 mb-sm-0" id="service_id">
+	                                		<option value="0">Seleccione un Servicio</option>
+	                               		</select>
+	                           		</div>
+	                       		</div>
+	                       		<div class="form-group">
+									<button type="submit" class="btn btn-warning btn-sm pull-right margin-derecho margin-izquierdo link-1 ">Buscar</button>
+	                        		<button type="submit" class="btn btn-secondary btn-sm pull-right margin-izquierdo">Limpiar</button>	
+								</div>
+							</form>
+						</div>						
+					</div>					
 				</div>
 			</div>			
 		</div>
-		<div class="col-12 col-sm-5 col-md-5">
-			<div class="card margin-arriba margin-abajo card-raised">
-				<div class="card-body">
-					<h4>Por definir</h4>
-				</div>
-			</div>
-		</div>		
 	</div>
 	<div class="row">
 		<div class="col-12 col-sm-12 col-md-12">

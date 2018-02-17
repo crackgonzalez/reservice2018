@@ -32,6 +32,10 @@ class Company extends Model
         return $this->hasMany('App\Galery');
     }
 
+    public function trabajadores(){
+        return $this->hasMany('App\Employe');
+    }
+
     //Retorna la Imagen
     public function getUrlAttribute(){
     	if(substr($this->image,0,4)==="http"){
