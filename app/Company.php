@@ -21,11 +21,11 @@ class Company extends Model
 
     //
     public function servicios(){
-        return $this->belongsToMany('App\Service')->withTimestamps();;
+        return $this->belongsToMany('App\Service')->withTimestamps();
     }
 
     public function comunas(){
-        return $this->belongsToMany('App\Commune')->withTimestamps();;
+        return $this->belongsToMany('App\Commune')->withTimestamps();
     }
 
     public function fotos(){
