@@ -79,6 +79,9 @@ Route::middleware(['auth','empresa'])->group(function () {
 	Route::get('/empresa/trabajador','EmployeController@index');
 	Route::get('/empresa/trabajador/create','UserController@create');
 	Route::post('/empresa/trabajador','UserController@store');
+	Route::get('/empresa/trabajador/{usuario}/edit','UserController@editar');
+	Route::post('/empresa/trabajador/{usuario}/edit','UserController@actualizar');
+	Route::delete('/empresa/trabajador/{id}','EmployeController@destroy');
 	
 	
 });
@@ -107,6 +110,8 @@ Route::middleware(['auth','trabajador'])->group(function () {
 
 	//Perfil
 	Route::get('/trabajador/perfil','EmployeController@inicio');
+	Route::get('/trabajador/perfil/{trabajador}/edit','EmployeController@edit');
+	Route::post('/trabajador/perfil/{trabajador}/edit','EmployeController@update');
 	
 });
 

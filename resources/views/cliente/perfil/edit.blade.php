@@ -2,12 +2,7 @@
 @section('titulo','Modificar su Perfil')
 @section('usuario','Cliente')
 @section('barra-navegacion')
-	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-		<div class="navbar-nav">
-			<a class="nav-item nav-link active" href="{{url('/cliente/perfil')}}">Perfil</span></a>
-			<a class="nav-item nav-link active" href="{{url('/cliente/buscar')}}">Buscar Servicio <span class="sr-only">(current)</span></a>
-		</div>
-	</div>
+	@include('includes.menu-cliente')
 @endsection
 @section('fondo','fondo-foto')
 @section('estilo-footer')
@@ -30,7 +25,7 @@
 			@endif
 				<div class="card margin-arriba margin-abajo card-raised">						
 					<div class="card-header text-center">
-						<h4 class="card-title">{{$usuario->name}} Modifique su Perfil</h4>
+						<h4 class="card-title">Modifique su Perfil</h4>
 					</div>
 					<div class="card-body">
 						<form action="{{url('/cliente/perfil/'.$cliente->id.'/edit')}}" method="POST" enctype="multipart/form-data">

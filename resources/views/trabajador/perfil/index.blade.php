@@ -27,15 +27,16 @@
                 					<h6 class="link-1">{{$trabajador->usuario->email}}</h>
                 					<h6 class="link-1">{{$trabajador->phone}}</h6>
                 					<img class="img-raised rounded-circle" style="height: 35px; width: 35px;" src="{{$trabajador->empresa->url}}">
-									<h6 class="link-1 d-inline">{{$trabajador->empresa->usuario->name}}</h6>									
-									<form method="post" action="#">
-										<a class="btn btn-warning btn-sm link-1 margin-arriba" href="#">Administrar Perfil</a>
+									<h6 class="link-1 d-inline">{{$trabajador->empresa->usuario->name}}</h6>			
+									<form method="post" action="{{url('/trabajador/perfil/'.$trabajador->id)}}">
+										{{csrf_field()}}
+										<a class="btn btn-warning btn-sm link-1 margin-arriba" href="{{url('/trabajador/perfil/'.$trabajador->id.'/edit')}}">Administrar Perfil</a>
 									</form>	
                 				</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</div>				
 				@endif
 				@endforeach	
 			</div>

@@ -17,6 +17,7 @@
 		<nav class="navbar navbar-light bg-dark">
 			<a class="navbar-brand" href="#">
 				<img src="{{asset('imagenes/logo.png')}}" width="30" height="30" alt="Icono Reservice">
+				<h6 class="d-inline link-1">Reservice</h6>
 			</a>
 			<div class="pull-right">
 		        @if (Auth::check())

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Employe extends Model
 {
 
+    protected $fillable = ['phone'];
+
 	public function usuario(){
         return $this->belongsTo('App\User','user_id');
     }
@@ -22,4 +24,10 @@ class Employe extends Model
     	}
     	return '/imagenes/perfil/'.$this->image;
     }
+
+    //Eventos Para el Trabajador
+    protected $dispatchesEvents = [
+        'deleted' => Events\EliminarEmpleadoEvent::class,      
+    ];
+
 }

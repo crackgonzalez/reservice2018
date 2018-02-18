@@ -24,8 +24,7 @@
 								<div class="col-12 col-sm-4 col-md-3">
 									<div class="text-center separacion-fotos">
 										<img src="{{$trabajadores->url}}" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo img-thumbnail">
-										<h5>{{$trabajadores->usuario->name}}</h5>
-										<h6>{{$trabajadores->usuario->rut}}</h6>
+										<h5>{{$trabajadores->usuario->name}}</h5>										
 										<h6>{{$trabajadores->usuario->email}}</h6>
 										<h6>{{$trabajadores->phone}}</h6>
 										@if($trabajadores->usuario->state === 1)
@@ -33,6 +32,12 @@
 										@else
 										<h6>Cuenta Desactivada</h6>										
 										@endif
+										<form method="post" action="{{url('/empresa/trabajador/'.$trabajadores->usuario->id)}}">
+											{{csrf_field()}}
+											{{method_field('DELETE')}}
+											<a class="btn btn-simple btn-sm" href="{{url('/empresa/trabajador/'.$trabajadores->usuario->id.'/edit')}}" data-toggle="tooltip" data-placement="bottom" title="Modificar la Cuenta"><i class="material-icons actualizar">refresh</i></a>
+											<button type="submit" class="btn btn-simple btn-sm" data-toggle="tooltip" data-placement="bottom" title="Eliminar al Trabajador"><i class="material-icons eliminar">delete</i></i></button>	
+										</form>
 									</div>
 								</div>
 								@endforeach

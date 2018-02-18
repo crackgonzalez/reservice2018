@@ -2,12 +2,7 @@
 @section('titulo','Perfil del Cliente')
 @section('usuario','Cliente')
 @section('barra-navegacion')
-	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-		<div class="navbar-nav">
-			<a class="nav-item nav-link active" href="{{url('/cliente/perfil')}}">Perfil<span class="sr-only">(current)</span></a>
-			<a class="nav-item nav-link active" href="{{url('/cliente/buscar')}}">Buscar Servicio</a>
-		</div>
-	</div>
+	@include('includes.menu-cliente')
 @endsection
 @section('perfil-fondo','profile-page')
 @section('estilo-footer')
@@ -38,6 +33,7 @@
 									<h6 class="link-1">{{$cliente->comuna->commune}}</h6>
 									@endisset
 									<form method="post" action="{{url('/cliente/perfil/'.$cliente->id)}}">
+										{{csrf_field()}}
 										<a class="btn btn-warning btn-sm link-1" href="{{url('/cliente/perfil/'.$cliente->id.'/edit')}}">Administrar Perfil</a>
 									</form>	
                 				</div>

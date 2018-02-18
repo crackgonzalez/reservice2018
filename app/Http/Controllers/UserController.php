@@ -13,18 +13,51 @@ class UserController extends Controller
     }
 
     public function store(Request $requerimiento){
+
+        $mensajes =[
+            'name.required' =>'El campo nombre es obligatorio',
+            'name.min' =>'El campo nombre debe tener al menos 2 caracteres',
+            'name.max' =>'El campo nombre debe tener como maximo 30 caracteres',
+            'name.regex' => 'El campo nombre solo acepta cadenas de texto',
+            'email.required' =>'El campo email es obligatorio',
+            'email.max'=>'El campo email debe tener como maximo 50 caracteres',
+            'email.unique' =>'El email ya ha sido registrado en la base de datos',
+            'password.required'=>'El campo contraseña es obligatorio',
+            'password.min'=>'El campo nombre debe tener al menos 6 caracteres',
+            'password.confirmed'=>'La contraseña ingresada no coincide con su confirmacion',
+            'account_id.in'=>'Debe seleccionar un tipo de cuenta (Trabajador)', 
+        ];
+
+        $reglas = [
+            'name' => 'required|string|min:2|max:30|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ]*)*)+$/',
+            'email' => 'required|string|email|max:50|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+            'account_id' => 'required|in:2',        
+        ];
+
+        $this->validate($requerimiento,$reglas,$mensajes);
+
         $usuario = new User();
         $usuario->name = $requerimiento->input('name');
         $usuario->rut = $requerimiento->input('rut');
         $usuario->email = $requerimiento->input('email');
         $usuario->password = bcrypt($requerimiento->input('password'));
         $usuario->account_id = $requerimiento->input('account_id'); 
-        $usuario->save();
+        $exito = $usuario->save();
+        if($exito){
+            alert()->success('El trabajador fue ingresado correctamente','Trabajador Registrado')->autoclose(3000);
+        }else{
+            alert()->error('El trabajador no pudo ser ingresado','Ocurrio un Error')->autoclose(3000);
+        }
         return redirect('empresa/trabajador');
     }
 
     public function edit(User $usuario){
         return view('administrador.empresas.edit')->with(compact('usuario'));
+    }
+
+    public function editar(User $usuario){
+        return view('empresa.trabajador.edit')->with(compact('usuario'));
     }
 
     public function update(Request $requerimiento, User $usuario){  
@@ -46,5 +79,26 @@ class UserController extends Controller
         }
 
     	return redirect('administrador/empresas');
+    }
+
+    public function actualizar(Request $requerimiento, User $usuario){  
+        $mensajes =[
+            'state.boolean' =>'Debe seleccionar una opcion', 
+        ];
+
+        $reglas = [
+            'state' => 'boolean' 
+        ];
+
+        $this->validate($requerimiento,$reglas,$mensajes);
+
+        $modificada = $usuario->update($requerimiento->only('state'));
+        if($modificada){
+            alert()->success('La cuenta fue modificada correctamente','Cuenta Modificada')->autoclose(3000);
+        }else{
+            alert()->error('La cuenta no pudo ser modificada','Ocurrio un Error')->autoclose(3000);
+        }
+
+        return redirect('empresa/trabajador');
     }
 }
