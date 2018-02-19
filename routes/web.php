@@ -98,10 +98,10 @@ Route::middleware(['auth','cliente'])->group(function () {
 	Route::get('/cliente/buscar','ClientController@buscar');
 
 	//Solicitud
+	Route::get('/cliente/solicitud','OrderController@index');
 	Route::get('/cliente/solicitud/{empresa}/show','ClientController@show');
-
-	Route::get('/cliente/solicitud/{empresa}/cotizar','ClientController@cotizar');
-	Route::post('/cliente/solicitud/{empresa}/cotizar','ClientController@solicitar');
+	Route::get('/cliente/solicitud/{empresa}/cotizar','OrderController@create');
+	Route::post('/cliente/solicitud/{empresa}/cotizar','OrderController@store');
 	
 });
 

@@ -30,6 +30,8 @@
 						<div class="card-body">
 							<form action="" method="POST" enctype="multipart/form-data">
 								{{csrf_field()}}
+								<input name="client_id" type="hidden" value="{{Auth::user()->cliente->id}}">
+								<input name="company_id" type="hidden" value="{{$compania->id}}">
 								<div class="form-group">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="material-icons">terrain</i></span>
@@ -44,13 +46,8 @@
                            		</div>
                            		<div class="form-group">
 									<div class="input-group">
-										<span class="input-group-addon"><i class="material-icons">terrain</i></span>
-										<select name="" class="form-control">
-											<option value="">Seleccione Fecha</option>
-										
-											<option value=""
-											></option>
-                                		</select>
+										<span class="input-group-addon"><i class="material-icons">account_circle</i></span>
+										<input name="date" type="date" class="form-control" value="{{old('date')}}">
                                		</div>
                            		</div>
                            		<div class="form-group">
@@ -68,22 +65,24 @@
                            		<div class="form-group">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="material-icons">terrain</i></span>
-										<select name="" class="form-control">
+										<select name="section_id" class="form-control">
 											<option value="">Seleccione Tramo Horario</option>
-										
-											<option value=""
-											></option>
+											@foreach($tramos as $tramo)
+											<option value="{{$tramo->id}}"
+											>{{$tramo->section}}</option>
+											@endforeach
                                 		</select>
                                		</div>
                            		</div>
                            		<div class="form-group">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="material-icons">description</i></span>
-										<textarea name="" placeholder="Descripcion del Problema" class="form-control" cols="30" rows="4"></textarea>
+										<textarea name="description" placeholder="Descripcion del Problema" class="form-control" cols="30" rows="4">{{old('description')}}</textarea>
 									</div>
 								</div>
                            		<div class="form-group">
 									<input type="file" class="form-control-file" name="image">
+									<small> * Foto Opcional</small>
 								</div>								
 								<div class="form-group">
 									<a href="{{url('/cliente/buscar')}}" class="btn btn-secondary btn-sm pull-right">Cancelar</a>

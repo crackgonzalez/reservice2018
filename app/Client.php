@@ -17,6 +17,10 @@ class Client extends Model
         return $this->belongsTo('App\Commune','commune_id');
     }
     
+    public function solicitud(){
+        return $this->hasOne('App\Order');
+    }
+
     //Retorna la Imagen
     public function getUrlAttribute(){
     	if(substr($this->image,0,4)==="http"){
