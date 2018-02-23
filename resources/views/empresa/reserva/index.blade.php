@@ -9,5 +9,10 @@
 	<link rel="stylesheet" href="{{asset('css/footer-with-button-logo-black.css')}}">
 @endsection
 @section('contenido')
-<h1>reservas</h1>
+<div class="row">
+	<div class="col-12 col-sm-12 col-md-12">
+		<div class="row">
+		</div>
+	</div>
+</div>
 @endsection
