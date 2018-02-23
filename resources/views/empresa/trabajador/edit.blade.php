@@ -35,7 +35,7 @@
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="material-icons">power_settings_new</i></span>
                                         <select name="state" class="form-control">
-                                        	<option value=null>Seleccione una Opcion</option>
+                                        	<option value=10>Seleccione una Opcion</option>
                                         	<option value=1>Activar</option>
                                         	<option value=0>Desactivar</option>
                                         </select>

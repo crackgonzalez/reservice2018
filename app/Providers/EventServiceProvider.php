@@ -18,7 +18,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\EliminarEmpleadoEvent' => [
             'App\Listeners\EliminarEmpleadoListener',
-        ],       
+        ],
+        'App\Events\GenerarReservaEvent' => [
+            'App\Listeners\GenerarReservaListener',
+        ],      
      
     ];
 

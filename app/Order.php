@@ -18,4 +18,25 @@ class Order extends Model
         return $this->belongsTo('App\Service','service_id');
     }
 
+    public function tramo(){
+        return $this->belongsTo('App\Section','section_id');
+    }
+
+    public function comuna(){
+        return $this->belongsTo('App\Commune','commune_id');
+    }
+
+    public function getUrlAttribute(){
+        if(substr($this->image,0,4)==="http"){
+            return $this->image;
+        }
+        return '/imagenes/ordenes/'.$this->image;
+    }
+
+    //Eventos Para el Order
+    protected $dispatchesEvents = [
+        'updated' => Events\GenerarReservaEvent::class,      
+    ];
+
+
 }

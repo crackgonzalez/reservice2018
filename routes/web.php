@@ -58,6 +58,7 @@ Route::middleware(['auth','admin'])->group(function () {
 
 //Empresa
 Route::middleware(['auth','empresa'])->group(function () {
+
 	//Perfil
 	Route::get('/empresa/perfil','CompanyController@index');
 	Route::get('/empresa/perfil/{empresa}/edit','CompanyController@edit');
@@ -82,7 +83,16 @@ Route::middleware(['auth','empresa'])->group(function () {
 	Route::get('/empresa/trabajador/{usuario}/edit','UserController@editar');
 	Route::post('/empresa/trabajador/{usuario}/edit','UserController@actualizar');
 	Route::delete('/empresa/trabajador/{id}','EmployeController@destroy');
-	
+
+	//Solicitud
+	Route::get('/empresa/solicitud','OrderController@inicio');
+	Route::get('/empresa/solicitud/{id}/edit','OrderController@edit');
+	Route::post('empresa/solicitud/{id}/edit','OrderController@update');
+
+	//Reserva
+	Route::get('/empresa/reserva','ReservationController@index');
+	// Route::get('/empresa/reserva/{id}/edit','ReservationController@edit');
+	// Route::post('empresa/reserva/{id}/edit','ReservationController@update');
 	
 });
 
@@ -102,6 +112,10 @@ Route::middleware(['auth','cliente'])->group(function () {
 	Route::get('/cliente/solicitud/{empresa}/show','ClientController@show');
 	Route::get('/cliente/solicitud/{empresa}/cotizar','OrderController@create');
 	Route::post('/cliente/solicitud/{empresa}/cotizar','OrderController@store');
+	Route::get('/cliente/solicitud/{id}/edit','OrderController@editar');
+	Route::post('cliente/solicitud/{id}/edit','OrderController@actualizar');
+
+	//Reserva
 	
 });
 

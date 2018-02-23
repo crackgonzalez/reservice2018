@@ -22,8 +22,8 @@ class CreateOrdersTable extends Migration
             $table->integer('section_id')->unsigned();
             $table->date('date');
             $table->string('image')->nullable();
-            $table->string('description');
-            $table->string('answer')->nullable();
+            $table->string('description',200);
+            $table->string('answer',200)->nullable();
             $table->boolean('state_company')->default(false);
             $table->boolean('state_client')->default(false);
             $table->unique(['client_id','company_id','service_id','commune_id','date']);
