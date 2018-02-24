@@ -116,6 +116,7 @@ Route::middleware(['auth','cliente'])->group(function () {
 	Route::post('cliente/solicitud/{id}/edit','OrderController@actualizar');
 
 	//Reserva
+	Route::get('/cliente/reserva','ReservationController@inicio');
 	
 });
 

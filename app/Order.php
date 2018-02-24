@@ -33,6 +33,10 @@ class Order extends Model
         return '/imagenes/ordenes/'.$this->image;
     }
 
+    public function reserva(){
+        return $this->hasOne('App\Reservation');
+    }
+
     //Eventos Para el Order
     protected $dispatchesEvents = [
         'updated' => Events\GenerarReservaEvent::class,      

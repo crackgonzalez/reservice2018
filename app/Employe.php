@@ -17,6 +17,10 @@ class Employe extends Model
         return $this->belongsTo('App\Company','company_id');
     }
 
+    public function reserva(){
+        return $this->hasOne('App\Reservation');
+    }
+
     //Retorna la Imagen
     public function getUrlAttribute(){
     	if(substr($this->image,0,4)==="http"){
