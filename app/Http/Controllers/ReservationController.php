@@ -16,5 +16,9 @@ class ReservationController extends Controller
 	public function inicio(){ 
     	$reservas = Reservation::orderBy('created_at','desc')->get();
         return view('cliente.reserva.index')->with(compact('reservas'));
+    }
+
+    public function resumen(){
+    	return view('administrador.resumen.index');
     }    
 }

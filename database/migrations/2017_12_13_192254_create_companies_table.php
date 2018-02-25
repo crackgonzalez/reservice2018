@@ -17,7 +17,7 @@ class CreateCompaniesTable extends Migration
             $table->increments('id');
             $table->string('image')->default('fotoperfil.jpg');
             $table->string('phone')->default('999999999');
-            $table->string('address')->default('Ingrese una direccion');
+            $table->string('address')->nullable();
             $table->string('description',200)->default('Descripcion breve de la empresa');
             $table->integer('commune_id')->nullable()->unsigned();
             $table->integer('user_id')->unsigned()->unique();

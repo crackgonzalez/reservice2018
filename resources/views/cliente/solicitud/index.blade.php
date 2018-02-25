@@ -18,17 +18,17 @@
 						<div class="col-12 col-sm-3 col-md-3">
 							<div class="card margin-arriba margin-abajo card-raised">
 								@if($orden->image == null)
-									<img class="card-img-top" style="height:210px" src="{{$orden->servicio->url}}">
+									<img class="card-img-top" style="height:200px" src="{{$orden->servicio->url}}">
 								@else
-									<img class="card-img-top" style="height:210px" src="{{$orden->url}}">	
+									<img class="card-img-top" style="height:200px" src="{{$orden->url}}">	
 								@endif
 								<div class="card-body">
-									<h3>{{$orden->servicio->service}}</h3>
+									<h5>{{$orden->servicio->service}}</h5>
 									<img class="img-raised rounded-circle" style="height: 35px; width: 35px;" src="{{$orden->empresa->url}}">
-									<h5 class="d-inline">{{$orden->empresa->usuario->name}}</h5>
-									<h6 class="margin-arriba">Fecha: {{$orden->date}} Horario: {{$orden->tramo->section}}</h6>									
+									<h6 class="d-inline">{{$orden->empresa->usuario->name}}</h6>
+									<h6 class="margin-arriba">Fecha {{$orden->date}} - Horario {{$orden->tramo->section}}</h6>									
 									@if($orden->state_company)
-										<h6>Confirmado por la Empresa</h6>
+										<h6>Confirmado por la {{$orden->empresa->usuario->name}}</h6>
 									@else
 										<h6>Esperando Confirmacion</h6>								
 									@endif

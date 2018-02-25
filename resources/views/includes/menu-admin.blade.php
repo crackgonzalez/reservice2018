@@ -5,5 +5,6 @@
 		<a class="nav-item nav-link nav-pills-estilo" href="{{url('/administrador/regiones')}}">Regiones</a>
 		<a class="nav-item nav-link nav-pills-estilo" href="{{url('/administrador/comunas')}}">Comunas</a>
 		<a class="nav-item nav-link nav-pills-estilo" href="{{url('/administrador/empresas')}}">Empresas</a>
+		<a class="nav-item nav-link nav-pills-estilo" href="{{url('/administrador/resumen')}}">Resumen</a>
 	</div>
 </div>

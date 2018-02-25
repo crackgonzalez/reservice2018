@@ -4,5 +4,6 @@
 		<a class="nav-item nav-link nav-pills-estilo" href="{{url('/empresa/trabajador')}}">Trabajadores</a>
 		<a class="nav-item nav-link nav-pills-estilo" href="{{url('/empresa/solicitud')}}">Solicitudes</a>
 		<a class="nav-item nav-link nav-pills-estilo" href="{{url('/empresa/reserva')}}">Reservas</a>
+		<a class="nav-item nav-link nav-pills-estilo" href="">Asignar</a>
 	</div>
 </div>

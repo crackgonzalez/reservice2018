@@ -59,7 +59,7 @@
 							<div class="card margin-arriba margin-abajo card-raised">
 								<img class="card-img-top" style="height:210px" src="{{$servicio->url}}">			
 								<div class="card-body">							
-									<h3>{{$servicio->service}}</h3>
+									<h5>{{$servicio->service}}</h5>
 									<img class="img-raised rounded-circle" style="height: 35px; width: 35px;" src="{{$empresas->url}}">
 									<h6 class="d-inline">{{$empresas->usuario->name}}</h6>
 									<br><br>
