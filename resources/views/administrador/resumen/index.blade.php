@@ -31,7 +31,7 @@
     	var data = google.visualization.arrayToDataTable([
         ['Empresa', 'Cantidad de Reservas'],
        	@foreach($reservas as $reserva)
-       	['{{$reserva->name}}',{{$reserva->count_click}}],
+       	['{{$reserva->name}}',{{$reserva->reserva}}],
        	@endforeach
        	]);
 

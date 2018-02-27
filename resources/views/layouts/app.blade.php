@@ -95,7 +95,7 @@
 		                <p class="text-center color-texto">Santiago-Chile</p>
 		            </div>
 		            <div class="footer-copyright">
-		                <p>Reservice, Todos los derechos reservados &copy; 2017.</p>
+		                <p>Reservice, Todos los derechos reservados &copy; 2018.</p>
 		            </div>
 		        </footer>
 		    </div>

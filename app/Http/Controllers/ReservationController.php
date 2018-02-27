@@ -23,15 +23,41 @@ class ReservationController extends Controller
         $reservas = Reservation::join('orders','orders.id','=','order_id')
                                 ->join('companies','companies.id','=','orders.company_id')
                                 ->join('users','users.id','=','companies.user_id')
-                                ->select('users.name',DB::raw("COUNT(companies.id) as count_click"))->groupBy('users.name')->get();
+                                ->select('users.name',DB::raw("COUNT(companies.id) as reserva"))->groupBy('users.name')->get();
 
     	return view('administrador.resumen.index')->with(compact('reservas'));
-    }    
+    }   
+
+    public function asignar(){
+        $reservas = Reservation::orderBy('created_at','desc')->get();
+        return view('empresa.asignar.index')->with(compact('reservas'));
+    }
+
+
+    public function edit($id){ 
+        $reserva = Reservation::find($id);       
+        return view('empresa.asignar.edit')->with(compact('reserva'));
+    }
+
+    public function update(Request $requerimiento, $id){ 
+        $mensajes =[
+
+        ];
+        $reglas = [
+
+        ];
+
+        $this->validate($requerimiento,$reglas,$mensajes);
+
+        $reserva = Reservation::find($id);
+        $reserva->employe_id = $requerimiento->employe_id;
+        $exito = $reserva->update();
+        if($exito){
+            alert()->success('Se asigno correctamente el trabajador','Trabajador Asignado')->autoclose(3000);
+        }else{
+            alert()->error('El trabajador no pudo ser asignado','Ocurrio un Error')->autoclose(3000);
+        }
+
+        return redirect('empresa/asignar');
+    }
 }
-
-
- // $reservas = Reservation::join('orders','orders.id','=','order_id')
- //                                ->join('companies','companies.id','=','orders.company_id')
- //                                ->join('users','users.id','=','companies.user_id')
- //                                ->select('users.name')->count();
- //        return view('administrador.resumen.index')->with(compact('reservas'));

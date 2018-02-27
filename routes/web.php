@@ -94,8 +94,11 @@ Route::middleware(['auth','empresa'])->group(function () {
 
 	//Reserva
 	Route::get('/empresa/reserva','ReservationController@index');
-	// Route::get('/empresa/reserva/{id}/edit','ReservationController@edit');
-	// Route::post('empresa/reserva/{id}/edit','ReservationController@update');
+	
+	//Asignar
+	Route::get('/empresa/asignar','ReservationController@asignar');
+	Route::get('/empresa/asignar/{id}/edit','ReservationController@edit');
+	Route::post('empresa/asignar/{id}/edit','ReservationController@update');
 	
 });
 
