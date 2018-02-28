@@ -133,6 +133,9 @@ Route::middleware(['auth','trabajador'])->group(function () {
 	Route::get('/trabajador/perfil','EmployeController@inicio');
 	Route::get('/trabajador/perfil/{trabajador}/edit','EmployeController@edit');
 	Route::post('/trabajador/perfil/{trabajador}/edit','EmployeController@update');
+
+	//Reservas
+	Route::get('/trabajador/reserva','ReservationController@trabajos');
 	
 });
 

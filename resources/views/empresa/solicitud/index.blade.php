@@ -15,12 +15,13 @@
 				@foreach($ordenes as $orden)
 					@if($orden->empresa->id == Auth::user()->empresa->id)
 						@if(!$orden->state_company)
-						<div class="col-12 col-sm-3 col-md-3">
+						@if($orden->date > today())
+						<div class="col-12 col-sm-4 col-md-4">
 							<div class="card margin-arriba margin-abajo card-raised">
 								@if($orden->image == null)
-									<img class="card-img-top" style="height:200px" src="{{$orden->servicio->url}}">
+									<img class="card-img-top" style="height:220px" src="{{$orden->servicio->url}}">
 								@else
-									<img class="card-img-top" style="height:200px" src="{{$orden->url}}">	
+									<img class="card-img-top" style="height:220px" src="{{$orden->url}}">	
 								@endif
 								<div class="card-body">
 									<h5>{{$orden->servicio->service}}</h5>
@@ -33,15 +34,14 @@
 									@endif
 									<small class="text-justify margin-arriba">{{$orden->description}}</small>
 									<br>
-									@if($orden->date > today())
-										<form action="{{url('/empresa/solicitud/'.$orden->id)}}" method="post">
-											{{csrf_field()}}
-											<a class="tn btn-warning btn-sm link-1 pull-right margin-arriba" style="text-decoration:none;"  href="{{url('/empresa/solicitud/'.$orden->id.'/edit')}}">Confirmar Solicitud</a>
-										</form>
-									@endif
+									<form action="{{url('/empresa/solicitud/'.$orden->id)}}" method="post">
+										{{csrf_field()}}
+										<a class="tn btn-warning btn-sm link-1 pull-right margin-arriba" style="text-decoration:none;"  href="{{url('/empresa/solicitud/'.$orden->id.'/edit')}}">Confirmar Solicitud</a>
+									</form>
 								</div>
 							</div>
 						</div>
+						@endif
 						@endif
 					@endif
 				@endforeach

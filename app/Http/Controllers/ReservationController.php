@@ -19,6 +19,11 @@ class ReservationController extends Controller
         return view('cliente.reserva.index')->with(compact('reservas'));
     }
 
+    public function trabajos(){ 
+        $reservas = Reservation::orderBy('created_at','desc')->get();
+        return view('trabajador.reserva.index')->with(compact('reservas'));
+    }
+
     public function resumen(){
         $reservas = Reservation::join('orders','orders.id','=','order_id')
                                 ->join('companies','companies.id','=','orders.company_id')
