@@ -99,6 +99,9 @@ Route::middleware(['auth','empresa'])->group(function () {
 	Route::get('/empresa/asignar','ReservationController@asignar');
 	Route::get('/empresa/asignar/{id}/edit','ReservationController@edit');
 	Route::post('empresa/asignar/{id}/edit','ReservationController@update');
+
+	//Resumen
+	Route::get('/empresa/resumen','ReservationController@resumenEmpresa');
 	
 });
 

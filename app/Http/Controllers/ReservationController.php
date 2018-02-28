@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Reservation;
 use App\Order;
+use Auth;
 use DB;
 
 class ReservationController extends Controller
@@ -23,6 +24,18 @@ class ReservationController extends Controller
         $reservas = Reservation::orderBy('created_at','desc')->get();
         return view('trabajador.reserva.index')->with(compact('reservas'));
     }
+
+    public function resumenEmpresa(Request $requerimiento){
+       
+        $reservas = Reservation::join('orders','orders.id','=','order_id')
+                                ->select('orders.date','orders.company_id',DB::raw("COUNT(orders.company_id) as reserva"))->groupBy('orders.company_id','orders.date')->get();
+
+
+         
+        return view('empresa.resumen.index')->with(compact('reservas'));
+    }
+
+
 
     public function resumen(){
         $reservas = Reservation::join('orders','orders.id','=','order_id')
