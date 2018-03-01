@@ -18,9 +18,9 @@
 						<div class="col-12 col-sm-3 col-md-3">
 						<div class="card margin-arriba margin-abajo card-raised">
 							@if($reserva->orden->image == null)
-								<img class="card-img-top" style="height:180px" src="{{$reserva->orden->servicio->url}}">
+								<img class="card-img-top" style="height:200px;" src="{{$reserva->orden->servicio->url}}">
 							@else
-								<img class="card-img-top" style="height:1800" src="{{$reserva->orden->url}}">	
+								<img class="card-img-top" style="height:200px;" src="{{$reserva->orden->url}}">	
 							@endif
 							<div class="card-body">
 								<h5>Servicio {{$reserva->orden->servicio->service}}</h5>
@@ -42,8 +42,9 @@
 							</div>
 						</div>
 					</div>
+					
 					@endif
-				@endif
+				@endif			
 			@endforeach
 		</div>
 	</div>

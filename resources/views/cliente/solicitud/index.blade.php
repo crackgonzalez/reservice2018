@@ -16,12 +16,12 @@
 					@if($orden->cliente->id == Auth::user()->cliente->id)
 						@if(!$orden->state_client)
 						@if($orden->date > today())
-						<div class="col-12 col-sm-4 col-md-4">
+						<div class="col-12 col-sm-3 col-md-3">
 							<div class="card margin-arriba margin-abajo card-raised">
 								@if($orden->image == null)
-									<img class="card-img-top" style="height:220px" src="{{$orden->servicio->url}}">
+									<img class="card-img-top" style="height:200px" src="{{$orden->servicio->url}}">
 								@else
-									<img class="card-img-top" style="height:220px" src="{{$orden->url}}">	
+									<img class="card-img-top" style="height:200px" src="{{$orden->url}}">	
 								@endif
 								<div class="card-body">
 									<h5>{{$orden->servicio->service}}</h5>

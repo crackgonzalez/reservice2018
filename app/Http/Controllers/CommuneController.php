@@ -12,20 +12,20 @@ use Alert;
 
 class CommuneController extends Controller
 {
-    //Lista las Comunas por Orden Ascendente y Paginado en 12 Registros
-    public function index(){
-    	$comunas = Commune::orderBy('commune','asc')->paginate(12);
+    //Lista las Comunas por Orden Ascendente y Paginado en 16 Registros
+    public function listarComunas(){
+    	$comunas = Commune::orderBy('commune','asc')->paginate(16);
     	return view('administrador.comunas.index')->with(compact('comunas'));
     }
 
     //Envia a Formulario para Crear una Comuna y Carga las Regiones
-    public function create(){
+    public function crearComuna(){
     	$regiones = Region::orderBy('region','asc')->get();
     	return view('administrador.comunas.create')->with(compact('regiones'));
     }
 
-    //Crea una Comuna
-    public function store(Request $requerimiento){
+    //Guarda en la BD la Comuna
+    public function guardarComuna(Request $requerimiento){
 
     	$mensajes =[
             'commune.required' =>'El campo comuna es obligatorio',
@@ -66,13 +66,13 @@ class CommuneController extends Controller
     }
 
     //Envia a Formulario para Editar una Comuna y Carga las Regiones
-    public function edit(Commune $comuna){
+    public function editarComuna(Commune $comuna){
         $regiones = Region::orderBy('region','asc')->get();
         return view('administrador.comunas.edit')->with(compact('comuna','regiones'));
     }
 
-    //Edita la Comuna
-    public function update(Request $requerimiento, Commune $comuna){  
+    //Edita la Comuna Guardada en la BD
+    public function actualizarComuna(Request $requerimiento, Commune $comuna){  
         
         $mensajes =[
             'commune.required' =>'El campo servicio es obligatorio',
@@ -117,8 +117,8 @@ class CommuneController extends Controller
         return redirect('administrador/comunas');
     }
 
-    //Elimina una Comuna
-    public function destroy($id){
+    //Elimina una Comuna de la BD
+    public function eliminarComuna($id){
 
         $comuna = Commune::find($id);
         $ruta = public_path().'/imagenes/comunas';

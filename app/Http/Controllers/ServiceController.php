@@ -11,20 +11,20 @@ use Alert;
 
 class ServiceController extends Controller
 {
-    //Lista los Servicios por Orden Ascendente y Paginado en 12 Registros
-    public function index(){
-    	$servicios = Service::orderBy('service','asc')->paginate(12);
+    //Lista los Servicios por Orden Ascendente y Paginado en 16 Registros
+    public function listarServicios(){
+    	$servicios = Service::orderBy('service','asc')->paginate(16);
     	return view('administrador.servicios.index')->with(compact('servicios'));
     }
 
     //Envia a Formulario para Crear un Servicio y Carga las Categorias
-    public function create(){
+    public function crearServicio(){
     	$categorias = Category::orderBy('category','asc')->get();
     	return view('administrador.servicios.create')->with(compact('categorias'));
     }
 
-    //Crea un Servicio
-    public function store(Request $requerimiento){
+    //Guarda en BD el Servicio
+    public function guardarServicio(Request $requerimiento){
 
     	$mensajes =[
             'service.required' =>'El campo servicio es obligatorio',
@@ -64,13 +64,13 @@ class ServiceController extends Controller
     }
 
     //Envia a Formulario para Editar un Servicio y Carga las Categorias
-    public function edit(Service $servicio){
+    public function editarServicio(Service $servicio){
         $categorias = Category::orderBy('category','asc')->get();
         return view('administrador.servicios.edit')->with(compact('servicio','categorias'));
     }
 
-    //Edita el Servicio
-    public function update(Request $requerimiento, Service $servicio){  
+    //Edita el Servicio guardado en la BD
+    public function actualizarServicio(Request $requerimiento, Service $servicio){  
         
         $mensajes =[
             'service.required' =>'El campo servicio es obligatorio',
@@ -115,8 +115,8 @@ class ServiceController extends Controller
         return redirect('administrador/servicios');
     }
 
-    //Elimina el Servicio
-    public function destroy($id){
+    //Elimina el Servicio de la BD
+    public function eliminarServicio($id){
 
         $servicio = Service::find($id);
         $ruta = public_path().'/imagenes/servicios';

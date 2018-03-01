@@ -22,19 +22,20 @@ class CompanyController extends Controller
     	return view('empresa.perfil.index')->with(compact('empresas'));
     }
 
-    public function empresas(){
-        $empresas = Company::all();
+    //Lista las Empresas Paginado en 16 Registros
+    public function listarEmpresasAdmin(){
+        $empresas = Company::paginate(16);;
         return view('administrador.empresas.index')->with(compact('empresas'));
     }
 
-    //
+    
     public function edit(Company $empresa){
     	$usuario = User::find($empresa->user_id);
         $comunas = Commune::orderBy('commune','asc')->get();
         return view('empresa.perfil.edit')->with(compact('empresa','usuario','comunas'));
     }
 
-    //Edita el Perfil Empresa ** separar la edicion de la foto
+    
     public function update(Request $requerimiento, Company $empresa){  
         
         $mensajes =[

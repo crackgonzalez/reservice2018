@@ -16,7 +16,7 @@ class CreateClientsTable extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
             $table->string('image')->default('fotoperfil.jpg');
-            $table->string('phone')->default('999999999');
+            $table->string('phone')->nullable();
             $table->string('address')->nullable();
             $table->integer('commune_id')->nullable()->unsigned();
             $table->integer('user_id')->unsigned()->unique();

@@ -9,19 +9,19 @@ use Alert;
 
 class CategoryController extends Controller
 {
-	//Lista las Categorias por Orden Ascendente y Paginado en 12 Registros
-    public function index(){
-    	$categorias = Category::orderBy('category','asc')->paginate(12);
+	//Lista las Categorias por Orden Ascendente y Paginado en 16 Registros
+    public function listarCategorias(){
+    	$categorias = Category::orderBy('category','asc')->paginate(16);
     	return view('administrador.categorias.index')->with(compact('categorias'));
     }
 
     //Envia a Formulario para Crear una Categoria
-    public function create(){
+    public function crearCategoria(){
     	return view('administrador.categorias.create');
     }
 
-    //Crea una Categoria
-    public function store(Request $requerimiento){  
+    //Guarda en la BD la Categoria
+    public function guardarCategoria(Request $requerimiento){  
 
         $mensajes =[
             'category.required' =>'El campo categoria es obligatorio',
@@ -60,12 +60,12 @@ class CategoryController extends Controller
     }
 
     //Envia a Formulario para Editar una Categoria
-    public function edit(Category $categoria){
+    public function editarCategoria(Category $categoria){
         return view('administrador.categorias.edit')->with(compact('categoria'));
     }
 
-    //Edita la Categoria
-    public function update(Request $requerimiento, Category $categoria){  
+    //Edita la Categoria Guardada en la BD
+    public function actualizarCategoria(Request $requerimiento, Category $categoria){  
         
         $mensajes =[
             'category.required' =>'El campo categoria es obligatorio',
@@ -112,8 +112,8 @@ class CategoryController extends Controller
         return redirect('administrador/categorias');
     }
 
-    //Elimina una Categoria
-    public function destroy($id){
+    //Elimina una Categoria de la BD
+    public function eliminarCategoria($id){
         try {
             $categoria = Category::find($id);
             $ruta = public_path().'/imagenes/categorias';

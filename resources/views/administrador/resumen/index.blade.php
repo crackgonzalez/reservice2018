@@ -15,7 +15,11 @@
 				<h4 class="card-title">Resumen</h4>
 			</div>
 			<div class="card-body">
-				<div id="piechart" style="width: 100%; height: 100%;"></div>
+                @if($reservas->isEmpty())
+                    <h3 class="text-center">No hay datos de las reservas para mostrar la informacion</h3>
+                @else
+                    <div id="piechart" style="width: 100%; height: 100%;"></div>
+                @endif
 			</div>
 		</div>
 	</div>

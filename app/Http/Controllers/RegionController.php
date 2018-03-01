@@ -10,19 +10,19 @@ use Alert;
 
 class RegionController extends Controller
 {
-    //Lista las Regiones por Orden Ascendente y Paginado en 12 Registros
-    public function index(){
-    	$regiones = Region::orderBy('region','asc')->paginate(12);
+    //Lista las Regiones por Orden Ascendente y Paginado en 16 Registros
+    public function listarRegiones(){
+    	$regiones = Region::orderBy('region','asc')->paginate(16);
     	return view('administrador.regiones.index')->with(compact('regiones'));
     }
 
     //Envia a Formulario para Crear una Region
-    public function create(){
+    public function crearRegion(){
     	return view('administrador.regiones.create');
     }
 
-    //Crea una Region
-    public function store(Request $requerimiento){  
+    //Guarda en la BD la Region
+    public function guardarRegion(Request $requerimiento){  
 
         $mensajes =[
             'region.required' =>'El campo region es obligatorio',
@@ -61,12 +61,12 @@ class RegionController extends Controller
     }
 
     //Envia a Formulario para Editar una Region
-    public function edit(Region $region){
+    public function editarRegion(Region $region){
         return view('administrador.regiones.edit')->with(compact('region'));
     }
 
-    //Edita la Region
-    public function update(Request $requerimiento, Region $region){  
+    //Edita la Region Guardada en la BD
+    public function actualizarRegion(Request $requerimiento, Region $region){  
         
         $mensajes =[
             'region.required' =>'El campo region es obligatorio',
@@ -100,7 +100,7 @@ class RegionController extends Controller
                         }
                     }
                 }else{
-                    $modificada = $region ->update($requerimiento->only('category'));
+                    $modificada = $region ->update($requerimiento->only('region'));
                     if($modificada){
                         alert()->success('La region fue modificada correctamente','Region Modificada')->autoclose(3000);
                     }else{
@@ -113,8 +113,8 @@ class RegionController extends Controller
         return redirect('administrador/regiones');
     }
 
-    //Elimina una Region
-    public function destroy($id){
+    //Elimina una Region de la BD
+    public function eliminarRegion($id){
         try {
             $region = Region::find($id);
             $ruta = public_path().'/imagenes/regiones';

@@ -52,15 +52,13 @@ class UserController extends Controller
         return redirect('empresa/trabajador');
     }
 
-    public function edit(User $usuario){
+    //Envia a Formulario para Editar el Estado de la Cuenta por Empresa
+    public function editarEstadoEmpresa(User $usuario){
         return view('administrador.empresas.edit')->with(compact('usuario'));
     }
 
-    public function editar(User $usuario){
-        return view('empresa.trabajador.edit')->with(compact('usuario'));
-    }
-
-    public function update(Request $requerimiento, User $usuario){  
+    //Edita el Estado de la Cuenta de la Empresa
+    public function actualizarEstadoEmpresa(Request $requerimiento, User $usuario){  
     	$mensajes =[
             'state.boolean' =>'Debe seleccionar una opcion', 
         ];
@@ -80,6 +78,11 @@ class UserController extends Controller
 
     	return redirect('administrador/empresas');
     }
+
+    public function editar(User $usuario){
+        return view('empresa.trabajador.edit')->with(compact('usuario'));
+    }
+
 
     public function actualizar(Request $requerimiento, User $usuario){  
         $mensajes =[

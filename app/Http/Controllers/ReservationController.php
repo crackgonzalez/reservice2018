@@ -29,19 +29,17 @@ class ReservationController extends Controller
        
         $reservas = Reservation::join('orders','orders.id','=','order_id')
                                 ->select('orders.date','orders.company_id',DB::raw("COUNT(orders.company_id) as reserva"))->groupBy('orders.company_id','orders.date')->get();
-
-
          
         return view('empresa.resumen.index')->with(compact('reservas'));
     }
 
 
-
-    public function resumen(){
+    //Resumen de la Cantidad de Reservas de Todas las Empresas
+    public function resumenEmpresasAdmin(){
         $reservas = Reservation::join('orders','orders.id','=','order_id')
-                                ->join('companies','companies.id','=','orders.company_id')
-                                ->join('users','users.id','=','companies.user_id')
-                                ->select('users.name',DB::raw("COUNT(companies.id) as reserva"))->groupBy('users.name')->get();
+                    ->join('companies','companies.id','=','orders.company_id')
+                    ->join('users','users.id','=','companies.user_id')
+                    ->select('users.name',DB::raw("COUNT(companies.id) as reserva"))->groupBy('users.name')->get();
 
     	return view('administrador.resumen.index')->with(compact('reservas'));
     }   

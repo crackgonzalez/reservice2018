@@ -16,7 +16,7 @@ class CreateCompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('id');
             $table->string('image')->default('fotoperfil.jpg');
-            $table->string('phone')->default('999999999');
+            $table->string('phone')->nullable();
             $table->string('address')->nullable();
             $table->string('description',200)->default('Descripcion breve de la empresa');
             $table->integer('commune_id')->nullable()->unsigned();

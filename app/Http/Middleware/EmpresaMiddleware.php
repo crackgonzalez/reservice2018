@@ -23,7 +23,7 @@ class EmpresaMiddleware
         }else{
             Auth::logout();
             alert()->error('Intentaste acceder a una ruta a la cual no tienes permisos','No Autorizado')->autoclose(5000);
-        } 
+        }
         return redirect('/');  
     }
 }

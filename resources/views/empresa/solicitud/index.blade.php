@@ -16,7 +16,7 @@
 					@if($orden->empresa->id == Auth::user()->empresa->id)
 						@if(!$orden->state_company)
 						@if($orden->date > today())
-						<div class="col-12 col-sm-4 col-md-4">
+						<div class="col-12 col-sm-3 col-md-3">
 							<div class="card margin-arriba margin-abajo card-raised">
 								@if($orden->image == null)
 									<img class="card-img-top" style="height:220px" src="{{$orden->servicio->url}}">

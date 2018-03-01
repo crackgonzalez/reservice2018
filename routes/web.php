@@ -13,50 +13,50 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('inicio');
 
 //Administrador
 Route::middleware(['auth','admin'])->group(function () {
 	
-	//Categoria
-	Route::get('/administrador/categorias','CategoryController@index');
-	Route::get('/administrador/categorias/create','CategoryController@create');
-	Route::post('/administrador/categorias','CategoryController@store');
-	Route::get('/administrador/categorias/{categoria}/edit','CategoryController@edit');
-	Route::post('/administrador/categorias/{categoria}/edit','CategoryController@update');
-	Route::delete('/administrador/categorias/{id}','CategoryController@destroy');
+	//Categoria 
+	Route::get('/administrador/categorias','CategoryController@listarCategorias');
+	Route::get('/administrador/categorias/create','CategoryController@crearCategoria');
+	Route::post('/administrador/categorias','CategoryController@guardarCategoria');
+	Route::get('/administrador/categorias/{categoria}/edit','CategoryController@editarCategoria');
+	Route::post('/administrador/categorias/{categoria}/edit','CategoryController@actualizarCategoria');
+	Route::delete('/administrador/categorias/{id}','CategoryController@eliminarCategoria');
 
 	//Servicio
-	Route::get('/administrador/servicios','ServiceController@index');
-	Route::get('/administrador/servicios/create','ServiceController@create');
-	Route::post('/administrador/servicios','ServiceController@store');
-	Route::get('/administrador/servicios/{servicio}/edit','ServiceController@edit');
-	Route::post('/administrador/servicios/{servicio}/edit','ServiceController@update');
-	Route::delete('/administrador/servicios/{id}','ServiceController@destroy');
+	Route::get('/administrador/servicios','ServiceController@listarServicios');
+	Route::get('/administrador/servicios/create','ServiceController@crearServicio');
+	Route::post('/administrador/servicios','ServiceController@guardarServicio');
+	Route::get('/administrador/servicios/{servicio}/edit','ServiceController@editarServicio');
+	Route::post('/administrador/servicios/{servicio}/edit','ServiceController@actualizarServicio');
+	Route::delete('/administrador/servicios/{id}','ServiceController@eliminarServicio');
 
 	//Region
-	Route::get('/administrador/regiones','RegionController@index');
-	Route::get('/administrador/regiones/create','RegionController@create');
-	Route::post('/administrador/regiones','RegionController@store');
-	Route::get('/administrador/regiones/{region}/edit','RegionController@edit');
-	Route::post('/administrador/regiones/{region}/edit','RegionController@update');
-	Route::delete('/administrador/regiones/{id}','RegionController@destroy');
+	Route::get('/administrador/regiones','RegionController@listarRegiones');
+	Route::get('/administrador/regiones/create','RegionController@crearRegion');
+	Route::post('/administrador/regiones','RegionController@guardarRegion');
+	Route::get('/administrador/regiones/{region}/edit','RegionController@editarRegion');
+	Route::post('/administrador/regiones/{region}/edit','RegionController@actualizarRegion');
+	Route::delete('/administrador/regiones/{id}','RegionController@eliminarRegion');
 
 	//Comuna
-	Route::get('/administrador/comunas','CommuneController@index');
-	Route::get('/administrador/comunas/create','CommuneController@create');
-	Route::post('/administrador/comunas','CommuneController@store');
-	Route::get('/administrador/comunas/{comuna}/edit','CommuneController@edit');
-	Route::post('/administrador/comunas/{comuna}/edit','CommuneController@update');
-	Route::delete('/administrador/comunas/{id}','CommuneController@destroy');
+	Route::get('/administrador/comunas','CommuneController@listarComunas');
+	Route::get('/administrador/comunas/create','CommuneController@crearComuna');
+	Route::post('/administrador/comunas','CommuneController@guardarComuna');
+	Route::get('/administrador/comunas/{comuna}/edit','CommuneController@editarComuna');
+	Route::post('/administrador/comunas/{comuna}/edit','CommuneController@actualizarComuna');
+	Route::delete('/administrador/comunas/{id}','CommuneController@eliminarComuna');
 
 	//Empresa
-	Route::get('/administrador/empresas','CompanyController@empresas');
-	Route::get('/administrador/empresas/{usuario}/edit','UserController@edit');
-	Route::post('administrador/empresas/{usuario}/edit','UserController@update');
+	Route::get('/administrador/empresas','CompanyController@listarEmpresasAdmin');
+	Route::get('/administrador/empresas/{usuario}/edit','UserController@editarEstadoEmpresa');
+	Route::post('administrador/empresas/{usuario}/edit','UserController@actualizarEstadoEmpresa');
 
 	//Resumen
-	Route::get('/administrador/resumen','ReservationController@resumen');
+	Route::get('/administrador/resumen','ReservationController@resumenEmpresasAdmin');
 });
 
 //Empresa
