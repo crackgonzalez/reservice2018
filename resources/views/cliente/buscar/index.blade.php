@@ -66,6 +66,7 @@
 									<small class="text-justify">{{$empresas->description}}</small>
 									<br><br>	
 									<form method="post" action="{{url('/cliente/solicitud/'.$empresas->id)}}">
+										{{csrf_field()}}
 										<a class="btn btn-warning btn-sm pull-right link-1" href="{{url('/cliente/solicitud/'.$empresas->id.'/show')}}">Ver Empresa</a>
 									</form>
 								</div>

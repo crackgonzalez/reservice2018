@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware('inicio');
+
+//Inicio
+Route::middleware(['inicio'])->group(function () {
+	Route::get('/','WelcomeController@inicio');
+});
+
 
 //Administrador
 Route::middleware(['auth','admin'])->group(function () {
