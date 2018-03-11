@@ -25,14 +25,21 @@ class ReservationController extends Controller
         return view('trabajador.reserva.index')->with(compact('reservas'));
     }
 
-    public function resumenEmpresa(Request $requerimiento){
-       
+    public function resumenEmpresa(){       
         $reservas = Reservation::join('orders','orders.id','=','order_id')
                                 ->select('orders.date','orders.company_id',DB::raw("COUNT(orders.company_id) as reserva"))->groupBy('orders.company_id','orders.date')->get();
          
-        return view('empresa.resumen.index')->with(compact('reservas'));
+        return view('empresa.resumen-reserva.index')->with(compact('reservas'));
     }
 
+    public function resumenTrabajadores(){
+        $empresa = Auth::user()->empresa->id;
+        $trabajadores = Reservation::join('orders','orders.id','=','order_id')
+                                    ->join('employes','employes.id','=','employe_id')
+                                    ->join('users','users.id','=','employes.user_id')
+                                    ->select('users.name',DB::raw("COUNT(employes.id) as trabajador"))->where('orders.company_id','=',$empresa)->groupBy('users.name')->get();
+        return view('empresa.resumen-trabajador.index')->with(compact('trabajadores'));
+    }
 
     //Resumen de la Cantidad de Reservas de Todas las Empresas
     public function resumenEmpresasAdmin(){

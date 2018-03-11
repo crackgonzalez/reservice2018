@@ -104,7 +104,8 @@ Route::middleware(['auth','empresa'])->group(function () {
 	Route::post('empresa/asignar/{id}/edit','ReservationController@update');
 
 	//Resumen
-	Route::get('/empresa/resumen','ReservationController@resumenEmpresa');
+	Route::get('/empresa/resumen-reserva','ReservationController@resumenEmpresa');
+	Route::get('/empresa/resumen-trabajador','ReservationController@resumenTrabajadores');
 	
 });
 

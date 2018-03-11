@@ -5,6 +5,7 @@
 		<a class="nav-item nav-link nav-pills-estilo" href="{{url('/empresa/solicitud')}}">Solicitudes</a>
 		<a class="nav-item nav-link nav-pills-estilo" href="{{url('/empresa/reserva')}}">Reservas</a>
 		<a class="nav-item nav-link nav-pills-estilo" href="{{url('/empresa/asignar')}}">Asignar Trabajador</a>
-		<a class="nav-item nav-link nav-pills-estilo" href="{{url('/empresa/resumen')}}">Resumen</a>
+		<a class="nav-item nav-link nav-pills-estilo" href="{{url('/empresa/resumen-reserva')}}">Resumen Reservas</a>
+		<a class="nav-item nav-link nav-pills-estilo" href="{{url('/empresa/resumen-trabajador')}}">Resumen Trabajadores</a>
 	</div>
 </div>
