@@ -10,14 +10,31 @@ use DB;
 
 class ReservationController extends Controller
 {
+    //corregido
     public function index(){ 
-    	$reservas = Reservation::orderBy('created_at','desc')->get();
+        $reservas = Reservation::whereHas('orden', function($query){
+            $empresa = Auth::user()->empresa->id;
+            $query->where('company_id',$empresa)->orderBy('date','desc');
+        })->get();
         return view('empresa.reserva.index')->with(compact('reservas'));
     }
 
+    //corregido
 	public function inicio(){ 
-    	$reservas = Reservation::orderBy('created_at','desc')->get();
+    	$reservas = Reservation::whereHas('orden', function($query){
+            $cliente = Auth::user()->cliente->id;
+            $query->where('client_id',$cliente)->orderBy('date','desc');
+        })->get();        
         return view('cliente.reserva.index')->with(compact('reservas'));
+    }
+
+    public function asignar(){
+        $reservas = Reservation::whereHas('orden', function($query){
+            $empresa = Auth::user()->empresa->id;
+            $query->where('company_id',$empresa)->orderBy('date','desc');
+        })
+        ->where('employe_id',null)->get();
+        return view('empresa.asignar.index')->with(compact('reservas'));
     }
 
     public function trabajos(){ 
@@ -51,11 +68,7 @@ class ReservationController extends Controller
     	return view('administrador.resumen.index')->with(compact('reservas'));
     }   
 
-    public function asignar(){
-        $reservas = Reservation::orderBy('created_at','desc')->get();
-        return view('empresa.asignar.index')->with(compact('reservas'));
-    }
-
+    
 
     public function edit($id){ 
         $reserva = Reservation::find($id);       

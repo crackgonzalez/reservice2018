@@ -7,17 +7,27 @@ use App\Company;
 use App\Order;
 use App\Section;
 use Exception;
+use Auth;
 
 class OrderController extends Controller
 {
-
+    //corregido
     public function index(){
-        $ordenes = Order::orderBy('date','asc')->get();
+        $cliente = Auth::user()->cliente->id;
+        $ordenes = Order::where('client_id',$cliente)
+                        ->where('state_client',false)
+                        ->where('date','>',today())
+                        ->orderBy('date','asc')->get();        
         return view('cliente.solicitud.index')->with(compact('ordenes'));
     }
 
+    //corregido
     public function inicio(){
-        $ordenes = Order::orderBy('date','desc')->get();
+        $empresa = Auth::user()->empresa->id;
+        $ordenes = Order::where('company_id',$empresa)
+                        ->where('state_company',false)
+                        ->where('date','>',today())
+                        ->orderBy('date','desc')->get();
         return view('empresa.solicitud.index')->with(compact('ordenes'));
     }
 
