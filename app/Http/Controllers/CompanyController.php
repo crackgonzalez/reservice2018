@@ -24,7 +24,10 @@ class CompanyController extends Controller
 
     //Lista las Empresas Paginado en 16 Registros
     public function listarEmpresasAdmin(){
-        $empresas = Company::paginate(16);;
+        $empresas = Company::paginate(16);
+        //ejemplo query al reves
+        // $empresas = User::has('empresa')->orderBy('name','asc')->paginate(16); 
+        // return view('administrador.empresas.index')->with(compact('empresas'));
         return view('administrador.empresas.index')->with(compact('empresas'));
     }
 

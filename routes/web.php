@@ -143,6 +143,9 @@ Route::middleware(['auth','trabajador'])->group(function () {
 
 	//Reservas
 	Route::get('/trabajador/reserva','ReservationController@trabajos');
+
+	//Mapa
+	Route::get('/trabajador/reserva/{orden}/mapa','ReservationController@mapa');
 	
 });
 

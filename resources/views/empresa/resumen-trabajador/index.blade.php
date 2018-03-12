@@ -12,7 +12,7 @@
 	<div class="col-12 col-sm-12 col-md-12">		
 		<div class="card margin-arriba margin-abajo card-raised">
 			<div class="card-header text-center">
-				<h4 class="card-title">Cantidad de Trabajdos Asignados por Trabajador</h4>                
+				<h4 class="card-title">Cantidad de Trabajos Asignados por Trabajador</h4>                
 			</div>
 			<div class="card-body">               
 				@if($trabajadores->isEmpty())

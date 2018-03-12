@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Reservation;
 use App\Order;
+use App\Client;
 use Auth;
 use DB;
 
@@ -38,8 +39,18 @@ class ReservationController extends Controller
     }
 
     public function trabajos(){ 
-        $reservas = Reservation::orderBy('created_at','desc')->get();
+        $reservas = Reservation::whereHas('orden', function($query){
+            $trabajador = Auth::user()->trabajador->id;
+            $query->where('client_id',$trabajador)
+                    ->where('date','>',today())
+                    ->orderBy('date','desc');
+        })->get();
         return view('trabajador.reserva.index')->with(compact('reservas'));
+    }
+
+    public function mapa(Order $orden){
+        $cliente = $orden->cliente;
+        return view('trabajador.reserva.mapa')->with(compact('cliente'));
     }
 
     public function resumenEmpresa(){       
