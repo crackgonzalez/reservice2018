@@ -50,7 +50,8 @@ class ReservationController extends Controller
 
     public function mapa(Order $orden){
         $cliente = $orden->cliente;
-        return view('trabajador.reserva.mapa')->with(compact('cliente'));
+        $empresa = $orden->empresa;
+        return view('trabajador.reserva.mapa')->with(compact('cliente','empresa'));
     }
 
     public function resumenEmpresa(){       
