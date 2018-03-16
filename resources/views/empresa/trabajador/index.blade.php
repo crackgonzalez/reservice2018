@@ -32,7 +32,7 @@
 										@else
 										<h6>Cuenta Desactivada</h6>										
 										@endif
-										<form method="post" action="{{url('/empresa/trabajador/'.$trabajadores->usuario->id)}}">
+										<form method="post" action="{{url('/empresa/trabajador/'.$trabajadores->id)}}">
 											{{csrf_field()}}
 											{{method_field('DELETE')}}
 											<a class="btn btn-simple btn-sm" href="{{url('/empresa/trabajador/'.$trabajadores->usuario->id.'/edit')}}" data-toggle="tooltip" data-placement="bottom" title="Modificar la Cuenta"><i class="material-icons actualizar">refresh</i></a>

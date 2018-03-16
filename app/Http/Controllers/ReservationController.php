@@ -41,7 +41,7 @@ class ReservationController extends Controller
     public function trabajos(){ 
         $reservas = Reservation::whereHas('orden', function($query){
             $trabajador = Auth::user()->trabajador->id;
-            $query->where('client_id',$trabajador)
+            $query->where('employe_id',$trabajador)
                     ->where('date','>',today())
                     ->orderBy('date','desc');
         })->get();

@@ -25,14 +25,15 @@ class UserController extends Controller
             'password.required'=>'El campo contraseña es obligatorio',
             'password.min'=>'El campo nombre debe tener al menos 6 caracteres',
             'password.confirmed'=>'La contraseña ingresada no coincide con su confirmacion',
-            'account_id.in'=>'Debe seleccionar un tipo de cuenta (Trabajador)', 
+            'account_id.in'=>'Debe seleccionar un tipo de cuenta (Trabajador)',
+            
         ];
 
         $reglas = [
             'name' => 'required|string|min:2|max:30|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ]*)*)+$/',
             'email' => 'required|string|email|max:50|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'account_id' => 'required|in:2',        
+            'account_id' => 'required|in:2',            
         ];
 
         $this->validate($requerimiento,$reglas,$mensajes);

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Employe;
 use App\Company;
+use File;
+use Exception;
+use Alert;
 
 class EmployeController extends Controller
 {
@@ -86,19 +89,24 @@ class EmployeController extends Controller
 
     //Elimina un Trabajador
     public function destroy($id){
-		$trabajador = Employe::find($id);
-        $borrar = $trabajador->image;
-        $ruta = public_path().'/imagenes/perfil';
-        $imagenAnterior = $ruta.'/'.$trabajador->image;           
-		$exito = $trabajador->delete();
-		if($exito){
-            if($borrar != 'fotoperfil.jpg'){
-                File::delete($imagenAnterior);
+    	try{
+            $trabajador = Employe::find($id);
+            $borrar = $trabajador->image;
+            $ruta = public_path().'/imagenes/perfil';
+            $imagenAnterior = $ruta.'/'.$trabajador->image;           
+    		$exito = $trabajador->delete();
+    		if($exito){
+                if($borrar != 'fotoperfil.jpg'){
+                    File::delete($imagenAnterior);
+                }
+    			alert()->success('La trabajador fue eliminado correctamente','Trabajador Eliminado')->autoclose(3000);
+    		}else{
+                alert()->error('El trabajador no pudo ser eliminado','Ocurrio un Error')->autoclose(3000);
             }
-			alert()->success('La trabajador fue eliminado correctamente','Trabajador Eliminado')->autoclose(3000);
-		}else{
-            alert()->error('El trabajador no pudo ser eliminado','Ocurrio un Error')->autoclose(3000);
+        }catch(Exception $e){
+            alert()->warning('El trabajador se encuentra asociado a un servicio','No se Puede Eliminar')->autoclose(3000);
         }
         return redirect('empresa/trabajador');
+        
     }
 }
