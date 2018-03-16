@@ -35,7 +35,7 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="material-icons">credit_card</i></span>
-                                        <input type="text" class="form-control" name="rut" placeholder="Rut" value="{{ old('rut') }}">
+                                        <input type="text" class="form-control" id="rut" name="rut" placeholder="Rut" value="{{ old('rut') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -80,5 +80,4 @@
         </div>
     </div>
 @endsection
-@section('scripts')    
-@endsection
+

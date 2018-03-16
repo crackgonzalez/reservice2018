@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Account;
 use RUT;
+use Exception;
 
 class RegisterController extends Controller
 {
@@ -63,15 +64,26 @@ class RegisterController extends Controller
             'password.confirmed'=>'La contraseña ingresada no coincide con su confirmacion',
             'account_id.in'=>'Debe seleccionar un tipo de cuenta (Empresa o Cliente)',
             'rut.required' =>'El campo rut es obligatorio',  
-            'rut.unique' =>'El rut ya ha sido registrado en la base de datos',      
+            'rut.unique' =>'El rut ya ha sido registrado en la base de datos',
+            'rut.min' =>'El campo rut debe tener al menos 8 caracteres',
+            'rut.max' =>'El campo rut debe tener como maximo 12 caracteres',      
         ];
 
         return Validator::make($data, [
             'name' => 'required|string|min:2|max:30|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ]*)*)+$/',
             'email' => 'required|string|email|max:50|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'rut' => 'required|unique:users',
             'account_id' => 'required|in:3,4',
+            'rut' => ['required','unique:users','min:8','max:12',
+                        function($attribute, $value, $fail){
+                            try{
+                                if(!RUT::check($value)){
+                                    $fail('El rut es invalido');
+                                }
+                            }catch(Exception $e){
+                                $fail('El rut es invalido');
+                            }
+                        }],
         ],$mensajes);
     }
 

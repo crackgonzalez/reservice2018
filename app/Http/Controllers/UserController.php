@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use RUT;
+use Exception;
 
 class UserController extends Controller
 {
@@ -26,6 +28,10 @@ class UserController extends Controller
             'password.min'=>'El campo nombre debe tener al menos 6 caracteres',
             'password.confirmed'=>'La contraseña ingresada no coincide con su confirmacion',
             'account_id.in'=>'Debe seleccionar un tipo de cuenta (Trabajador)',
+            'rut.required' =>'El campo rut es obligatorio',  
+            'rut.unique' =>'El rut ya ha sido registrado en la base de datos',
+            'rut.min' =>'El campo rut debe tener al menos 8 caracteres',
+            'rut.max' =>'El campo rut debe tener como maximo 12 caracteres', 
             
         ];
 
@@ -33,7 +39,17 @@ class UserController extends Controller
             'name' => 'required|string|min:2|max:30|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ]*)*)+$/',
             'email' => 'required|string|email|max:50|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'account_id' => 'required|in:2',            
+            'account_id' => 'required|in:2',
+            'rut' => ['required','unique:users','min:8','max:12',
+                        function($attribute, $value, $fail){
+                            try{
+                                if(!RUT::check($value)){
+                                    $fail('El rut es invalido');
+                                }
+                            }catch(Exception $e){
+                                $fail('El rut es invalido');
+                            }
+                        }],           
         ];
 
         $this->validate($requerimiento,$reglas,$mensajes);
