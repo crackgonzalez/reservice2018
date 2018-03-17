@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('rut')->unique();
             $table->string('email')->unique();
             $table->string('password');
+            $table->boolean('validation')->default(false);
             $table->boolean('state')->default(true);
             $table->integer('account_id')->unsigned();
             $table->foreign('account_id')->references('id')->on('accounts')->onUpdate('cascade');

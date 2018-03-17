@@ -72,15 +72,19 @@ Route::middleware(['auth','empresa'])->group(function () {
 
 	Route::get('/empresa/perfil/createService','ServiceController@createService');
 	Route::post('/empresa/perfil/createService','ServiceController@storeService');
-	Route::delete('/empresa/perfil/{id}','ServiceController@destroyService')->name('delServicio');
+	Route::delete('/empresa/perfil/{id}','ServiceController@destroyService');
 
 	Route::get('/empresa/perfil/createCommune','CommuneController@createCommune');
 	Route::post('/empresa/perfil/createCommune','CommuneController@storeCommune');
-	Route::delete('/empresa/perfil/{id}/{comuna}','CommuneController@destroyCommune')->name('delComuna');
+	Route::delete('/empresa/perfil/{id}/{comuna}','CommuneController@destroyCommune');
 
 	Route::get('/empresa/perfil/createGalery','GaleryController@createGalery');
 	Route::post('/empresa/perfil/createGalery','GaleryController@storeGalery');
-	Route::delete('/empresa/perfil/{id}/{foto}/{fotos}','GaleryController@destroyGalery')->name('delGaleria');
+	Route::delete('/empresa/perfil/{id}/{foto}/{fotos}','GaleryController@destroyGalery');
+	Route::get('/empresa/perfil/createGalery','GaleryController@createGalery');
+
+	Route::get('/empresa/perfil/{id}/validar','UserController@validar');
+
 
 	//trabajadores
 	Route::get('/empresa/trabajador','EmployeController@index');
