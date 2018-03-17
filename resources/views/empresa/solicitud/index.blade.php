@@ -40,10 +40,13 @@
 					</div>
 				@empty
 					<div class="col-12 col-sm-12 col-md-12">
-						<div class="card margin-arriba margin-abajo card-raised">
-							<h3 class="text-center">No hay Solicitudes para Mostrar</h3>
-						</div>
-					</div>					
+					<div class="card text-white bg-warning text-center margin-arriba margin-abajo">
+						<div class="card-header"><h4>Solicitudes</h4></div>
+						<div class="card-body">							
+    						<h4 class="card-text">No hay solicitudes vigentes</h4>
+  						</div>
+					</div>
+				</div>				
 				@endforelse
 			</div>
 		</div>

@@ -42,10 +42,13 @@
 				</div>
 			@empty
 				<div class="col-12 col-sm-12 col-md-12">
-					<div class="card margin-arriba margin-abajo card-raised">
-						<h3 class="text-center">No hay Reservas para Asignar Trabajador</h3>
+					<div class="card text-white bg-warning text-center margin-arriba margin-abajo">
+						<div class="card-header"><h4>Asignar Trabajador</h4></div>
+						<div class="card-body">							
+    						<h4 class="card-text">No hay reservas vigentes a las cuales asignar un trabajador</h4>
+  						</div>
 					</div>
-				</div>		
+				</div>
 			@endforelse
 		</div>
 	</div>
