@@ -108,6 +108,7 @@
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	@include('sweet::alert')
 	<script>$('[data-toggle="tooltip"]').tooltip();</script>
+	<script type="text/javascript" src="{{asset('js/jquery.rut.js')}}"></script>
 	@yield('scripts')
 </body>
 </html>

@@ -80,4 +80,8 @@
         </div>
     </div>
 @endsection
-
+@section('scripts')
+<script>
+    $("input#rut").rut();
+</script>
+@endsection
