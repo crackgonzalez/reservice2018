@@ -62,6 +62,9 @@
 									<h5>{{$servicio->service}}</h5>
 									<img class="img-raised rounded-circle" style="height: 35px; width: 35px;" src="{{$empresas->url}}">
 									<h6 class="d-inline">{{$empresas->usuario->name}}</h6>
+									@if($empresas->usuario->validation)
+										<img class="img-raised rounded-circle margin-izquierdo" style="height: 30px; width: 30px;" src="{{asset('imagenes/verificado.png')}}" data-toggle="tooltip" data-placement="right" title="Cuenta Verficada">
+									@endif
 									<br><br>
 									<small class="text-justify">{{$empresas->description}}</small>
 									<br><br>	

@@ -22,6 +22,9 @@
                 				</div>
 								<div class="col-12 col-sm-8 col-md-6 text-center">
 									<img class="img-raised rounded-circle tamaño-imagen-normal img-thumbnail" src="{{$empresa->url}}" style="background: #fff; margin-top: 15px;" alt="">
+									@if($empresa->usuario->validation)
+										<img class="img-raised rounded-circle" style="height: 45px; width: 45px; margin-left: -55px; margin-bottom: -130px;" src="{{asset('imagenes/verificado.png')}}" data-toggle="tooltip" data-placement="right" title="Cuenta Verficada">
+									@endif
 									<h2 class="link-1">{{$empresa->usuario->name}}</h2>	
 									<small class="link-1 text-justify">{{$empresa->description}}</small>
 									<h6 class="link-1 margin-arriba">{{$empresa->usuario->email}}</h6>

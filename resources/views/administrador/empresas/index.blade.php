@@ -32,7 +32,7 @@
 								<form action="{{url('/administrador/empresas/'.$empresa->usuario->id)}}" method="post">
 									{{csrf_field()}}
 									<a class="btn btn-warning btn-sm link-1 pull-right" href="{{url('/administrador/empresas/'.$empresa->usuario->id.'/edit')}}">Modificar Estado</a>
-									@if($empresa->documento and $empresa->usuario->validation == false)
+									@if($empresa->documento)
 										<a class="btn btn-warning btn-sm link-1" href="{{url('/administrador/empresas/'.$empresa->usuario->id.'/verificar')}}">Validar Cuenta</a>
 									@endif									
 								</form>	
