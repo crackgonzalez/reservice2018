@@ -69,10 +69,6 @@ class UserController extends Controller
         return redirect('empresa/trabajador');
     }
 
-    public function validar(){
-        return view('empresa.perfil.validar');
-    }
-
     //Envia a Formulario para Editar el Estado de la Cuenta por Empresa
     public function editarEstadoEmpresa(User $usuario){
         return view('administrador.empresas.edit')->with(compact('usuario'));

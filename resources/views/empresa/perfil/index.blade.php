@@ -35,7 +35,9 @@
 									@endisset
 									<form method="post" action="{{url('/empresa/perfil/'.$empresa->id)}}">
 										<a class="btn btn-warning btn-sm link-1" href="{{url('/empresa/perfil/'.$empresa->id.'/edit')}}">Administrar Perfil</a>
-										<a class="btn btn-warning btn-sm link-1 margin-izquierdo" href="{{url('/empresa/perfil/'.$empresa->id.'/validar')}}">Validar Cuenta</a>
+										@if(!$empresa->usuario->validation)
+											<a class="btn btn-warning btn-sm link-1 margin-izquierdo" href="{{url('/empresa/validar/create')}}">Validar Cuenta</a>											
+										@endif
 									</form>											
 								</div>										
 							</div>
@@ -68,7 +70,7 @@
 											<a href="#galeria" role="tab" data-toggle="tab">
 												<i class="material-icons">add_a_photo</i>Galeria
 											</a>
-										</li>
+										</li>										
 									</ul>
 									<div class="tab-content">
 										<div class="tab-pane text-center active" id="mapa">
@@ -145,7 +147,7 @@
 												</div>
 												@endforeach	
 											</div>
-				                        </div>												
+				                        </div>				                        					
 				                    </div>
 								</div>
 							</div>				

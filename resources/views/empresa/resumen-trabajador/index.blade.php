@@ -12,11 +12,11 @@
 	<div class="col-12 col-sm-12 col-md-12">		
 		<div class="card margin-arriba margin-abajo card-raised">
 			<div class="card-header text-center">
-				<h4 class="card-title">Cantidad de Trabajos Asignados por Trabajador</h4>                
+				<h4 class="card-title">Resumen de Trabajadores</h4>                
 			</div>
 			<div class="card-body">               
 				@if($trabajadores->isEmpty())
-                    <h3 class="text-center">No hay datos para mostrar la informacion</h3>
+                    <h4 class="card-text text-center">No hay reservas vigentes a las cuales asignar un trabajador</h4>
                 @else
                     
                     <div id="piechart" style="width: 100%; height: 100%;"></div>

@@ -9,6 +9,7 @@ use App\Commune;
 use App\Company;
 use App\Category;
 use App\Service;
+use File;
 
 class ClientController extends Controller
 {

@@ -82,9 +82,9 @@ Route::middleware(['auth','empresa'])->group(function () {
 	Route::post('/empresa/perfil/createGalery','GaleryController@storeGalery');
 	Route::delete('/empresa/perfil/{id}/{foto}/{fotos}','GaleryController@destroyGalery');
 	Route::get('/empresa/perfil/createGalery','GaleryController@createGalery');
-
-	Route::get('/empresa/perfil/{id}/validar','UserController@validar');
-
+	
+	Route::get('/empresa/validar/create','DocumentController@create');
+	Route::post('/empresa/validar/create','DocumentController@store');
 
 	//trabajadores
 	Route::get('/empresa/trabajador','EmployeController@index');

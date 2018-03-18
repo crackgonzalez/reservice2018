@@ -29,10 +29,9 @@
 					</div>
 					<div class="card-body">
 						<form action="" method="POST" enctype="multipart/form-data">
-						{{csrf_field()}}
-							<h1>***Aun no esta Terminado**</h1>
+						{{csrf_field()}}							
                             <div class="form-group">
-								<input type="file" class="form-control-file" name="image">
+								<input type="file" class="form-control-file" name="pdf">
 							</div>
 							<div class="form-group">
 								<a href="{{url('/empresa/perfil')}}" class="btn btn-secondary btn-sm pull-right">Cancelar</a>
