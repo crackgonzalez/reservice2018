@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Document;
+use App\Company;
 use RUT;
 use Exception;
 
@@ -100,7 +102,6 @@ class UserController extends Controller
         return view('empresa.trabajador.edit')->with(compact('usuario'));
     }
 
-
     public function actualizar(Request $requerimiento, User $usuario){  
         $mensajes =[
             'state.boolean' =>'Debe seleccionar una opcion', 
@@ -120,5 +121,29 @@ class UserController extends Controller
         }
 
         return redirect('empresa/trabajador');
+    }
+
+    public function verificar(User $usuario){
+        return view('administrador.empresas.verificar')->with(compact('usuario'));
+    }
+
+    public function mofificaVerificar(Request $requerimiento, User $usuario){
+        $mensajes =[
+            'validation.boolean' =>'Debe seleccionar una opcion', 
+        ];
+
+        $reglas = [
+            'validation' => 'boolean' 
+        ];
+
+        $this->validate($requerimiento,$reglas,$mensajes);
+
+        $modificada = $usuario->update($requerimiento->only('validation'));
+        if($modificada){
+            alert()->success('La cuenta fue verificada correctamente','Cuenta Verificada')->autoclose(3000);
+        }else{
+            alert()->error('La cuenta no pudo ser verificada','Ocurrio un Error')->autoclose(3000);
+        }
+        return redirect('administrador/empresas');
     }
 }

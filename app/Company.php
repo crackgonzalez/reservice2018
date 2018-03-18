@@ -40,6 +40,11 @@ class Company extends Model
         return $this->hasOne('App\Order');
     }
 
+    public function documento(){
+        return $this->hasOne('App\Document');
+    }
+
+
     //Retorna la Imagen
     public function getUrlAttribute(){
     	if(substr($this->image,0,4)==="http"){

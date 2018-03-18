@@ -60,6 +60,10 @@ Route::middleware(['auth','admin'])->group(function () {
 
 	//Resumen
 	Route::get('/administrador/resumen','ReservationController@resumenEmpresasAdmin');
+
+	//Validar
+	Route::get('/administrador/empresas/{usuario}/verificar','UserController@verificar');
+	Route::post('administrador/empresas/{usuario}/verificar','UserController@mofificaVerificar');
 });
 
 //Empresa

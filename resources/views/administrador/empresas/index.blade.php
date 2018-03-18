@@ -17,19 +17,25 @@
 						<img class="card-img-top" style="height:210px" src="{{$empresa->url}}">	
 						<div class="card-body">
 							@if($empresa->usuario->account_id === 3)
-							<h2>{{$empresa->usuario->name}}</h2>
-							@if($empresa->usuario->state === 1)
-							<h5>Cuenta Activa</h5>
-							<h6>Cuenta Creada el {{date('d-m-Y',strtotime($empresa->usuario->created_at))}}</h6>
-							@else
-							<h5>Cuenta Desactivada</h5>
-							<h6>Cuenta Creada el {{date('d-m-Y',strtotime($empresa->usuario->created_at))}}</h6>	
-							@endif
-							<br>
-							<form action="{{url('/administrador/empresas/'.$empresa->usuario->id)}}" method="post">
-								{{csrf_field()}}
-								<a class="tn btn-warning btn-sm link-1 pull-right" style="text-decoration:none;"  href="{{url('/administrador/empresas/'.$empresa->usuario->id.'/edit')}}">Modificar Cuenta</a>
-							</form>	
+								<h3 class="d-inline">{{$empresa->usuario->name}}</h3>
+								@if($empresa->usuario->validation)
+									<img class="img-raised rounded-circle" style="height: 25px; width: 25px;" src="{{asset('imagenes/verificado.png')}}" data-toggle="tooltip" data-placement="right" title="Cuenta Verficada">
+								@endif
+								@if($empresa->usuario->state === 1)
+									<h5>Cuenta Activa</h5>
+									<h6>Cuenta Creada el {{date('d-m-Y',strtotime($empresa->usuario->created_at))}}</h6>
+								@else
+									<h5>Cuenta Desactivada</h5>
+									<h6>Cuenta Creada el {{date('d-m-Y',strtotime($empresa->usuario->created_at))}}</h6>	
+								@endif								
+								<br>
+								<form action="{{url('/administrador/empresas/'.$empresa->usuario->id)}}" method="post">
+									{{csrf_field()}}
+									<a class="btn btn-warning btn-sm link-1 pull-right" href="{{url('/administrador/empresas/'.$empresa->usuario->id.'/edit')}}">Modificar Estado</a>
+									@if($empresa->documento and $empresa->usuario->validation == false)
+										<a class="btn btn-warning btn-sm link-1" href="{{url('/administrador/empresas/'.$empresa->usuario->id.'/verificar')}}">Validar Cuenta</a>
+									@endif									
+								</form>	
 							@endif				
 						</div>
 					</div>
