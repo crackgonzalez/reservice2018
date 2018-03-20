@@ -41,12 +41,8 @@
 					</div>
 				</div>
 			@empty
-			<div class="col-12 col-sm-12 col-md-12">
-				<div class="card margin-arriba margin-abajo card-raised">
-					<!-- Solucion Basica para cuando no se encuentren datos -->
-					<h3 class="text-center">No hay empresas registradas en la pagina</h3>
-				</div>
-			</div>
+				@section('mensaje','Empresas')
+				@include('includes.mensaje')	
 			@endforelse
 		</div>
 		{{$empresas->links('vendor.pagination.bootstrap-4')}}

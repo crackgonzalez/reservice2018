@@ -45,14 +45,8 @@
 					</div>
 				</div>
 			@empty
-				<div class="col-12 col-sm-12 col-md-12">
-					<div class="card text-center margin-arriba margin-abajo">
-						<div class="card-header"><h4>Reservas</h4></div>
-						<div class="card-body">							
-    						<h4 class="card-text">No hay reservas vigentes</h4>
-  						</div>
-					</div>
-				</div>
+				@section('mensaje','Reservas')
+				@include('includes.mensaje')				
 			@endforelse
 		</div>
 	</div>

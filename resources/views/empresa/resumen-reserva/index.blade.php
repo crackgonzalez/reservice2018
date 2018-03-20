@@ -8,17 +8,20 @@
 	<link rel="stylesheet" href="{{asset('css/footer-with-button-logo-black.css')}}">
 @endsection
 @section('contenido')
-<div class="row">
-	<div class="col-12 col-sm-12 col-md-12">		
-		<div class="card margin-arriba margin-abajo card-raised">
-			<div class="card-header text-center">
-				<h4 class="card-title">Cantidad de Reservas al Año</h4>
-			</div>
-			<div class="card-body">               
-				<div id="calendar_basic" style="width: 100%; height: 100%;"></div>
-			</div>
-		</div>
-	</div>
+<div class="row">	
+    @if($reservas->isEmpty())
+        @section('mensaje','Resumen de Reservas')
+        @include('includes.mensaje') 
+    @else
+        <div class="col-12 col-sm-12 col-md-12">
+            <div class="card text-center margin-arriba margin-abajo">
+                <div class="card-header"><h4>Resumen de Reservas</h4></div>
+                <div class="card-body">
+                    <div id="calendar_basic" style="width: 100%; height: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    @endif 
 </div>
 @endsection
 @section('scripts')
@@ -60,3 +63,4 @@
         }
     </script>
 @endsection
+

@@ -31,7 +31,7 @@
 							<form action="" method="POST" enctype="multipart/form-data">
 								{{csrf_field()}}
 																	
-								<object height="350px" width="100%"  data="{{asset('archivos/'.$usuario->empresa->documento->document)}}" type=""></object>
+								<object height="350px" width="100%"  data="{{asset('archivos/'.$usuario->empresa->documento->document)}}" type="application/pdf"></object>
 
 								<div class="form-group margin-arriba">
                                     <div class="input-group">

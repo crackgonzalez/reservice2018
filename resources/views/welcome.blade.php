@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('titulo','Reservice')
 @section('estilo-footer')
-    <link rel="stylesheet" href="{{asset('css/footer-with-button-logo-white.css')}}">
+    <link rel="stylesheet" href="{{asset('css/footer-with-button-logo-black.css')}}">
 @endsection
 @section('contenido')
     <div class="row">
@@ -14,21 +14,21 @@
 				</ol>
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<img class="d-block w-100" src="{{asset('imagenes/abogado.png')}}" alt="First slide" width="100%">
+						<img class="d-block w-100" src="{{asset('imagenes/abogado.png')}}" alt="First slide" style="height: 450px;">
 						<div class="carousel-caption d-none d-md-block">
           					<h3>¿Eres abogado?</h3>
           					<p>Crea una cuenta y publica tus servicios en Reservice</p>
           				</div>
 					</div>
 					<div class="carousel-item">
-						<img class="d-block w-100" src="{{asset('imagenes/mecanico.png')}}" alt="Second slide" width="100%">
+						<img class="d-block w-100" src="{{asset('imagenes/mecanico.png')}}" alt="Second slide" style="height: 450px;">
 						<div class="carousel-caption d-none d-md-block">
           					<h3>¿Eres mecanico y tienes un taller?</h3>
           					<p>Crea una cuenta y publica tus servicios en Reservice</p>
           				</div>
 					</div>
 					<div class="carousel-item">
-						<img class="d-block w-100" src="{{asset('imagenes/constructor.png')}}" alt="Third slide" width="100%">
+						<img class="d-block w-100" src="{{asset('imagenes/constructor.png')}}" alt="Third slide" style="height: 450px;">
 						<div class="carousel-caption d-none d-md-block">
           					<h3>¿Tienes una microempresa dedicada a la construccion?</h3>
           					<p>Crea una cuenta y publica tus servicios en Reservice</p>
