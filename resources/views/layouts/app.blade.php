@@ -54,7 +54,7 @@
 		@yield('contenido')
 		<div class="row">
 		    <div class="col-12">
-		        <footer id="myFooter">
+		        <footer id="myFooter" class="margin-arriba">
 		            <div class="container">
 		                <div class="row">
 		                    <div class="col-12 col-sm-3">
