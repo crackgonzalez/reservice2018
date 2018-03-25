@@ -45,14 +45,8 @@
 					</div>
 				</div>
 			@empty
-				<div class="col-12 col-sm-12 col-md-12">
-					<div class="card text-white bg-warning text-center margin-arriba margin-abajo">
-						<div class="card-header"><h4>Trabajos Asignados</h4></div>
-						<div class="card-body">							
-    						<h4 class="card-text">No hay reservas asignadas para el trabajador</h4>
-  						</div>
-					</div>
-				</div>
+				@section('mensaje','Trabajados Asignados')
+				@include('includes.mensaje')
 			@endforelse
 		</div>
 	</div>
