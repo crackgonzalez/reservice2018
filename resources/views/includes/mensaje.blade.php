@@ -2,7 +2,7 @@
 	<div class="card text-center margin-arriba margin-abajo">
 		<div class="card-header"><h4>@yield('mensaje')</h4></div>
 		<div class="card-body">
-    		<h4 class="card-text d-inline">No se encontraron datos para mostrar la informacion</h4>
+    		<h4 class="card-text d-inline" style="color: #5b5b5f">No se encontraron datos para mostrar la informacion</h4>
 			<img src="{{asset('imagenes/noencontrado.png')}}" height="3%" width="3%" alt="">				
   		</div>
 	</div>
