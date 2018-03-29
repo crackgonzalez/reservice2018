@@ -109,4 +109,5 @@ class EmployeController extends Controller
         return redirect('empresa/trabajador');
         
     }
+    
 }

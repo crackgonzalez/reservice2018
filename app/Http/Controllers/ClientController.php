@@ -10,6 +10,7 @@ use App\Company;
 use App\Category;
 use App\Service;
 use File;
+use Auth;
 
 class ClientController extends Controller
 {
@@ -101,5 +102,10 @@ class ClientController extends Controller
     public function show(Company $empresa){
         $compania = Company::find($empresa->id);
         return view('cliente.solicitud.show')->with(compact('compania'));
+    }
+
+    public function calificaciones(){
+        $clientes = Client::where('user_id','=',Auth::user()->id)->get();
+        return view('cliente.calificar.index')->with(compact('clientes'));
     }
 }

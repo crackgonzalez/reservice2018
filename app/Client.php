@@ -30,7 +30,9 @@ class Client extends Model
     }
 
     public function trabajadores(){
-        return $this->belongsToMany('App\Employe')->withTimestamps();
+        return $this->belongsToMany('App\Employe')
+        ->withPivot('score')
+        ->withTimestamps();
     }
        
 }

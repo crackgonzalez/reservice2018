@@ -22,7 +22,9 @@ class Employe extends Model
     }
 
     public function clientes(){
-        return $this->belongsToMany('App\Client')->withTimestamps();
+        return $this->belongsToMany('App\Client')
+        ->withPivot('score')
+        ->withTimestamps();
     }
 
     //Retorna la Imagen

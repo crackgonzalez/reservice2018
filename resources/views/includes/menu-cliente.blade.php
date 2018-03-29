@@ -4,5 +4,6 @@
 		<a class="nav-item nav-link nav-pills-estilo" href="{{url('/cliente/buscar')}}">Servicios</a>
 		<a class="nav-item nav-link nav-pills-estilo" href="{{url('/cliente/solicitud')}}">Solicitudes</a>
 		<a class="nav-item nav-link nav-pills-estilo" href="{{url('/cliente/reserva')}}">Reservas</a>
+		<a class="nav-item nav-link nav-pills-estilo" href="{{url('/cliente/calificar')}}">Calificaciones</a>
 	</div>
 </div>

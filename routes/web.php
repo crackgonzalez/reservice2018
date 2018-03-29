@@ -138,6 +138,9 @@ Route::middleware(['auth','cliente'])->group(function () {
 
 	//Reserva
 	Route::get('/cliente/reserva','ReservationController@inicio');
+
+	//Calificar
+	Route::get('/cliente/calificar','ClientController@calificaciones');
 	
 });
 
