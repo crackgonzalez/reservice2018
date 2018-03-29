@@ -28,5 +28,9 @@ class Client extends Model
     	}
     	return '/imagenes/perfil/'.$this->image;
     }
+
+    public function trabajadores(){
+        return $this->belongsToMany('App\Employe')->withTimestamps();
+    }
        
 }

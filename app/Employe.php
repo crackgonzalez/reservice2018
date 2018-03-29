@@ -21,6 +21,10 @@ class Employe extends Model
         return $this->hasOne('App\Reservation');
     }
 
+    public function clientes(){
+        return $this->belongsToMany('App\Client')->withTimestamps();
+    }
+
     //Retorna la Imagen
     public function getUrlAttribute(){
     	if(substr($this->image,0,4)==="http"){
