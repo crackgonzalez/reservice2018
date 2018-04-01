@@ -18,12 +18,17 @@
 						<div class="text-center">
 							<img src="{{$trabajador->url}}" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo img-thumbnail">
 							<h5>{{$trabajador->usuario->name}}</h5>
-							<h6>{{$trabajador->reserva->orden->servicio->service}} {{$trabajador->reserva->orden->date}}</h6>
+							<h6>{{$trabajador->empresa->usuario->name}}</h6>
+							@foreach($reservas as $reserva)
+							@if($reserva->id == $trabajador->pivot->reservation_id)
+								<h6>{{$reserva->orden->servicio->service}} - {{$reserva->orden->date}}</h6>
+							@endif
+							@endforeach				
 							<div data-toggle="tooltip" data-placement="bottom" title="Nota {{$trabajador->pivot->score}}">			
 							@for ($i = 0; $i < $trabajador->pivot->score; $i++)
     							<i class="material-icons">grade</i>
 							@endfor
-						</div>
+							</div>
 						</div>
 					</div>
 				@empty

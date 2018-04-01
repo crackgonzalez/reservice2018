@@ -36,7 +36,7 @@
 							</div>							
 							<div class="form-group">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="material-icons">terrain</i></span>
+									<span class="input-group-addon"><i class="material-icons">grade</i></span>
 									<select name="score" class="form-control">
 										<option value="">Asigne una Calificacion</option>
 										<option value="1">1</option>	
@@ -50,7 +50,7 @@
                             
 							<div class="form-group">
 								<a href="{{url('/cliente/reserva')}}" class="btn btn-secondary btn-sm pull-right">Cancelar</a>
-								<button type="submit" class="btn btn-warning btn-sm pull-right margin-derecho link-1">Actualizar</button>
+								<button type="submit" class="btn btn-warning btn-sm pull-right margin-derecho link-1">Calificar</button>
 							</div>
 						</form>
 					</div>

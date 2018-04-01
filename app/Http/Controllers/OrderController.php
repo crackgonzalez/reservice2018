@@ -41,7 +41,7 @@ class OrderController extends Controller
     	$mensajes =[
     		'service_id.exists' =>'Debe seleccionar un servicio',
     		'date.required' => 'El campo fecha es obligatorio',
-    		'date.after_or_equal' => 'La fecha debe ser superior o igual a mañana',
+    		'date.after_or_equal' => 'La fecha debe ser posterior a hoy',
     		'commune_id.exists' =>'Debe seleccionar una comuna',
     		'description.required' => 'El campo descripcion es obligatorio',
     		'description.min' =>'El campo descripcion debe tener al menos 10 caracteres',
@@ -86,7 +86,7 @@ class OrderController extends Controller
                 alert()->success('La solicitud se envio correctamente','Solicitud Enviada')->autoclose(3000);
             }	    	
 	    }catch(Exception $e){
-	    	alert()->warning('Ya ha solicitado este servicio','Advetencia')->autoclose(3000);
+	    	alert()->warning('Ya ha solicitado el servicio con fecha '.$requerimiento->input('date').'','Advetencia')->autoclose(3000);
 	    }    	
 	    return redirect('cliente/buscar');
     }
