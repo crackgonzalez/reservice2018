@@ -38,6 +38,7 @@
 								<img class="img-raised rounded-circle" style="height: 35px; width: 35px;" src="{{$reserva->trabajador->url}}">
 								<h6 class="d-inline">{{$reserva->trabajador->usuario->name}}</h6>
 								<a class="pull-right" target="_blank" href="https://api.whatsapp.com/send?phone=56{{$reserva->trabajador->phone}}"><img src="https://png.icons8.com/color/30/000000/whatsapp.png"><small>Whatsapp</small></a>
+								<h6 class="margin-arriba"><a href="{{url('/cliente/calificar/'.$reserva->id.'/calificar')}}">Calificar al Trabajador <i class="material-icons">done_all</i></a></h6>
 							@else
 								<h5 class="margin-arriba">No hay trabajador asignado</h5>
 							@endif

@@ -9,8 +9,11 @@ use App\Commune;
 use App\Company;
 use App\Category;
 use App\Service;
+use App\Employe;
+use App\Reservation;
 use File;
 use Auth;
+use Exception;
 
 class ClientController extends Controller
 {
@@ -108,4 +111,51 @@ class ClientController extends Controller
         $clientes = Client::where('user_id','=',Auth::user()->id)->get();
         return view('cliente.calificar.index')->with(compact('clientes'));
     }
+
+    public function calificar($id){
+        $reserva = Reservation::find($id);
+        return view('cliente.calificar.calificar')->with(compact('reserva'));
+    }
+
+    public function guardarCalificacion($id,Request $request){
+        try{
+            $nota = $request->input('score');
+            $cliente = Auth::user()->cliente;
+            $reserva = Reservation::find($id);
+            $trabajador = Employe::find($reserva->employe_id);
+            $exito = $cliente->trabajadores()->attach($trabajador,array('reservation_id'=>$id,'score'=>$nota));
+            if($exito){
+                alert()->success('El trabajador fue calificado de forma exitosa','Trabajador Calificado')->autoclose(3000);
+            }
+        }catch(Exception $e){
+            alert()->error('El trabajador ya fue calificado','Ocurrio un Error')->autoclose(3000);
+        }
+        return redirect('cliente/reserva');
+    }
+
+
+    // public function storeService(Request $requerimiento){
+    //     $mensajes =[
+    //         'category_id.exists' =>'Debe seleccionar una Categoria',
+    //         'service_id.exists' =>'Debe seleccionar un Servicio',
+    //     ];
+
+    //     $reglas = [
+    //         'category_id' => 'exists:categories,id',
+    //         'service_id' => 'exists:services,id' 
+    //     ];
+
+    //     $this->validate($requerimiento,$reglas,$mensajes);
+    //     try{
+    //         $empresa = Company::find($requerimiento->input('company'));
+    //         $servicio = $requerimiento->input('service_id');
+    //         $exito = $empresa->servicios()->attach($servicio);
+    //         if(!$exito){
+    //             alert()->success('El servicio fue ingresado correctamente','Servicio Agregado')->autoclose(3000);
+    //         }
+    //     } catch (Exception $e) {
+    //             alert()->warning('El servicio ya se encuentra agregado','Advetencia')->autoclose(3000);
+    //         }
+    //     return redirect('empresa/perfil');
+    // }
 }

@@ -15,12 +15,15 @@
 			@foreach($clientes as $cliente)				
 				@forelse($cliente->trabajadores as $trabajador)
 					<div class="col-12 col-sm-3 col-md-3">
-						<div class="card margin-arriba margin-abajo card-raised">
-							<img class="card-img-top" style="height:200px" src="{{$trabajador->url}}">
-							<div class="card-body">
-								<h3>Datos de prueba</h3>
-								<h3>Nota {{$trabajador->pivot->score}}</h3>
-							</div>
+						<div class="text-center">
+							<img src="{{$trabajador->url}}" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo img-thumbnail">
+							<h5>{{$trabajador->usuario->name}}</h5>
+							<h6>{{$trabajador->reserva->orden->servicio->service}} {{$trabajador->reserva->orden->date}}</h6>
+							<div data-toggle="tooltip" data-placement="bottom" title="Nota {{$trabajador->pivot->score}}">			
+							@for ($i = 0; $i < $trabajador->pivot->score; $i++)
+    							<i class="material-icons">grade</i>
+							@endfor
+						</div>
 						</div>
 					</div>
 				@empty

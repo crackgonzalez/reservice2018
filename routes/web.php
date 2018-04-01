@@ -141,6 +141,9 @@ Route::middleware(['auth','cliente'])->group(function () {
 
 	//Calificar
 	Route::get('/cliente/calificar','ClientController@calificaciones');
+	Route::get('/cliente/calificar/{id}/calificar','ClientController@calificar');
+	Route::post('cliente/calificar/{id}/calificar','ClientController@guardarCalificacion');
+
 	
 });
 
