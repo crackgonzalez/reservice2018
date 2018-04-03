@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Employe;
 use App\Company;
+use App\Client;
 use File;
 use Exception;
+use Auth;
 use Alert;
+use DB;
 
 class EmployeController extends Controller
 {
@@ -17,8 +20,13 @@ class EmployeController extends Controller
     }
 
     public function inicio(){
-    	$trabajadores = Employe::all();
-    	return view('trabajador.perfil.index')->with(compact('trabajadores'));
+        $trabajador = Auth::user()->trabajador->id;
+        $trabajadores = Employe::find($trabajador)->get();
+        $contador = DB::table('client_employe')->join('employes','employes.id','=','client_employe.employe_id')
+                    ->where('client_employe.employe_id','=',$trabajador)
+                    ->avg('client_employe.score');
+
+    	return view('trabajador.perfil.index')->with(compact('trabajadores','contador'));
     }
 
     public function edit(Employe $trabajador){

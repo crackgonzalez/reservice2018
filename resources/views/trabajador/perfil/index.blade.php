@@ -13,7 +13,6 @@
 		<div class="col-12 col-sm-12 col-md-12">
 			<div class="card margin-arriba margin-abajo card-raised">
 				@foreach($trabajadores as $trabajador)
-				@if($trabajador->user_id == Auth::user()->id)
 				<div class="wrapper">
 					<div class="header header-filter" style="background-image:url('../imagenes/valle.jpg'); border-radius: 4px 4px 0px 0px;">
 						<div class="container">
@@ -23,7 +22,11 @@
                 				<div class="col-12 col-sm-8 col-md-6 text-center">
                 					<img class="img-raised rounded-circle tamaño-imagen-normal img-thumbnail" src="{{$trabajador->url}}" style="background: #fff; margin-top: 15px;" alt="">
                 					<h2 class="link-1">{{$trabajador->usuario->name}}</h2>
-                					<h6 class="link-1 margin-arriba">{{$trabajador->usuario->rut}}</h6>
+									<div data-toggle="tooltip" data-placement="bottom" title="Nota {{round($contador,0)}}">	
+									@for ($i = 0; $i < $contador; $i++)
+    									<i class="material-icons link-1">grade</i>
+									@endfor
+									</div>
                 					<h6 class="link-1">{{$trabajador->usuario->email}}</h>
                 					<h6 class="link-1">{{$trabajador->phone}}</h6>
                 					<img class="img-raised rounded-circle" style="height: 35px; width: 35px;" src="{{$trabajador->empresa->url}}">
@@ -37,7 +40,6 @@
 						</div>
 					</div>
 				</div>				
-				@endif
 				@endforeach	
 			</div>
 		</div>
