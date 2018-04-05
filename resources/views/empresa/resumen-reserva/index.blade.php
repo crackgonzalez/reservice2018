@@ -45,19 +45,9 @@
             var dataTable = new google.visualization.DataTable();
             dataTable.addColumn({ type: 'date', id: 'Date' });
             dataTable.addColumn({ type: 'number', id: 'Won/Loss' });
-            var totalAnual = 0;
-            var enero = 0;
-            var febrero = 0;
-            var marzo = 0;
-            var abril = 0;
-            var mayo = 0;
-            var junio = 0;
-            var julio = 0;
-            var agosto = 0;
-            var septiembre = 0;
-            var octubre = 0;
-            var noviembre = 0;
-            var diciembre = 0; 
+
+            var enero = 0, febrero = 0 , marzo = 0, abril = 0, mayo = 0, junio = 0, julio = 0, agosto = 0, septiembre = 0, octubre = 0, noviembre = 0, diciembre = 0;
+        
             @foreach($reservas as $reserva)
                 @if($reserva->company_id == Auth::user()->empresa->id)
                     var fecha = '{{$reserva->date}}';
@@ -65,30 +55,34 @@
                     var mes = fecha.substring(5,7);
                     var dia = fecha.substring(8,10);
 
-                    if(mes == 1){
-                        enero++;
-                    }else if(mes == 2){
-                        febrero++;
-                    }else if(mes == 3){
-                        marzo++;
-                    }else if(mes == 4){
-                        abril++;
-                    }else if(mes == 5){
-                        mayo++;
-                    }else if(mes == 6){
-                        junio++;
-                    }else if(mes == 7){
-                        julio++;
-                    }else if(mes == 8){
-                        agosto++;
-                    }else if(mes == 9){
-                        septiembre++;
-                    }else if(mes == 10){
-                        octubre++;
-                    }else if(mes == 11){
-                        noviembre++;
-                    }else if(mes == 12){
-                        diciembre++;
+                    for (var i = 1; i <= 12; i++) {
+                        if(mes == i){
+                            if(i == 1){
+                                enero = {{$reserva->reserva}}
+                            }else if(i == 2){
+                                febrero = {{$reserva->reserva}}
+                            }else if(i == 3){
+                                marzo = {{$reserva->reserva}}
+                            }else if(i == 4){
+                                abril = {{$reserva->reserva}}
+                            }else if(i == 5){
+                                mayo = {{$reserva->reserva}}
+                            }else if(i == 6){
+                                junio = {{$reserva->reserva}}
+                            }else if(i == 7){
+                                julio = {{$reserva->reserva}}
+                            }else if(i == 8){
+                                agosto = {{$reserva->reserva}}
+                            }else if(i == 9){
+                                septiembre = {{$reserva->reserva}}
+                            }else if(i == 10){
+                                octubre = {{$reserva->reserva}}
+                            }else if(i == 11){
+                                noviembre = {{$reserva->reserva}}
+                            }else if(i == 12){
+                                diciembre = {{$reserva->reserva}}
+                            }
+                        }
                     }
 
                     dataTable.addRows([
