@@ -58,29 +58,29 @@
                     for (var i = 1; i <= 12; i++) {
                         if(mes == i){
                             if(i == 1){
-                                enero = {{$reserva->reserva}}
+                                enero += {{$reserva->reserva}}
                             }else if(i == 2){
-                                febrero = {{$reserva->reserva}}
+                                febrero += {{$reserva->reserva}}
                             }else if(i == 3){
-                                marzo = {{$reserva->reserva}}
+                                marzo += {{$reserva->reserva}}
                             }else if(i == 4){
-                                abril = {{$reserva->reserva}}
+                                abril += {{$reserva->reserva}}
                             }else if(i == 5){
-                                mayo = {{$reserva->reserva}}
+                                mayo += {{$reserva->reserva}}
                             }else if(i == 6){
-                                junio = {{$reserva->reserva}}
+                                junio += {{$reserva->reserva}}
                             }else if(i == 7){
-                                julio = {{$reserva->reserva}}
+                                julio += {{$reserva->reserva}}
                             }else if(i == 8){
-                                agosto = {{$reserva->reserva}}
+                                agosto += {{$reserva->reserva}}
                             }else if(i == 9){
-                                septiembre = {{$reserva->reserva}}
+                                septiembre += {{$reserva->reserva}}
                             }else if(i == 10){
-                                octubre = {{$reserva->reserva}}
+                                octubre += {{$reserva->reserva}}
                             }else if(i == 11){
-                                noviembre = {{$reserva->reserva}}
+                                noviembre += {{$reserva->reserva}}
                             }else if(i == 12){
-                                diciembre = {{$reserva->reserva}}
+                                diciembre += {{$reserva->reserva}}
                             }
                         }
                     }
