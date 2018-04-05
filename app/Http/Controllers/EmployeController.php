@@ -29,6 +29,10 @@ class EmployeController extends Controller
     	return view('trabajador.perfil.index')->with(compact('trabajador','contador'));
     }
 
+    public function resumenCalificacion(){
+        return view ('empresa.resumen-calificacion.index');
+    }
+
     public function edit(Employe $trabajador){
         $trabajador = Employe::find($trabajador->id);
         return view('trabajador.perfil.edit')->with(compact('trabajador'));
