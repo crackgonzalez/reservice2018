@@ -13,6 +13,7 @@
 		<div class="col-12 col-sm-12 col-md-12">
 			<div class="card margin-arriba margin-abajo card-raised">
 				@foreach($trabajadores as $trabajador)
+				@if($trabajador->id == Auth::user()->trabajador->id)
 				<div class="wrapper">
 					<div class="header header-filter" style="background-image:url('../imagenes/valle.jpg'); border-radius: 4px 4px 0px 0px;">
 						<div class="container">
@@ -39,7 +40,8 @@
 							</div>
 						</div>
 					</div>
-				</div>				
+				</div>	
+				@endif			
 				@endforeach	
 			</div>
 		</div>
