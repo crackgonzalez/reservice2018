@@ -20,13 +20,13 @@ class EmployeController extends Controller
     }
 
     public function inicio(){
-        $trabajador = Auth::user()->trabajador;
-        $trabajadores = Employe::find($trabajador);
+        $id = Auth::user()->trabajador->id;
+        $trabajador = Employe::where('id','=',$id)->get();
         $contador = DB::table('client_employe')->join('employes','employes.id','=','client_employe.employe_id')
-                    ->where('client_employe.employe_id','=',$trabajador->id)
+                    ->where('client_employe.employe_id','=',$id)
                     ->avg('client_employe.score');
 
-    	return view('trabajador.perfil.index')->with(compact('trabajadores','contador'));
+    	return view('trabajador.perfil.index')->with(compact('trabajador','contador'));
     }
 
     public function edit(Employe $trabajador){
