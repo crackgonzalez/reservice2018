@@ -24,8 +24,8 @@ class CreateOrdersTable extends Migration
             $table->string('image')->nullable();
             $table->string('description',200);
             $table->string('answer',200)->nullable();
-            $table->boolean('state_company')->default(false);
-            $table->boolean('state_client')->default(false);
+            $table->integer('state_company')->default(0);
+            $table->integer('state_client')->default(0);
             $table->unique(['client_id','company_id','service_id','commune_id','date']);
             $table->foreign('client_id')->references('id')->on('clients')->onUpdate('cascade');
             $table->foreign('company_id')->references('id')->on('companies')->onUpdate('cascade');
