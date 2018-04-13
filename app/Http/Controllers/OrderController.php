@@ -15,7 +15,7 @@ class OrderController extends Controller
     public function index(){
         $cliente = Auth::user()->cliente->id;
         $ordenes = Order::where('client_id',$cliente)
-                        ->where('state_client',false)
+                        ->where('state_client',0)
                         ->where('date','>',today())
                         ->orderBy('date','asc')->get();        
         return view('cliente.solicitud.index')->with(compact('ordenes'));
@@ -25,7 +25,7 @@ class OrderController extends Controller
     public function inicio(){
         $empresa = Auth::user()->empresa->id;
         $ordenes = Order::where('company_id',$empresa)
-                        ->where('state_company',false)
+                        ->where('state_company',0)
                         ->where('date','>',today())
                         ->orderBy('date','desc')->get();
         return view('empresa.solicitud.index')->with(compact('ordenes'));
@@ -99,7 +99,7 @@ class OrderController extends Controller
     public function update(Request $requerimiento, $id){
         
         $mensajes =[  
-            'state_company.boolean' =>'Debe seleccionar una opcion',           
+            'state_company.integer' =>'Debe seleccionar una opcion',           
             'answer.required' => 'El campo descripcion es obligatorio',
             'answer.min' =>'El campo respuesta debe tener al menos 10 caracteres',
             'answer.max' =>'El campo respuesta debe tener como maximo 200 caracteres',
@@ -108,7 +108,7 @@ class OrderController extends Controller
 
         $reglas = [
             'answer' => 'required|min:10|max:200|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ!¡¿?.,])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ!¡¿?.,]*)*)+$/',
-            'state_company' => 'boolean' 
+            'state_company' => 'integer|between:1,2' ,
             
         ];
 
@@ -120,9 +120,9 @@ class OrderController extends Controller
 
         $exito = $orden->update();
         if($exito){
-            alert()->success('La solicitud se confirmo correctamente','Solicitud Confirmada')->autoclose(3000);
+            alert()->success('La solicitud se respondio correctamente','Se ha Respondido a la Solicitud')->autoclose(3000);
         }else{
-            alert()->error('La solicitud no se pudo confirmar','Ocurrio un Error')->autoclose(3000);
+            alert()->error('La solicitud no se pudo responder','Ocurrio un Error')->autoclose(3000);
         }
 
         return redirect('empresa/solicitud');
@@ -136,11 +136,11 @@ class OrderController extends Controller
     public function actualizar(Request $requerimiento, $id){
         
         $mensajes =[  
-            'state_client.boolean' =>'Debe seleccionar una opcion', 
+            'state_client.integer' =>'Debe seleccionar una opcion', 
         ];          
 
         $reglas = [
-            'state_client' => 'boolean',
+            'state_client' => 'integer|between:1,2',
             
         ];
 
@@ -151,11 +151,10 @@ class OrderController extends Controller
 
         $exito = $orden->update();
         if($exito){
-            alert()->success('La solicitud se confirmo correctamente','Solicitud Confirmada')->autoclose(3000);
+            alert()->success('La solicitud se respondio correctamente','Se ha Respondido a la Solicitud')->autoclose(3000);
         }else{
-            alert()->error('La solicitud no se pudo confirmar','Ocurrio un Error')->autoclose(3000);
+            alert()->error('La solicitud no se pudo responder','Ocurrio un Error')->autoclose(3000);
         }
-
         return redirect('cliente/solicitud');
     }
 }

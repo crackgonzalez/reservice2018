@@ -25,15 +25,12 @@
 								<img class="img-raised rounded-circle" style="height: 35px; width: 35px;" src="{{$orden->cliente->url}}">
 								<h6 class="d-inline">{{$orden->cliente->usuario->name}}</h6>
 								<h6 class="margin-arriba">Fecha {{$orden->date}} Horario {{$orden->tramo->section}}</h6>
-								<h6>{{$orden->comuna->commune}}</h6>										
-								@if($orden->state_client)
-									<h6>Confirmado por el Cliente</h6>									
-								@endif
+								<h6>{{$orden->comuna->commune}}</h6>			
 								<small class="text-justify margin-arriba">{{$orden->description}}</small>
 								<br>
 								<form action="{{url('/empresa/solicitud/'.$orden->id)}}" method="post">
 									{{csrf_field()}}
-									<a class="tn btn-warning btn-sm link-1 pull-right margin-arriba" style="text-decoration:none;"  href="{{url('/empresa/solicitud/'.$orden->id.'/edit')}}">Confirmar Solicitud</a>
+									<a class="tn btn-warning btn-sm link-1 pull-right margin-arriba" style="text-decoration:none;"  href="{{url('/empresa/solicitud/'.$orden->id.'/edit')}}">Responder Solicitud</a>
 								</form>
 							</div>
 						</div>

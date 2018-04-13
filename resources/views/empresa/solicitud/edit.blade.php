@@ -25,18 +25,18 @@
 			@endif
 				<div class="card margin-arriba margin-abajo card-raised">						
 					<div class="card-header text-center">
-						<h4 class="card-title">Confirmar la Solicitud de {{$orden->cliente->usuario->name}}</h4>
+						<h4 class="card-title">Responder la Solicitud de {{$orden->cliente->usuario->name}}</h4>
 					</div>
 					<div class="card-body">
 						<form action="{{url('/empresa/solicitud/'.$orden->id.'/edit')}}" method="POST" enctype="multipart/form-data">
-						{{csrf_field()}}
-							
+						{{csrf_field()}}							
 							<div class="form-group">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="material-icons">terrain</i></span>
 									<select name="state_company" class="form-control">
 										<option value=null>Seleccione una Opcion</option>
-										<option value=1>Confirmar la Solicitud</option>
+										<option value=1>Confirmar Solicitud</option>
+										<option value=2>Rechazar Solicitud</option>
                                 	</select>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                          
 							<div class="form-group">
 								<a href="{{url('/empresa/solicitud')}}" class="btn btn-secondary btn-sm pull-right">Cancelar</a>
-								<button type="submit" class="btn btn-warning btn-sm pull-right margin-derecho link-1">Confirmar</button>
+								<button type="submit" class="btn btn-warning btn-sm pull-right margin-derecho link-1">Responder</button>
 							</div>
 						</form>
 					</div>

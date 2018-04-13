@@ -24,19 +24,24 @@
 								<h5>{{$orden->servicio->service}}</h5>
 								<img class="img-raised rounded-circle" style="height: 35px; width: 35px;" src="{{$orden->empresa->url}}">
 								<h6 class="d-inline">{{$orden->empresa->usuario->name}}</h6>
-								<h6 class="margin-arriba">Fecha {{$orden->date}} - Horario {{$orden->tramo->section}}</h6>									
-								@if($orden->state_company)
-									<h6>Confirmado por la {{$orden->empresa->usuario->name}}</h6>
+								<h6 class="margin-arriba">Fecha {{$orden->date}} - Horario {{$orden->tramo->section}}</h6>		
+								@if($orden->state_company == 1)
+									<i class="material-icons" style="color: green;">check_circle</i>
+									<h6 class="d-inline">{{$orden->empresa->usuario->name}} confirmo la solicitud</h6>
+								@elseif($orden->state_company == 2)
+									<i class="material-icons" style="color: red;">cancel</i>
+									<h6 class="d-inline">{{$orden->empresa->usuario->name}} ha cancelo la solicitud</h6>
 								@else
-									<h6>Esperando Confirmacion</h6>								
-								@endif
+									<i class="material-icons" style="color: yellow;">pause_circle_filled</i>									
+									<h6 class="d-inline">La Confirmacion esta Pendiente</h6>
+									@endif
 								@if($orden->answer != null)
 									<small class="text-justify margin-arriba">{{$orden->answer}}</small>
 								@endif
-								@if($orden->state_company)
+								@if($orden->state_company == 1 || $orden->state_company == 2)
 									<form action="{{url('/cliente/solicitud/'.$orden->id)}}" method="post">
 										{{csrf_field()}}
-										<a class="tn btn-warning btn-sm link-1 pull-right margin-arriba" style="text-decoration:none;"  href="{{url('/cliente/solicitud/'.$orden->id.'/edit')}}">Confirmar Solicitud</a>
+										<a class="tn btn-warning btn-sm link-1 pull-right margin-arriba" style="text-decoration:none;"  href="{{url('/cliente/solicitud/'.$orden->id.'/edit')}}">Responder Solicitud</a>
 									</form>											
 								@endif																		
 							</div>

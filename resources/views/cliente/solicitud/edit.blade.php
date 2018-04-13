@@ -36,7 +36,12 @@
 									<span class="input-group-addon"><i class="material-icons">terrain</i></span>
 									<select name="state_client" class="form-control">
 										<option value=null>Seleccione una Opcion</option>
-										<option value=1>Confirmar la Solicitud</option>
+										@if($orden->state_company == 1)
+											<option value=1>Confirmar Solicitud</option>
+											<option value=2>Rechazar Solicitud</option>
+										@elseif($orden->state_company == 2)
+											<option value=2>Rechazar Solicitud</option>
+										@endif
                                 	</select>
                                 </div>
                             </div>

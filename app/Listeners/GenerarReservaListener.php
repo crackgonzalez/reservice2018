@@ -28,7 +28,7 @@ class GenerarReservaListener
      */
     public function handle(GenerarReservaEvent $event)
     {
-        if($event->order->state_company && $event->order->state_client){
+        if($event->order->state_company == 1 && $event->order->state_client == 1){
             $reserva = new Reservation();            
             $reserva->order_id = $event->order->id;
             $reserva->save();
