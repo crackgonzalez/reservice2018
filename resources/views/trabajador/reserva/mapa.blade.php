@@ -38,7 +38,7 @@
             computeTotalDistance(directionsDisplay.getDirections());
         });
 
-        displayRoute('{{$cliente->address}}, {{$cliente->comuna->commune}}','{{$empresa->address}}, {{$empresa->comuna->commune}}', directionsService,
+        displayRoute('{{$empresa->address}}, {{$empresa->comuna->commune}}','{{$cliente->address}}, {{$cliente->comuna->commune}}', directionsService,
             directionsDisplay);
     }
 
