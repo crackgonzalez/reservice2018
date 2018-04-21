@@ -107,44 +107,30 @@
             chart.draw(dataTable, options);
         
             document.getElementById('enero').innerHTML = enero;
-            document.getElementById('totalEnero').innerHTML ='$'+enero*250;
 
             document.getElementById('febrero').innerHTML = febrero;
-            document.getElementById('totalFebrero').innerHTML = '$'+febrero*250;
 
             document.getElementById('marzo').innerHTML = marzo;
-            document.getElementById('totalMarzo').innerHTML = '$'+marzo*250;
 
             document.getElementById('abril').innerHTML = abril;
-            document.getElementById('totalAbril').innerHTML = '$'+abril*250;
 
             document.getElementById('mayo').innerHTML = mayo;
-            document.getElementById('totalMayo').innerHTML = '$'+mayo*250;
 
             document.getElementById('junio').innerHTML = junio;
-            document.getElementById('totalJunio').innerHTML = '$'+junio*250;
 
             document.getElementById('julio').innerHTML = julio;
-            document.getElementById('totalJulio').innerHTML = '$'+julio*250;
 
             document.getElementById('agosto').innerHTML = agosto;
-            document.getElementById('totalAgosto').innerHTML = '$'+agosto*250;
 
             document.getElementById('septiembre').innerHTML = septiembre;
-            document.getElementById('totalSeptiembre').innerHTML = '$'+septiembre*250;
 
             document.getElementById('octubre').innerHTML = octubre;
-            document.getElementById('totalOctubre').innerHTML = '$'+octubre*250;
 
             document.getElementById('noviembre').innerHTML = noviembre;
-            document.getElementById('totalNoviembre').innerHTML = '$'+noviembre*250;
 
             document.getElementById('diciembre').innerHTML = diciembre;
-            document.getElementById('totalDiciembre').innerHTML = '$'+diciembre*250;
 
             document.getElementById('annio').innerHTML = enero+febrero+marzo+abril+mayo+junio+julio+agosto+septiembre+octubre+noviembre+diciembre;
-
-            document.getElementById('totalAnnio').innerHTML ='$'+(enero+febrero+marzo+abril+mayo+junio+julio+agosto+septiembre+octubre+noviembre+diciembre)*250;
         }
     </script>
 @endsection
