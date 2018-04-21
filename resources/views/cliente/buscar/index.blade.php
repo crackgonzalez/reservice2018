@@ -55,7 +55,8 @@
 				@foreach($servicios as $servicio)
 					@foreach($servicio->empresas as $empresas)
 						@if($empresas->usuario->state)
-						<div class="col-12 col-sm-3 col-md-3">
+							@if($empresas->credit > 0)
+							<div class="col-12 col-sm-3 col-md-3">
 							<div class="card margin-arriba margin-abajo card-raised">
 								<img class="card-img-top" style="height:210px" src="{{$servicio->url}}">			
 								<div class="card-body">							
@@ -74,7 +75,8 @@
 									</form>
 								</div>
 							</div>
-						</div>
+							</div>
+							@endif
 						@endif
 					@endforeach	
 				@endforeach				

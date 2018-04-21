@@ -21,8 +21,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\GenerarReservaEvent' => [
             'App\Listeners\GenerarReservaListener',
-        ],      
-     
+        ],
+        'App\Events\ModificarCreditEvent' => [
+            'App\Listeners\ModificarCreditListener',
+        ],
     ];
 
     /**

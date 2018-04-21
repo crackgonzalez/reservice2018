@@ -13,4 +13,8 @@ class Reservation extends Model
     public function trabajador(){
         return $this->belongsTo('App\Employe','employe_id');
     }
+
+    protected $dispatchesEvents = [
+        'created' => Events\ModificarCreditEvent::class,    
+    ];
 }

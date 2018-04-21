@@ -39,7 +39,7 @@ class Order extends Model
 
     //Eventos Para el Order
     protected $dispatchesEvents = [
-        'updated' => Events\GenerarReservaEvent::class,      
+        'updated' => Events\GenerarReservaEvent::class,    
     ];
 
 
