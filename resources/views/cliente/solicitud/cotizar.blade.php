@@ -55,9 +55,9 @@
 										<span class="input-group-addon"><i class="material-icons">terrain</i></span>
 										<select name="commune_id" class="form-control">
 											<option value="">Seleccione Comuna</option>
-											@foreach($compania->comunas as $comunas)
-											<option value="{{$comunas->id}}"
-											>{{$comunas->commune}}</option>
+											@foreach($comunas as $comuna)
+											<option value="{{$comuna->id}}"
+											>{{$comuna->commune}}</option>
 											@endforeach
                                 		</select>
                                		</div>

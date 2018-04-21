@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Company;
 use App\Order;
+use App\Commune;
 use App\Section;
 use Exception;
 use Auth;
@@ -33,8 +34,9 @@ class OrderController extends Controller
 
     public function create(Company $empresa){
         $compania = Company::find($empresa->id);
+        $comunas = Commune::all();
         $tramos = Section::all();
-        return view('cliente.solicitud.cotizar')->with(compact('compania','tramos'));
+        return view('cliente.solicitud.cotizar')->with(compact('compania','tramos','comunas'));
     }
 
     public function store(Request $requerimiento){
