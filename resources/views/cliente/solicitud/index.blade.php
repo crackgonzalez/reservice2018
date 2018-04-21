@@ -16,27 +16,29 @@
 					<div class="col-12 col-sm-3 col-md-3">
 						<div class="card margin-arriba margin-abajo card-raised">
 							@if($orden->image == null)
-								<img class="card-img-top" style="height:200px" src="{{$orden->servicio->url}}">
+								<img class="card-img-top" style="height:180px" src="{{$orden->servicio->url}}">
 							@else
-								<img class="card-img-top" style="height:200px" src="{{$orden->url}}">	
+								<img class="card-img-top" style="height:180px" src="{{$orden->url}}">	
 							@endif
 							<div class="card-body">
-								<h5>{{$orden->servicio->service}}</h5>
-								<img class="img-raised rounded-circle" style="height: 35px; width: 35px;" src="{{$orden->empresa->url}}">
-								<h6 class="d-inline">{{$orden->empresa->usuario->name}}</h6>
-								<h6 class="margin-arriba">Fecha {{$orden->date}} - Horario {{$orden->tramo->section}}</h6>		
-								@if($orden->state_company == 1)
-									<i class="material-icons" style="color: green;">check_circle</i>
-									<h6 class="d-inline">{{$orden->empresa->usuario->name}} confirmo la solicitud</h6>
-								@elseif($orden->state_company == 2)
-									<i class="material-icons" style="color: red;">cancel</i>
-									<h6 class="d-inline">{{$orden->empresa->usuario->name}} ha cancelo la solicitud</h6>
+								<h5><i class="fas fa-suitcase"></i> {{$orden->servicio->service}} - <i class="far fa-building"></i> {{$orden->empresa->usuario->name}}</h5>
+								<img class="img-raised rounded-circle img-thumbnail" style="height: 60px; width: 60px; margin-top: -200px; margin-left: 215px;" src="{{$orden->empresa->url}}">
+								<h6><i class="far fa-calendar-alt"></i> {{$orden->date}} - <i class="far fa-clock"></i> {{$orden->tramo->section}}</h6>
+								<h6><i class="fas fa-map-marker-alt"></i> {{$orden->comuna->commune}}</h6>
+								@if(!$orden->cliente->address == null)
+									<h6><i class="fab fa-slack-hash"></i> {{$orden->cliente->address}}</h6>
 								@else
-									<i class="material-icons" style="color: yellow;">pause_circle_filled</i>									
-									<h6 class="d-inline">La Confirmacion esta Pendiente</h6>
+									<h6><i class="fab fa-slack-hash"></i> Sin Direccion</h6>
+								@endif	
+								@if($orden->state_company == 1)									
+									<h6><i class="far fa-thumbs-up"></i> {{$orden->empresa->usuario->name}} confirmo la solicitud</h6>
+								@elseif($orden->state_company == 2)
+									<h6><i class="far fa-thumbs-down"></i> {{$orden->empresa->usuario->name}} ha cancelo la solicitud</h6>
+								@else									
+									<h6><i class="far fa-pause-circle"></i> Confirmacion Pendiente</h6>
 									@endif
 								@if($orden->answer != null)
-									<small class="text-justify margin-arriba">{{$orden->answer}}</small>
+									<h6><i class="far fa-comments"></i> {{$orden->answer}}</h6>
 								@endif
 								@if($orden->state_company == 1 || $orden->state_company == 2)
 									<form action="{{url('/cliente/solicitud/'.$orden->id)}}" method="post">
