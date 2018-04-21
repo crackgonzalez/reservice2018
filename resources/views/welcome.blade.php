@@ -92,24 +92,26 @@
 				@foreach($servicios as $servicio)
 					@foreach($servicio->empresas as $empresas)
 						@if($empresas->usuario->state)
-						<div class="col-12 col-sm-3 col-md-3">
-							<div class="card margin-arriba margin-abajo card-raised">
-								<img class="card-img-top" style="height:210px" src="{{$servicio->url}}">			
-								<div class="card-body">							
-									<h5>{{$servicio->service}}</h5>
-									<img class="img-raised rounded-circle" style="height: 35px; width: 35px;" src="{{$empresas->url}}">
-									<h6 class="d-inline">{{$empresas->usuario->name}}</h6>
-									@if($empresas->usuario->validation)
-										<img class="img-raised rounded-circle margin-izquierdo" style="height: 30px; width: 30px;" src="{{asset('imagenes/verificado.png')}}" data-toggle="tooltip" data-placement="right" title="Cuenta Verficada">
-									@endif									
-									<br><br>
-									<small class="text-justify">{{$empresas->description}}</small>
-									<br><br>	
-									<a class="btn btn-warning btn-sm pull-right link-1" href="{{ route('register') }}">Registrarse</a>
-									<a class="btn btn-warning btn-sm pull-right link-1 margin-derecho" href="{{ route('login') }}">Iniciar Sesion</a>
+							@if($empresas->credit > 0)
+							<div class="col-12 col-sm-3 col-md-3">
+								<div class="card margin-arriba margin-abajo card-raised">
+									<img class="card-img-top" style="height:210px" src="{{$servicio->url}}">			
+									<div class="card-body">							
+										<h5>{{$servicio->service}}</h5>
+										<img class="img-raised rounded-circle" style="height: 35px; width: 35px;" src="{{$empresas->url}}">
+										<h6 class="d-inline">{{$empresas->usuario->name}}</h6>
+										@if($empresas->usuario->validation)
+											<img class="img-raised rounded-circle margin-izquierdo" style="height: 30px; width: 30px;" src="{{asset('imagenes/verificado.png')}}" data-toggle="tooltip" data-placement="right" title="Cuenta Verficada">
+										@endif									
+										<br><br>
+										<small class="text-justify">{{$empresas->description}}</small>
+										<br><br>	
+										<a class="btn btn-warning btn-sm pull-right link-1" href="{{ route('register') }}">Registrarse</a>
+										<a class="btn btn-warning btn-sm pull-right link-1 margin-derecho" href="{{ route('login') }}">Iniciar Sesion</a>
+									</div>
 								</div>
 							</div>
-						</div>
+							@endif
 						@endif					
 					@endforeach
 				@endforeach				
