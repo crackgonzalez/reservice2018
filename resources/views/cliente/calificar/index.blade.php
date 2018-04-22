@@ -24,11 +24,9 @@
 								<h6>{{$reserva->orden->servicio->service}} - {{$reserva->orden->date}}</h6>
 							@endif
 							@endforeach				
-							<div data-toggle="tooltip" data-placement="bottom" title="Nota {{$trabajador->pivot->score}}">			
 							@for ($i = 0; $i < $trabajador->pivot->score; $i++)
-    							<i class="material-icons">grade</i>
+    							<i class="far fa-star"></i>
 							@endfor
-							</div>
 						</div>
 					</div>
 				@empty

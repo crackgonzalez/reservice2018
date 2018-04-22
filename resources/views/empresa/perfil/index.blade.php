@@ -24,7 +24,8 @@
 										@if($empresa->usuario->validation)
 											<img class="img-raised rounded-circle" style="height: 45px; width: 45px; margin-left: -55px; margin-bottom: -130px;" src="{{asset('imagenes/verificado.png')}}" data-toggle="tooltip" data-placement="right" title="Cuenta Verficada">
 										@endif
-										<h2 class="link-1">{{$empresa->usuario->name}}</h2>	
+										<h2 class="link-1">{{$empresa->usuario->name}}</h2>
+										<h5 class="link-1">{{round($notas,1)}} <i class="far fa-star"></i></h5>
 										<small class="link-1 text-justify">{{$empresa->description}}</small>
 										<h6 class="link-1 margin-arriba">{{$empresa->usuario->email}}</h6>
 										<h6 class="link-1">{{$empresa->phone}}</h6>
@@ -48,14 +49,8 @@
 					</div>
 					<div class="card-body">	
 						<div class="row">
-							<div class="col-6 col-sm-4 col-md-4">
-								<h5 class="pull-right">Creditos: {{$empresa->credit}}</h5>
-							</div>
-							<div class="col-6 col-sm-2 col-md-2">
-								<a class="btn btn-sm btn-warning link-1" href="#">Comprar creditos</a>
-							</div>
-							<div class="col-12 col-sm-6 col-md-6 text-center">
-								<h5>Promedio de Calificacion</h5>
+							<div class="col-12 col-sm-12 col-md-12 text-center">						
+								<h4>Creditos disponibles <span class="badge badge-secondary">{{$empresa->credit}}</span></h4>
 							</div>
 						</div>				
 						<div class="row">

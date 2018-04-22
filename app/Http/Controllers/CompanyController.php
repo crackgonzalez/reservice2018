@@ -11,6 +11,8 @@ use App\Galery;
 use App\Region;
 use App\User;
 use Exception;
+use Auth;
+use DB;
 use Alert;
 use File;
 
@@ -19,7 +21,14 @@ class CompanyController extends Controller
 	//
     public function index(){
     	$empresas = Company::all();
-    	return view('empresa.perfil.index')->with(compact('empresas'));
+        $id = Auth::user()->empresa->id;
+            $notas = DB::table('client_employe')
+            ->join('employes','employes.id','=','client_employe.employe_id')
+            ->join('companies','companies.id','=','employes.company_id')
+            ->join('users','users.id','=','employes.user_id')
+            ->where('companies.id','=',$id)
+            ->avg('client_employe.score');
+    	return view('empresa.perfil.index')->with(compact('empresas','notas'));
     }
 
     //Lista las Empresas Paginado en 16 Registros

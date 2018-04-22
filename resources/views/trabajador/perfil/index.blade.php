@@ -22,11 +22,7 @@
                 				<div class="col-12 col-sm-8 col-md-6 text-center">
                 					<img class="img-raised rounded-circle tamaño-imagen-normal img-thumbnail" src="{{$empleado->url}}" style="background: #fff; margin-top: 15px;" alt="">
                 					<h2 class="link-1">{{$empleado->usuario->name}}</h2>
-									<div data-toggle="tooltip" data-placement="bottom" title="Nota {{round($contador,0)}}">	
-									@for ($i = 0; $i < $contador; $i++)
-    									<i class="material-icons link-1">grade</i>
-									@endfor
-									</div>
+									<h5 class="link-1">{{round($contador,1)}} <i class="far fa-star"></i></h5>
                 					<h6 class="link-1">{{$empleado->usuario->email}}</h>
                 					<h6 class="link-1">{{$empleado->phone}}</h6>
                 					<img class="img-raised rounded-circle" style="height: 35px; width: 35px;" src="{{$empleado->empresa->url}}">
