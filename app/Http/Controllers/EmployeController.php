@@ -30,7 +30,16 @@ class EmployeController extends Controller
     }
 
     public function resumenCalificacion(){
-        return view ('empresa.resumen-calificacion.index');
+        $id = Auth::user()->empresa->id;
+        $notas = DB::table('client_employe')
+        ->select(DB::raw('avg(client_employe.score) AS promedio'),'users.name')
+        ->join('employes','employes.id','=','client_employe.employe_id')
+        ->join('companies','companies.id','=','employes.company_id')
+        ->join('users','users.id','=','employes.user_id')
+        ->where('companies.id','=',$id)
+        ->groupBy('users.name')->get();
+        
+        return view ('empresa.resumen-calificacion.index')->with(compact('notas'));
     }
 
     public function edit(Employe $trabajador){
@@ -123,3 +132,16 @@ class EmployeController extends Controller
     }
     
 }
+
+
+//nota empresa
+
+// $id = Auth::user()->empresa->id;
+//         $notas = DB::table('client_employe')
+//         ->join('employes','employes.id','=','client_employe.employe_id')
+//         ->join('companies','companies.id','=','employes.company_id')
+//         ->join('users','users.id','=','employes.user_id')
+//         ->where('companies.id','=',$id)
+//         ->avg('client_employe.score');
+
+//         return view ('empresa.resumen-calificacion.index')->with(compact('notas'));
