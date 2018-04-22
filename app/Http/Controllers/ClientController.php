@@ -13,6 +13,7 @@ use App\Employe;
 use App\Reservation;
 use File;
 use Auth;
+use DB;
 use Exception;
 
 class ClientController extends Controller
@@ -104,7 +105,14 @@ class ClientController extends Controller
 
     public function show(Company $empresa){
         $compania = Company::find($empresa->id);
-        return view('cliente.solicitud.show')->with(compact('compania'));
+        $id = $empresa->id;
+            $notas = DB::table('client_employe')
+            ->join('employes','employes.id','=','client_employe.employe_id')
+            ->join('companies','companies.id','=','employes.company_id')
+            ->join('users','users.id','=','employes.user_id')
+            ->where('companies.id','=',$id)
+            ->avg('client_employe.score');
+        return view('cliente.solicitud.show')->with(compact('compania','notas'));
     }
 
     public function calificaciones(){

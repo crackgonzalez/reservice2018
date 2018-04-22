@@ -24,13 +24,17 @@
 										<img class="img-raised rounded-circle" style="height: 45px; width: 45px; margin-left: -55px; margin-bottom: -130px;" src="{{asset('imagenes/verificado.png')}}" data-toggle="tooltip" data-placement="right" title="Cuenta Verficada">
 									@endif
 									<h2 class="link-1">{{$compania->usuario->name}}</h2>
-									<small class="link-1 text-justify">{{$compania->description}}</small>
-									<h6 class="link-1">{{$compania->address}}</h6>
+									@if($notas>0)
+										<h5 class="link-1">Calificacion {{round($notas,1)}} <i class="far fa-star"></i></h5>
+										@endif
+									<small class="link-1 text-justify"><i class="fas fa-align-left"></i>
+										{{$compania->description}}</small>
+									<h6 class="link-1"><i class="fab fa-slack-hash"></i> {{$compania->address}}</h6>
 									@empty($compania->comuna->commune)
-									<h6 class="link-1">Ingrese una comuna</h6>
+									<h6 class="link-1"><i class="fas fa-map-marker-alt"></i> Ingrese una comuna</h6>
 									@endempty
 									@isset($compania->comuna->commune)
-									<h6 class="link-1">{{$compania->comuna->commune}}</h6>
+									<h6 class="link-1"><i class="fas fa-map-marker-alt"></i> {{$compania->comuna->commune}}</h6>
 									@endisset									
 									<form action="" method="POST" enctype="multipart/form-data">
 										<a class="btn btn-warning btn-sm link-1 margin-arriba" href="{{url('/cliente/solicitud/'.$compania->id.'/cotizar')}}">Solicitar un Servicio</a>

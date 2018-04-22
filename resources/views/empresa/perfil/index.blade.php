@@ -25,16 +25,18 @@
 											<img class="img-raised rounded-circle" style="height: 45px; width: 45px; margin-left: -55px; margin-bottom: -130px;" src="{{asset('imagenes/verificado.png')}}" data-toggle="tooltip" data-placement="right" title="Cuenta Verficada">
 										@endif
 										<h2 class="link-1">{{$empresa->usuario->name}}</h2>
-										<h5 class="link-1">{{round($notas,1)}} <i class="far fa-star"></i></h5>
-										<small class="link-1 text-justify">{{$empresa->description}}</small>
-										<h6 class="link-1 margin-arriba">{{$empresa->usuario->email}}</h6>
-										<h6 class="link-1">{{$empresa->phone}}</h6>
-										<h6 class="link-1">{{$empresa->address}}</h6>
+										@if($notas>0)
+										<h5 class="link-1">Calificacion {{round($notas,1)}} <i class="far fa-star"></i></h5>
+										@endif
+										<small class="link-1 text-justify"><i class="fas fa-align-left"></i> {{$empresa->description}}</small>
+										<h6 class="link-1 margin-arriba"><i class="fas fa-envelope"></i> {{$empresa->usuario->email}}</h6>
+										<h6 class="link-1"><i class="fas fa-phone"></i> {{$empresa->phone}}</h6>
+										<h6 class="link-1"><i class="fab fa-slack-hash"></i> {{$empresa->address}}</h6>
 										@empty($empresa->comuna->commune)
-											<h6 class="link-1">Ingrese una comuna</h6>
+											<h6 class="link-1"><i class="fas fa-map-marker-alt"></i> Ingrese una comuna</h6>
 										@endempty
 										@isset($empresa->comuna->commune)
-											<h6 class="link-1">{{$empresa->comuna->commune}}</h6>
+											<h6 class="link-1"><i class="fas fa-map-marker-alt"></i> {{$empresa->comuna->commune}}</h6>
 										@endisset
 										<form method="post" action="{{url('/empresa/perfil/'.$empresa->id)}}">
 											<a class="btn btn-warning btn-sm link-1" href="{{url('/empresa/perfil/'.$empresa->id.'/edit')}}">Administrar Perfil</a>
