@@ -40,7 +40,7 @@
 								<a class="pull-right" target="_blank" href="https://api.whatsapp.com/send?phone=56{{$reserva->trabajador->phone}}"><img src="https://png.icons8.com/color/30/000000/whatsapp.png"><small>Whatsapp</small></a>
 								<h6 class="margin-arriba"><a href="{{url('/cliente/calificar/'.$reserva->id.'/calificar')}}"><i class="fas fa-check"></i> Calificar al Trabajador</a></h6>
 							@else
-								<h5 class="margin-arriba"><i class="fas fa-exclamation-triangle"></i> No hay trabajador asignado</h5>
+								<h6 class="margin-arriba"><i class="fas fa-exclamation-triangle"></i> No hay trabajador asignado</h6>
 							@endif
 						</div>
 					</div>
