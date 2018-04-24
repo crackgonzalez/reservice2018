@@ -4,8 +4,56 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d0a42ed0d59d7fc3f5fa76058faf4f5",
+    "content-hash": "4e34d8bcf337bcb350b74771c75d1e69",
     "packages": [
+        {
+            "name": "cokecancino/laravel-flow",
+            "version": "1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cokecancino/laravel-flow.git",
+                "reference": "b192ee6ae2d89aa5742cce4392d04751608f06da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cokecancino/laravel-flow/zipball/b192ee6ae2d89aa5742cce4392d04751608f06da",
+                "reference": "b192ee6ae2d89aa5742cce4392d04751608f06da",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CokeCancino\\LaravelFlow\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jorge Cancino Flores",
+                    "email": "jorgecancinof@gmail.com"
+                }
+            ],
+            "description": "Laravel package para la integración de pagos con Flow (https://www.flow.cl)",
+            "homepage": "https://github.com/cokecancino/laravel-flow",
+            "keywords": [
+                "chile",
+                "flow",
+                "laravel",
+                "multicaja",
+                "pagos",
+                "servipag",
+                "transbank",
+                "webpay"
+            ],
+            "time": "2017-12-22T02:06:45+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -1422,6 +1470,7 @@
         },
         {
             "name": "symfony/css-selector",
+<<<<<<< HEAD
             "version": "v3.4.8",
             "source": {
                 "type": "git",
@@ -1432,6 +1481,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/css-selector/zipball/519a80d7c1d95c6cc0b67f686d15fe27c6910de0",
                 "reference": "519a80d7c1d95c6cc0b67f686d15fe27c6910de0",
+=======
+            "version": "v4.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/css-selector.git",
+                "reference": "03f965583147957f1ecbad7ea1c9d6fd5e525ec2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/03f965583147957f1ecbad7ea1c9d6fd5e525ec2",
+                "reference": "03f965583147957f1ecbad7ea1c9d6fd5e525ec2",
+>>>>>>> 033e876c53423f757ea2e3a9c3ece2a99f689c37
                 "shasum": ""
             },
             "require": {
@@ -1471,7 +1532,11 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2018-03-19T22:32:39+00:00"
+=======
+            "time": "2018-03-19T22:35:49+00:00"
+>>>>>>> 033e876c53423f757ea2e3a9c3ece2a99f689c37
         },
         {
             "name": "symfony/debug",
@@ -1531,6 +1596,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
+<<<<<<< HEAD
             "version": "v3.4.8",
             "source": {
                 "type": "git",
@@ -1541,6 +1607,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/fdd5abcebd1061ec647089c6c41a07ed60af09f8",
                 "reference": "fdd5abcebd1061ec647089c6c41a07ed60af09f8",
+=======
+            "version": "v4.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/event-dispatcher.git",
+                "reference": "63353a71073faf08f62caab4e6889b06a787f07b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/63353a71073faf08f62caab4e6889b06a787f07b",
+                "reference": "63353a71073faf08f62caab4e6889b06a787f07b",
+>>>>>>> 033e876c53423f757ea2e3a9c3ece2a99f689c37
                 "shasum": ""
             },
             "require": {
@@ -1590,7 +1668,11 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2018-04-06T07:35:25+00:00"
+=======
+            "time": "2018-04-06T07:35:43+00:00"
+>>>>>>> 033e876c53423f757ea2e3a9c3ece2a99f689c37
         },
         {
             "name": "symfony/finder",
@@ -2030,7 +2112,11 @@
         },
         {
             "name": "symfony/translation",
+<<<<<<< HEAD
             "version": "v3.4.8",
+=======
+            "version": "v4.0.8",
+>>>>>>> 033e876c53423f757ea2e3a9c3ece2a99f689c37
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
