@@ -47,6 +47,10 @@ class CompanyController extends Controller
         return view('empresa.perfil.edit')->with(compact('empresa','usuario','comunas'));
     }
 
+    public function creditos(){
+        return view('empresa.creditos.index');
+    }
+
     
     public function update(Request $requerimiento, Company $empresa){  
         
