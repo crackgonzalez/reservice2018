@@ -7,12 +7,12 @@ use App\Plan;
 
 class WebpayController extends Controller
 {
-    public function index(){
+    public function create(){
     	$planes = Plan::all();    	
-        return view('empresa.creditos.index')->with(compact('planes'));
+        return view('empresa.creditos.create')->with(compact('planes'));
     }
 
-    public function webpay(){
+    public function store(){
     	return view('empresa.creditos.webpay');
     }
 }

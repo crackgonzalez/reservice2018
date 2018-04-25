@@ -117,8 +117,8 @@ Route::middleware(['auth','empresa'])->group(function () {
 	Route::get('/empresa/resumen-calificacion','EmployeController@resumenCalificacion');
 
 	//Creditos
-	Route::get('/empresa/creditos','WebpayController@index');
-	Route::post('/empresa/creditos/webpay','WebpayController@webpay');
+	Route::get('/empresa/creditos/create','WebpayController@create');
+	Route::post('/empresa/creditos','WebpayController@store');
 	
 });
 
