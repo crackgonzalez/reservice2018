@@ -105,4 +105,4 @@
 @section('scripts')
 <script>
 </script>
-@ensection
+@endsection
