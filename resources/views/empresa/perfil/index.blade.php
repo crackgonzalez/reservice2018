@@ -39,6 +39,7 @@
 											<h6 class="link-1"><i class="fas fa-map-marker-alt"></i> {{$empresa->comuna->commune}}</h6>
 										@endisset
 										<form method="post" action="{{url('/empresa/perfil/'.$empresa->id)}}">
+											{{csrf_field()}}
 											<a class="btn btn-warning btn-sm link-1" href="{{url('/empresa/perfil/'.$empresa->id.'/edit')}}">Administrar Perfil</a>
 											@if(!$empresa->usuario->validation)
 												<a class="btn btn-warning btn-sm link-1 margin-izquierdo" href="{{url('/empresa/validar/create')}}">Validar Cuenta</a>			
