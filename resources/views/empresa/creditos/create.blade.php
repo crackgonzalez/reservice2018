@@ -76,8 +76,9 @@
 					</div>
 					<a class="btn btn-sm btn-warning link-1 pull-left margin-arriba" href="/empresa/perfil">Anular</a>
 					<button class="btn btn-sm btn-warning link-1 pull-right margin-arriba" type="submit">Pagar</button>
-				</form>
+				</form>				
 			</div>
+			<img class="pull-right margin-arriba" src="{{asset('imagenes/redcompra.png')}}" width="40%">
 		</div>
 	</div>
 	<div class="col-12 col-sm-3 col-md-3"></div>
