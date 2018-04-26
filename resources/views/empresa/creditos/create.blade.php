@@ -50,7 +50,8 @@
 									<select id="plans" name="plans" class="form-control" onchange="cambiar(this.value)">
 										<option value="0">Seleccione un Plan</option>
 										@foreach($planes as $plan)										
-										<option value="{{$plan->id}}">{{$plan->description}}</option>@endforeach
+										<option value="{{$plan->id}}">{{$plan->description}}</option>
+										@endforeach
 									</select>
 								</div>
 							</div>
@@ -64,17 +65,17 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fas fa-university"></i></span>
 									<select name="bancos" class="form-control">
-										<option value="1">Banco Estado</option>
-										<option value="2">Banco Santander</option>
-										<option value="3">Banco Bci</option>
-										<option value="4">Banco Scotiabank</option>
+										<option value="0">Seleccione un Banco</option>
+										@foreach($bancos as $banco)										
+										<option value="{{$banco->id}}">{{$banco->name}}</option>
+										@endforeach
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="far fa-credit-card"></i></span>
-									<input class="form-control" placeholder="Numero de Trajeta">
+									<input name="tarjeta" class="form-control" placeholder="Numero de Tarjeta" value="{{ old('tarjeta') }}">
 								</div>
 							</div>							
 						</div>						
