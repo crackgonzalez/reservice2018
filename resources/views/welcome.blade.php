@@ -103,11 +103,12 @@
 										@if($empresas->usuario->validation)
 											<img class="img-raised rounded-circle" style="height: 30px; width: 30px;" src="{{asset('imagenes/verificado.png')}}" data-toggle="tooltip" data-placement="right" title="Cuenta Verficada">
 										@endif									
-										<br><br>
-										<small class="text-justify"><i class="fas fa-align-left"></i> {{$empresas->description}}</small>
-										
-										<a class="btn btn-warning btn-sm pull-right link-1 margin-arriba" href="{{ route('register') }}">Registrarse</a>
-										<a class="btn btn-warning btn-sm pull-right link-1 margin-derecho margin-arriba" href="{{ route('login') }}">Iniciar Sesion</a>
+										<h6 class="margin-arriba"><i class="far fa-comments"></i> Descripcion de la Empresa</h6>
+										<small class="text-justify">{{$empresas->description}}</small>
+										<div class="margin-arriba">
+											<a class="btn btn-warning btn-sm pull-right link-1" href="{{ route('register') }}">Registrarse</a>
+											<a class="btn btn-warning btn-sm pull-right link-1 margin-derecho" href="{{ route('login') }}">Iniciar Sesion</a>
+										</div>										
 									</div>
 								</div>
 							</div>
