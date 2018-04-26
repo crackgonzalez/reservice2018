@@ -40,7 +40,7 @@ class WebpayController extends Controller
             $pago->plan_id = $request->input('plans');  
             $exito = $pago->save();
             if ($exito) {
-                alert()->success('El pago fue realizado con exito','Pago Realizado')->autoclose(3000);
+                alert()->success('El pago fue realizado con exito, se han cargado los creditos a su cuenta','Pago Realizado')->autoclose(5000);
             }else{
                 alert()->warning('El pago no se pudo realizar','Pago Rechazado')->autoclose(3000);
             }
