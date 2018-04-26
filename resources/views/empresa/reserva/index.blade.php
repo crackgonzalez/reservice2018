@@ -29,7 +29,8 @@
 							@else
 								<h6><i class="fab fa-slack-hash"></i> Sin Direccion</h6>
 							@endif
-							<small class="text-justify margin-arriba"><h6><i class="far fa-comments"></i> {{$reserva->orden->description}}</h6></small>
+							<h6><i class="far fa-comments"></i> Descripcion del Problema</h6>
+							<small class="text-justify">{{$reserva->orden->description}}</small>
 							<h5 class="margin-arriba">Cliente</h5>			
 							<img class="img-raised rounded-circle" style="height: 35px; width: 35px;" src="{{$reserva->orden->cliente->url}}">
 							<h6 class="d-inline">{{$reserva->orden->cliente->usuario->name}}</h6>

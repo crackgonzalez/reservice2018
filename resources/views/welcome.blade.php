@@ -101,13 +101,13 @@
 										<img class="img-raised rounded-circle" style="height: 35px; width: 35px;" src="{{$empresas->url}}">
 										<h6 class="d-inline">{{$empresas->usuario->name}}</h6>
 										@if($empresas->usuario->validation)
-											<img class="img-raised rounded-circle margin-izquierdo" style="height: 30px; width: 30px;" src="{{asset('imagenes/verificado.png')}}" data-toggle="tooltip" data-placement="right" title="Cuenta Verficada">
+											<img class="img-raised rounded-circle" style="height: 30px; width: 30px;" src="{{asset('imagenes/verificado.png')}}" data-toggle="tooltip" data-placement="right" title="Cuenta Verficada">
 										@endif									
 										<br><br>
-										<small class="text-justify"><h6><i class="fas fa-align-left"></i> {{$empresas->description}}</h6></small>
-										<br>
-										<a class="btn btn-warning btn-sm pull-right link-1" href="{{ route('register') }}">Registrarse</a>
-										<a class="btn btn-warning btn-sm pull-right link-1 margin-derecho" href="{{ route('login') }}">Iniciar Sesion</a>
+										<small class="text-justify"><i class="fas fa-align-left"></i> {{$empresas->description}}</small>
+										
+										<a class="btn btn-warning btn-sm pull-right link-1 margin-arriba" href="{{ route('register') }}">Registrarse</a>
+										<a class="btn btn-warning btn-sm pull-right link-1 margin-derecho margin-arriba" href="{{ route('login') }}">Iniciar Sesion</a>
 									</div>
 								</div>
 							</div>
