@@ -51,6 +51,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                	<div class="input-group">
+                                		<span class="input-group-addon"><i class="material-icons">credit_card</i></span>
+                                		<input type="text" class="form-control" name="price" placeholder="Precio">
+                                	</div>
+                                </div>
+                                <div class="form-group">
 									<a href="{{url('/empresa/perfil')}}" class="btn btn-secondary btn-sm pull-right">Cancelar</a>
 									<button type="submit" class="btn btn-warning btn-sm pull-right margin-derecho link-1">Agregar</button>
 								</div>								

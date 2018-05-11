@@ -28,10 +28,25 @@
 										@if($notas>0)
 										<h5 class="link-1">Calificacion {{round($notas,1)}} <i class="far fa-star"></i></h5>
 										@endif
-										<small class="link-1 text-justify"><i class="fas fa-align-left"></i> {{$empresa->description}}</small>
-										<h6 class="link-1 margin-arriba"><i class="fas fa-envelope"></i> {{$empresa->usuario->email}}</h6>
-										<h6 class="link-1"><i class="fas fa-phone"></i> {{$empresa->phone}}</h6>
-										<h6 class="link-1"><i class="fab fa-slack-hash"></i> {{$empresa->address}}</h6>
+										@empty($empresa->description)
+											<small class="link-1 text-justify"><i class="fas fa-align-left"></i> Ingrese una descripcion para su empresa</small>
+										@endempty
+										@isset($empresa->description)
+											<small class="link-1 text-justify"><i class="fas fa-align-left"></i> {{$empresa->description}}</small>
+										@endisset
+										<h6 class="link-1 margin-arriba"><i class="fas fa-envelope"></i> {{$empresa->usuario->email}}</h6>										
+										@empty($empresa->phone)
+											<h6 class="link-1"><i class="fas fa-phone"></i> Ingrese un numero telefonico</h6>
+										@endempty
+										@isset($empresa->phone)
+											<h6 class="link-1"><i class="fas fa-phone"></i> {{$empresa->phone}}</h6>
+										@endisset
+										@empty($empresa->address)
+											<h6 class="link-1"><i class="fab fa-slack-hash"></i> Ingrese una direccion</h6>
+										@endempty
+										@isset($empresa->address)
+											<h6 class="link-1"><i class="fab fa-slack-hash"></i> {{$empresa->address}}</h6>
+										@endisset
 										@empty($empresa->comuna->commune)
 											<h6 class="link-1"><i class="fas fa-map-marker-alt"></i> Ingrese una comuna</h6>
 										@endempty
@@ -104,6 +119,7 @@
 															<img src="{{$servicios->url}}" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo img-thumbnail">
 															<h5>{{$servicios->service}}</h5>
 															<h6>{{$servicios->categoria->category}}</h6>
+															<h6><i class="fas fa-dollar-sign"></i> {{$servicios->pivot->price}}</h6>
 															<img src="{{$servicios->categoria->url}}" class="img-raised rounded-circle tamaño-imagen-pequeño margin-arriba margin-abajo">
 
 															<form method="post" action="{{url('/empresa/perfil/'.$servicios->id)}}" style="margin-top: -25px;">

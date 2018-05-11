@@ -18,7 +18,7 @@ class Service extends Model
 
     //
     public function empresas(){
-        return $this->belongsToMany('App\Company')->withTimestamps();
+        return $this->belongsToMany('App\Company')->withPivot('price')->withTimestamps();
     }
 
     public function solicitud(){

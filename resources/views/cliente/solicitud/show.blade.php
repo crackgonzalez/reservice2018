@@ -27,11 +27,20 @@
 									@if($notas>0)
 										<h5 class="link-1">Calificacion {{round($notas,1)}} <i class="far fa-star"></i></h5>
 										@endif
-									<small class="link-1 text-justify"><i class="fas fa-align-left"></i>
-										{{$compania->description}}</small>
-									<h6 class="link-1"><i class="fab fa-slack-hash"></i> {{$compania->address}}</h6>
+									@empty($compania->description)
+										<small class="link-1 text-justify"><i class="fas fa-align-left"></i> Sin descripcion</small>
+									@endempty
+									@isset($compania->description)
+										<small class="link-1 text-justify"><i class="fas fa-align-left"></i> {{$compania->description}}</small>
+									@endisset
+									@empty($compania->address)
+										<h6 class="link-1"><i class="fab fa-slack-hash"></i> Sin informacion de la direccion</h6>
+									@endempty
+									@isset($compania->address)
+										<h6 class="link-1"><i class="fab fa-slack-hash"></i> {{$compania->address}}</h6>
+									@endisset
 									@empty($compania->comuna->commune)
-									<h6 class="link-1"><i class="fas fa-map-marker-alt"></i> Ingrese una comuna</h6>
+									<h6 class="link-1"><i class="fas fa-map-marker-alt"></i> Sin informacion de la comuna</h6>
 									@endempty
 									@isset($compania->comuna->commune)
 									<h6 class="link-1"><i class="fas fa-map-marker-alt"></i> {{$compania->comuna->commune}}</h6>
@@ -89,6 +98,7 @@
 														<img src="{{$servicios->url}}" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo img-thumbnail">
 														<h5>{{$servicios->service}}</h5>
 														<h6>{{$servicios->categoria->category}}</h6>
+														<h6><i class="fas fa-dollar-sign"></i> {{$servicios->pivot->price}}</h6>
 														<img src="{{$servicios->categoria->url}}" class="img-raised rounded-circle tamaño-imagen-pequeño margin-arriba margin-abajo">
 													</div>
 												</div>

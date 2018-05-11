@@ -18,6 +18,7 @@ class CreateCompanyServiceTable extends Migration
             $table->integer('service_id')->unsigned();
             $table->integer('company_id')->unsigned();
             $table->unique(['service_id','company_id']);
+            $table->integer('price');
             $table->foreign('service_id')->references('id')->on('services')->onUpdate('cascade');
             $table->foreign('company_id')->references('id')->on('companies')->onUpdate('cascade');
             $table->timestamps();

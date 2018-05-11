@@ -21,7 +21,7 @@ class Company extends Model
 
     //
     public function servicios(){
-        return $this->belongsToMany('App\Service')->withTimestamps();
+        return $this->belongsToMany('App\Service')->withPivot('price')->withTimestamps();
     }
 
     public function comunas(){

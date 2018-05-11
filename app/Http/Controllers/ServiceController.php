@@ -138,23 +138,27 @@ class ServiceController extends Controller
         $mensajes =[
             'category_id.exists' =>'Debe seleccionar una Categoria',
             'service_id.exists' =>'Debe seleccionar un Servicio',
+            'price.required' =>'El campo servicio es obligatorio',
+            'price.numeric' =>'El campo precio solo acepta valores numericos',
         ];
 
         $reglas = [
             'category_id' => 'exists:categories,id',
-            'service_id' => 'exists:services,id' 
+            'service_id' => 'exists:services,id',
+            'price' => 'required|numeric',
         ];
 
         $this->validate($requerimiento,$reglas,$mensajes);
         try{
             $empresa = Company::find($requerimiento->input('company'));
             $servicio = $requerimiento->input('service_id');
-            $exito = $empresa->servicios()->attach($servicio);
+            $precio = $requerimiento->input('price');
+            $exito = $empresa->servicios()->attach($servicio,['price' => $precio]);
             if(!$exito){
                 alert()->success('El servicio fue ingresado correctamente','Servicio Agregado')->autoclose(3000);
             }
         } catch (Exception $e) {
-                alert()->warning('El servicio ya se encuentra agregado','Advetencia')->autoclose(3000);
+                alert()->warning('{{$e}}','Advetencia')->autoclose(3000);
             }
         return redirect('empresa/perfil');
     }
