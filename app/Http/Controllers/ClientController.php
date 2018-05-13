@@ -97,10 +97,29 @@ class ClientController extends Controller
         return redirect('cliente/perfil');
     }
 
-    public function buscar(Request $requerimiento){
-        $servicios = Service::servicio($requerimiento->input('service_id'))->orderBy('service','asc')->get();
-        $categorias = Category::orderBy('category','asc')->get();       
-        return view('cliente.buscar.index')->with(compact('servicios','categorias'));
+    public function buscar(Request $request){
+        $min = 0;
+        $max = 1000000;
+        if($request->input('price') == 1){
+            $min = 1;
+            $max = 10000;
+        }elseif ($request->input('price') == 2) {
+            $min = 10001;
+            $max = 50000;
+        }elseif ($request->input('price') == 3) {
+            $min = 50001;
+            $max = 100000;
+        }
+        $servicios = DB::table('company_service')
+                        ->join('services','services.id','=','service_id')
+                        ->join('companies','companies.id','=','company_id')
+                        ->join('users','users.id','=','companies.user_id')
+                        ->where('services.service','like','%'.$request->input('search_text').'%')
+                        ->where('companies.credit','>','0')
+                        ->where('users.state','=','1')
+                        ->whereBetween('price',[$min,$max])
+                        ->orderBy('services.service','asc')->get();
+        return view('cliente.buscar.index')->with(compact('servicios'));
     }
 
     public function show(Company $empresa){
