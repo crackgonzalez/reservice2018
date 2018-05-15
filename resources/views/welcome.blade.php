@@ -65,10 +65,9 @@
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fas fa-dollar-sign"></i></span>
 										<select name="price" class="form-control">
-											<option value="0">Seleccione un Rango de Precio</option>
-											<option value="1">Entre $1 a $10.000</option>
-											<option value="2">Entre $10.001 a $50.000</option>
-											<option value="3">Entre $50.001 a $100.000</option>
+											<option value="0">Ordenar por Precio</option>
+											<option value="asc">Menor a Mayor Precio</option>
+											<option value="desc">Mayor a Menor Precio</option>
 										</select>
 									</div>
 								</div>

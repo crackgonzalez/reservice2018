@@ -10,7 +10,7 @@
 @endsection
 @section('contenido')
 	<div class="row">
-		<div class="col-12 col-sm-12 col-md-12">
+		<div class="col-12 col-sm-9 col-md-9">
 			<div class="card margin-arriba margin-abajo card-raised">
 				<div class="card-body">
 					<div class="row">
@@ -28,20 +28,26 @@
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fas fa-dollar-sign"></i></span>
 										<select name="price" class="form-control">
-											<option value="0">Seleccione un Rango de Precio</option>
-											<option value="1">Entre $1 a $10.000</option>
-											<option value="2">Entre $10.001 a $50.000</option>
-											<option value="3">Entre $50.001 a $100.000</option>
+											<option value="0">Ordenar por Precio</option>
+											<option value="asc">Menor a Mayor Precio</option>
+											<option value="desc">Mayor a Menor Precio</option>
 										</select>
 									</div>
 								</div>
 								<div class="form-group" style="margin: 5px;">
-									<div class="input-group">
-										<input type="submit" value="Buscar" class="btn btn-sm btn-warning link-1">										
-									</div>
+									<input type="submit" value="Buscar" class="btn btn-sm btn-warning link-1">
 								</div>
 							</form>
 						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-sm-3 col-md-3">
+			<div class="card margin-arriba margin-abajo card-raised">
+				<div class="card-body text-center">
+					<div class="form-group" style="margin: 8px;">
+						<input type="submit" class="btn btn-sm btn-success" value="Solicitar a Todos">
 					</div>
 				</div>
 			</div>
