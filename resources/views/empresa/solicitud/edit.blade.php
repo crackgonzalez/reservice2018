@@ -25,10 +25,10 @@
 			@endif
 				<div class="card margin-arriba margin-abajo card-raised">						
 					<div class="card-header text-center">
-						<h4 class="card-title">Responder la Solicitud de {{$orden->cliente->usuario->name}}</h4>
+						<h4 class="card-title">Responder la Solicitud de {{$solicitud->cliente->usuario->name}}</h4>
 					</div>
 					<div class="card-body">
-						<form action="{{url('/empresa/solicitud/'.$orden->id.'/edit')}}" method="POST" enctype="multipart/form-data">
+						<form action="{{url('/empresa/solicitud/'.$solicitud->id.'/edit')}}" method="POST" enctype="multipart/form-data">
 						{{csrf_field()}}							
 							<div class="form-group">
 								<div class="input-group">
@@ -43,7 +43,7 @@
                             <div class="form-group">
                             	<div class="input-group">
                             		<span class="input-group-addon"><i class="material-icons">terrain</i></span>
-                            		<textarea name="answer" placeholder="Respuesta" class="form-control" cols="30" rows="4">{{old('answer',$orden->answer)}}</textarea>
+                            		<textarea name="answer" placeholder="Respuesta" class="form-control" cols="30" rows="4">{{old('answer',$solicitud->answer)}}</textarea>
                             	</div>
                             </div>
                          

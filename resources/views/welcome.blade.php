@@ -65,7 +65,7 @@
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fas fa-dollar-sign"></i></span>
 										<select name="price" class="form-control">
-											<option value="0">Ordenar por Precio</option>
+											<option value="asc">Ordenar por Precio</option>
 											<option value="asc">Menor a Mayor Precio</option>
 											<option value="desc">Mayor a Menor Precio</option>
 										</select>

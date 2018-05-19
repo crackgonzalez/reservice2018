@@ -9,21 +9,21 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use App\Order;
+use App\Quote;
 
 class GenerarReservaEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    public $order;
+    public $quote;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Order $order)
+    public function __construct(Quote $quote)
     {
-        $this->order = $order;
+        $this->quote = $quote;
     }
 
     /**

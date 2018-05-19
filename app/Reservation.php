@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Reservation extends Model
 {
     public function orden(){
-        return $this->belongsTo('App\Order','order_id');
+        return $this->belongsTo('App\Quote','quote_id');
     }
 
     public function trabajador(){

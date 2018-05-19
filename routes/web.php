@@ -99,9 +99,12 @@ Route::middleware(['auth','empresa'])->group(function () {
 	Route::delete('/empresa/trabajador/{id}','EmployeController@destroy');
 
 	//Solicitud
-	Route::get('/empresa/solicitud','OrderController@inicio');
-	Route::get('/empresa/solicitud/{id}/edit','OrderController@edit');
-	Route::post('empresa/solicitud/{id}/edit','OrderController@update');
+	Route::get('/empresa/solicitud','QuoteController@solicitudEmpresa');
+	Route::get('/empresa/solicitud/{id}/edit','QuoteController@responderSolicitud');
+	Route::post('empresa/solicitud/{id}/edit','QuoteController@guardarRespuesta');
+
+	//Presupuesto
+	Route::get('/empresa/presupuesto','QuoteController@presupestoEmpresa');
 
 	//Reserva
 	Route::get('/empresa/reserva','ReservationController@index');
@@ -134,12 +137,16 @@ Route::middleware(['auth','cliente'])->group(function () {
 	Route::get('/cliente/buscar','ClientController@buscar');
 
 	//Solicitud
-	Route::get('/cliente/solicitud','OrderController@index');
+	Route::get('/cliente/solicitud','QuoteController@solicitudCliente');
 	Route::get('/cliente/solicitud/{empresa}/show','ClientController@show');
-	Route::get('/cliente/solicitud/{empresa}/cotizar','OrderController@create');
-	Route::post('/cliente/solicitud/{empresa}/cotizar','OrderController@store');
-	Route::get('/cliente/solicitud/{id}/edit','OrderController@editar');
-	Route::post('cliente/solicitud/{id}/edit','OrderController@actualizar');
+	Route::get('/cliente/solicitud/{empresa}/cotizar','QuoteController@solicitarServicio');
+	Route::post('/cliente/solicitud/{empresa}/cotizar','QuoteController@guardarSolicitud');
+	Route::get('/cliente/solicitud/{id}/edit','QuoteController@responderOferta');
+	Route::post('cliente/solicitud/{id}/edit','QuoteController@guardarOferta');
+
+	//Presupuesto
+	Route::get('/cliente/presupuesto','QuoteController@presupestoCliente');
+	Route::get('/cliente/presupuesto/solicitar','QuoteController@solicitarHoy');
 
 	//Reserva
 	Route::get('/cliente/reserva','ReservationController@inicio');

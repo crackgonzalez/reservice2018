@@ -105,7 +105,7 @@ class ClientController extends Controller
                         ->where('services.service','like','%'.$request->input('search_text').'%')
                         ->where('companies.credit','>','0')
                         ->where('users.state','=','1')                        
-                        ->orderBy('price',$request->input('price'))->get();
+                        ->orderBy('price',$request->input('price','asc'))->get();
         return view('cliente.buscar.index')->with(compact('servicios'));
     }
 

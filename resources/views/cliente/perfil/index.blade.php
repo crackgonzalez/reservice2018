@@ -24,8 +24,18 @@
                 					<img class="img-raised rounded-circle tamaño-imagen-normal img-thumbnail" src="{{$cliente->url}}" style="background: #fff; margin-top: 15px;" alt="">
                 					<h2 class="link-1">{{$cliente->usuario->name}}</h2>									
 									<h6 class="link-1 margin-arriba"><i class="fas fa-envelope"></i> {{$cliente->usuario->email}}</h6>
-									<h6 class="link-1"><i class="fas fa-phone"></i> {{$cliente->phone}}</h6>
-									<h6 class="link-1"><i class="fab fa-slack-hash"></i> {{$cliente->address}}</h6>
+									@empty($cliente->phone)
+										<h6 class="link-1"><i class="fas fa-phone"></i> Ingrese un numero telefonico</h6>
+									@endempty
+									@isset($cliente->phone)
+										<h6 class="link-1"><i class="fas fa-phone"></i> {{$cliente->phone}}</h6>
+									@endisset
+									@empty($cliente->address)
+										<h6 class="link-1"><i class="fab fa-slack-hash"></i> Ingrese una direccion</h6>
+									@endempty
+									@isset($cliente->address)
+										<h6 class="link-1"><i class="fab fa-slack-hash"></i> {{$cliente->address}}</h6>
+									@endisset
 									@empty($cliente->comuna->commune)
 									<h6 class="link-1"><i class="fas fa-map-marker-alt"></i> Ingrese una comuna</h6>
 									@endempty

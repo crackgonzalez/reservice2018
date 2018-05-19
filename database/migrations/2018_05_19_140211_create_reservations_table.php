@@ -16,9 +16,9 @@ class CreateReservationsTable extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('employe_id')->unsigned()->nullable();
-            $table->integer('order_id')->unsigned()->unique();
+            $table->integer('quote_id')->unsigned()->unique();
             $table->foreign('employe_id')->references('id')->on('employes')->onUpdate('cascade');
-            $table->foreign('order_id')->references('id')->on('orders')->onUpdate('cascade');
+            $table->foreign('quote_id')->references('id')->on('quotes')->onUpdate('cascade');
             $table->timestamps();
         });
     }

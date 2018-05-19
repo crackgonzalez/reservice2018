@@ -20,7 +20,7 @@ class WelcomeController extends Controller
     					->where('services.service','like','%'.$request->input('search_text').'%')
     					->where('companies.credit','>','0')
     					->where('users.state','=','1')
-    					->orderBy('price',$request->input('price'))->get();
+    					->orderBy('price',$request->input('price','asc'))->get();
         return view('welcome')->with(compact('servicios'));
     }
 }

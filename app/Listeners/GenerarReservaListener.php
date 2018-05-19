@@ -6,7 +6,7 @@ use App\Events\GenerarReservaEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Reservation;
-use App\Order;
+use App\Quote;
 
 class GenerarReservaListener
 {
@@ -28,9 +28,9 @@ class GenerarReservaListener
      */
     public function handle(GenerarReservaEvent $event)
     {
-        if($event->order->state_company == 1 && $event->order->state_client == 1){
+        if($event->quote->state_company == 1 && $event->quote->state_client == 1){
             $reserva = new Reservation();            
-            $reserva->order_id = $event->order->id;  
+            $reserva->quote_id = $event->quote->id;  
             $reserva->save();                      
         }
     }

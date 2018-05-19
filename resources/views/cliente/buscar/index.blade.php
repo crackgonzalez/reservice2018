@@ -28,9 +28,9 @@
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fas fa-dollar-sign"></i></span>
 										<select name="price" class="form-control">
-											<option value="0">Ordenar por Precio</option>
-											<option value="asc">Menor a Mayor Precio</option>
+											<option value="asc">Ordenar por Precio</option>
 											<option value="desc">Mayor a Menor Precio</option>
+											<option value="asc">Menor a Mayor Precio</option>
 										</select>
 									</div>
 								</div>
@@ -47,7 +47,7 @@
 			<div class="card margin-arriba margin-abajo card-raised">
 				<div class="card-body text-center">
 					<div class="form-group" style="margin: 8px;">
-						<input type="submit" class="btn btn-sm btn-success" value="Solicitar a Todos">
+						<a class="btn btn-sm btn-success" href="{{url('/cliente/presupuesto/solicitar')}}">Solicitar Servicio Hoy</a>
 					</div>
 				</div>
 			</div>

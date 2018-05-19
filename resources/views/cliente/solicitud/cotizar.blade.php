@@ -30,7 +30,6 @@
 						<div class="card-body">
 							<form action="" method="POST" enctype="multipart/form-data">
 								{{csrf_field()}}
-								<input name="client_id" type="hidden" value="{{Auth::user()->cliente->id}}">
 								<input name="company_id" type="hidden" value="{{$compania->id}}">
 								<div class="form-group">
 									<div class="input-group">
