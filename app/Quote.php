@@ -43,6 +43,7 @@ class Quote extends Model
 
     //Eventos Para el Order
     protected $dispatchesEvents = [
-        'updated' => Events\GenerarReservaEvent::class,    
+        'updated' => Events\GenerarReservaEvent::class,
+        'created' => Events\CrearRespuestaEvent::class,   
     ];
 }

@@ -40,6 +40,13 @@
   margin-left: 100px;
 }
 
+.tamaño-imagen-pequeño-1{
+  height: 45px; 
+  width: 45px;
+  margin-top: -210px; 
+  margin-left: 100px;
+}
+
 .separacion-fotos{
   margin-bottom: 60px;
 }

@@ -105,6 +105,8 @@ Route::middleware(['auth','empresa'])->group(function () {
 
 	//Presupuesto
 	Route::get('/empresa/presupuesto','QuoteController@presupestoEmpresa');
+	Route::get('/empresa/presupuesto/{id}/edit','ResponseController@responderPresupuesto');
+	Route::post('empresa/presupuesto/{id}/edit','ResponseController@guardarPresupuesto');
 
 	//Reserva
 	Route::get('/empresa/reserva','ReservationController@index');
@@ -147,6 +149,7 @@ Route::middleware(['auth','cliente'])->group(function () {
 	//Presupuesto
 	Route::get('/cliente/presupuesto','QuoteController@presupestoCliente');
 	Route::get('/cliente/presupuesto/solicitar','QuoteController@solicitarHoy');
+	Route::post('/cliente/presupuesto/solicitar','QuoteController@guardarSolicitudHoy');
 
 	//Reserva
 	Route::get('/cliente/reserva','ReservationController@inicio');

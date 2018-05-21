@@ -91,7 +91,7 @@
 </div>
 <div class="row">
 	@foreach($planes as $plan)
-	<div class="col-12 col-sm-3 col-md-3">		
+	<div class="col-12 col-sm-4 col-md-4">		
 		<div class="card {{$plan->style}} text-white margin-arriba">
 			<div class="card-header">{{$plan->description}}</div>
 			<div class="card-body">				

@@ -55,25 +55,25 @@ class ReservationController extends Controller
     }
 
     public function resumenEmpresa(){       
-        $reservas = Reservation::join('orders','orders.id','=','order_id')
-                                ->select('orders.date','orders.company_id',DB::raw("COUNT(orders.company_id) as reserva"))->groupBy('orders.company_id','orders.date')->get();
+        $reservas = Reservation::join('quotes','quotes.id','=','quote_id')
+                                ->select('quotes.date','quotes.company_id',DB::raw("COUNT(quotes.company_id) as reserva"))->groupBy('quotes.company_id','quotes.date')->get();
          
         return view('empresa.resumen-reserva.index')->with(compact('reservas'));
     }
 
     public function resumenTrabajadores(){
         $empresa = Auth::user()->empresa->id;
-        $trabajadores = Reservation::join('orders','orders.id','=','order_id')
+        $trabajadores = Reservation::join('quotes','quotes.id','=','quote_id')
                                     ->join('employes','employes.id','=','employe_id')
                                     ->join('users','users.id','=','employes.user_id')
-                                    ->select('users.name',DB::raw("COUNT(employes.id) as trabajador"))->where('orders.company_id','=',$empresa)->groupBy('users.name')->get();
+                                    ->select('users.name',DB::raw("COUNT(employes.id) as trabajador"))->where('quotes.company_id','=',$empresa)->groupBy('users.name')->get();
         return view('empresa.resumen-trabajador.index')->with(compact('trabajadores'));
     }
 
     //Resumen de la Cantidad de Reservas de Todas las Empresas
     public function resumenEmpresasAdmin(){
-        $reservas = Reservation::join('orders','orders.id','=','order_id')
-                    ->join('companies','companies.id','=','orders.company_id')
+        $reservas = Reservation::join('quotes','quotes.id','=','quote_id')
+                    ->join('companies','companies.id','=','quotes.company_id')
                     ->join('users','users.id','=','companies.user_id')
                     ->select('users.name',DB::raw("COUNT(companies.id) as reserva"))->groupBy('users.name')->get();
 

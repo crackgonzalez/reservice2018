@@ -23,7 +23,7 @@
 								<img src="{{$servicio->url}}" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo img-thumbnail">
 								<h5>{{$servicio->service}}</h5>								
 								<h6>{{$servicio->categoria->category}}</h6>
-								<img src="{{$servicio->categoria->url}}" class="img-raised rounded-circle tamaño-imagen-pequeño margin-arriba margin-abajo">
+								<img src="{{$servicio->categoria->url}}" class="img-raised rounded-circle tamaño-imagen-pequeño-1 margin-arriba margin-abajo">
 								<form method="post" action="{{url('/administrador/servicios/'.$servicio->id)}}" style="margin-top: -25px;">
 									{{csrf_field()}}
 									{{method_field('DELETE')}}

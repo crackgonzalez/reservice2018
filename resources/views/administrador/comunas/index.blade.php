@@ -23,7 +23,7 @@
 								<img src="{{$comuna->url}}" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo img-thumbnail">
 								<h5>{{$comuna->commune}}</h5>								
 								<h6>{{$comuna->region->region}}</h6>
-								<img src="{{$comuna->region->url}}" class="img-raised rounded-circle tamaño-imagen-pequeño margin-arriba margin-abajo">
+								<img src="{{$comuna->region->url}}" class="img-raised rounded-circle tamaño-imagen-pequeño-1 margin-arriba margin-abajo">
 								<form method="post" action="{{url('/administrador/comunas/'.$comuna->id)}}" style="margin-top: -25px;">
 									{{csrf_field()}}
 									{{method_field('DELETE')}}

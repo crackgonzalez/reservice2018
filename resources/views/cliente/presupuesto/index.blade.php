@@ -11,6 +11,15 @@
 @section('contenido')
 	<div class="row">
 		<div class="col-12 col-sm-12 col-md-12">
+			<div class="card margin-arriba margin-abajo card-raised">
+				<div class="card-body">
+					
+				</div>
+			</div>			
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 col-sm-12 col-md-12">
 			@forelse($presupuestos as $presupuesto)
 				<div class="card margin-arriba margin-abajo card-raised">
 					<div class="card-header text-center" style="background-image: url({{$presupuesto->servicio->url}}); background-position: center center; width: 100%;">						
@@ -19,12 +28,13 @@
 					</div>
 					<div class="card-body">
 						<div class="row">
-							@forelse($presupuesto->respuestas as $respuestas)
+							@foreach($presupuesto->respuestas as $respuestas)
 								<!-- Verificar if mas adelante para garantizar un mejor funcionamiento -->
 								@if($respuestas->empresa->usuario->state)
 									@if($respuestas->empresa->credit > 0)
-										<div class="col-12 col-sm-4 col-md-4">
-											<div class="card margin-arriba margin-abajo card-raised">
+										@if($respuestas->state_company != 0)
+											<div class="col-12 col-sm-4 col-md-4">
+												<div class="card margin-arriba margin-abajo card-raised">
 												<div class="card-body">
 													<div class="row">
 														<div class="col-12 col-sm-4 col-md-4 text-center">
@@ -38,7 +48,7 @@
 																	<h6>Precio de Referencia <i class="fas fa-dollar-sign"></i> {{$servicio->pivot->price}}</h6>
 																@endif
 															@endforeach
-															<h6>Precio Final <i class="fas fa-dollar-sign"></i> {{$respuestas->price}}</h6>
+															<h6>Precio Final Ofrecido <i class="fas fa-dollar-sign"></i> {{$respuestas->price}}</h6>
 														</div>
 													</div>
 													<div class="row">
@@ -47,14 +57,13 @@
 														</div>
 													</div>
 												</div>
-											</div>
-										</div>
+												</div>
+											</div>										
+										@endif										
 									@endif
 								@endif
-							@empty
-								@include('includes.mensaje')						
-							@endforelse
-						</div>
+							@endforeach
+						</div>						
 					</div>
 				</div>
 			@empty

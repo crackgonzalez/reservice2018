@@ -28,6 +28,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\CargarCreditEvent' => [
             'App\Listeners\CargarCreditListener',
         ],
+        'App\Events\CrearRespuestaEvent' => [
+            'App\Listeners\CrearRespuestaListener',
+        ],
 
     ];
 

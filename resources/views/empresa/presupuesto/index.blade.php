@@ -13,29 +13,47 @@
 		<div class="col-12 col-sm-12 col-md-12">
 			<div class="row">
 				@forelse($presupuestos as $presupuesto)
-					@foreach($servicios as $servicio)
-						@if($presupuesto->servicio->service == $servicio->service)
-							<div class="col-12 col-sm-4 col-md-4">
+					@foreach($presupuesto->respuestas as $respuesta)
+						@if($respuesta->company_id == Auth::user()->empresa->id)
+							<div class="col-12 col-sm-3 col-md-3">
 								<div class="card margin-arriba margin-abajo card-raised">
-									@if($presupuesto->image == null)
-										<img class="card-img-top" style="height:210px" src="{{$presupuesto->servicio->url}}">
+									@if($respuesta->presupuesto->image == null)
+										<img class="card-img-top" style="height:180px" src="{{$respuesta->presupuesto->servicio->url}}">
 									@else
-										<img class="card-img-top" style="height:210px" src="{{$presupuesto->url}}">	
+										<img class="card-img-top" style="height:180px" src="{{$respuesta->presupuesto->url}}">	
 									@endif
 									<div class="card-body">
-										<img class="img-raised rounded-circle img-thumbnail" style="height: 60px; width: 60px; margin-top: -150px; margin-right: 10px;" src="{{$presupuesto->cliente->url}}">
-										<h5><i class="far fa-user"></i> {{$presupuesto->cliente->usuario->name}}</h5>
-										<h5><i class="fas fa-suitcase"></i> {{$presupuesto->servicio->service}}</h5>
-										<h6><i class="far fa-calendar-alt"></i> {{$presupuesto->date}}</h6>
-										<h6><i class="fas fa-map-marker-alt"></i> {{$presupuesto->comuna->commune}}</h6>
-										@if(!$presupuesto->cliente->address == null)
-											<h6><i class="fab fa-slack-hash"></i> {{$presupuesto->cliente->address}}</h6>
+										<img class="img-raised rounded-circle img-thumbnail" style="height: 60px; width: 60px; margin-top: -150px; margin-right: 10px;" src="{{$respuesta->presupuesto->cliente->url}}">
+										<h5><i class="far fa-user"></i> {{$respuesta->presupuesto->cliente->usuario->name}}</h5>
+										<h5><i class="fas fa-suitcase"></i> {{$respuesta->presupuesto->servicio->service}}</h5>
+										<h6><i class="far fa-calendar-alt"></i> {{$respuesta->presupuesto->date}}</h6>
+										<h6><i class="fas fa-map-marker-alt"></i> {{$respuesta->presupuesto->comuna->commune}}</h6>
+										@if(!$respuesta->presupuesto->cliente->address == null)
+											<h6><i class="fab fa-slack-hash"></i> {{$respuesta->presupuesto->cliente->address}}</h6>
 										@else
 											<h6><i class="fab fa-slack-hash"></i> Sin Direccion</h6>
 										@endif
-										<h6><i class="far fa-comments"></i> {{$presupuesto->description}}</h6>
+										@if($respuesta->state_company != 2)
+											@if($respuesta->state_client == 1)
+												<h6><i class="far fa-thumbs-up"></i> {{$respuesta->presupuesto->cliente->usuario->name}} confirmo la solicitud</h6>
+											@elseif($respuesta->state_client == 2)
+												<h6><i class="far fa-thumbs-down"></i> {{$respuesta->presupuesto->cliente->usuario->name}} ha cancelo la solicitud</h6>
+											@else									
+												<h6><i class="far fa-pause-circle"></i> Confirmacion del Cliente Pendiente</h6>
+											@endif
+										@else									
+											<h6><i class="far fa-thumbs-down"></i> La solicitud a sido rechazada</h6>
+										@endif
+										@if($respuesta->state_company == 0)
+											<form action="" method="post" enctype="multipart/form-data">
+												{{csrf_field()}}
+												<div class="form-group">
+													<a href="{{url('/empresa/presupuesto/'.$respuesta->id.'/edit')}}" class="btn btn-warning btn-sm pull-right link-1">Enviar Presupuesto</a>
+												</div>
+											</form>										
+										@endif
 									</div>
-								</div>								
+								</div>	
 							</div>
 						@endif
 					@endforeach
@@ -47,3 +65,5 @@
 		</div>
 	</div>
 @endsection
+
+
