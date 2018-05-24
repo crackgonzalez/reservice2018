@@ -67,8 +67,8 @@
 					</div>
 					<div class="card-body">	
 						<div class="row">
-							<div class="col-12 col-sm-12 col-md-12 text-center">						
-								<h4>Creditos disponibles <span class="badge badge-secondary">{{$empresa->credit}}</span></h4>
+							<div class="col-12 col-sm-12 col-md-12 text-center">			
+								<h4>Creditos Disponibles <span class="badge badge-secondary">{{$empresa->credit}}</span></h4>
 								<a class="btn btn-sm btn-warning link-1" href="{{url('/empresa/creditos/create')}}">Comprar Creditos</a>
 							</div>
 						</div>				

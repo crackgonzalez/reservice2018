@@ -18,7 +18,7 @@ class CreateClientsTable extends Migration
             $table->string('image')->default('fotoperfil.jpg');
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
-            $table->integer('credit')->default(5);
+            $table->integer('credit')->default(1);
             $table->integer('commune_id')->nullable()->unsigned();
             $table->integer('user_id')->unsigned()->unique();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');

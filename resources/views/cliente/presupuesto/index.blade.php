@@ -12,10 +12,11 @@
 	<div class="row">
 		<div class="col-12 col-sm-12 col-md-12">
 			<div class="card margin-arriba margin-abajo card-raised">
-				<div class="card-body">
-					
+				<div class="card-body text-center">
+					<h4>Creditos Disponibles <span class="badge badge-secondary">{{$creditos}}</span></h4>
+					<a class="btn btn-sm btn-warning link-1" href="{{url('/cliente/creditos/create')}}">Comprar Creditos</a>
 				</div>
-			</div>			
+			</div>
 		</div>
 	</div>
 	<div class="row">
@@ -29,10 +30,9 @@
 					<div class="card-body">
 						<div class="row">
 							@foreach($presupuesto->respuestas as $respuestas)
-								<!-- Verificar if mas adelante para garantizar un mejor funcionamiento -->
 								@if($respuestas->empresa->usuario->state)
 									@if($respuestas->empresa->credit > 0)
-										@if($respuestas->state_company != 0)
+										@if($respuestas->state_company !=0)
 											<div class="col-12 col-sm-4 col-md-4">
 												<div class="card margin-arriba margin-abajo card-raised">
 												<div class="card-body">
@@ -56,6 +56,16 @@
 															<h6 class="text-justify"><i class="far fa-comments"></i> {{$respuestas->description}}</h6>
 														</div>
 													</div>
+													@if($respuestas->presupuesto->cliente->credit>0)
+													<form class="margin-arriba" action="{{url('/cliente/presupuesto/'.$respuestas->id)}}" method="post">
+														{{csrf_field()}}
+														@if($respuestas->state_client ==0)
+														<a class="tn btn-warning btn-sm link-1 pull-right margin-arriba" style="text-decoration:none;"  href="{{url('/cliente/presupuesto/'.$respuestas->id.'/edit')}}">Responder Presupuesto</a>
+														@endif
+													</form>
+													@else
+														<h5 class="text-justify">Debe comprar creditos para responder los presupuestos enviados y generar una reserva.</h5>
+													@endif
 												</div>
 												</div>
 											</div>										

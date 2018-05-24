@@ -28,6 +28,7 @@ class ModificarCreditListener
      */
     public function handle(ModificarCreditEvent $event)
     {
+        //eesta creditos a la empresa
         if($event->reservation->orden->state_company == 1 && $event->reservation->orden->state_client == 1){
             $empresa = Company::find($event->reservation->orden->company_id); 
             $empresa->credit = $empresa->credit - 1;

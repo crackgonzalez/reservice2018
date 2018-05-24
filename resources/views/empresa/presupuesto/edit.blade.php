@@ -35,7 +35,8 @@
 									<span class="input-group-addon"><i class="material-icons">terrain</i></span>
 									<select name="state_company" class="form-control">
 										<option value=null>Seleccione una Opcion</option>
-										<option value=1>Confirmar Solicitud</option>					
+										<option value=1>Confirmar Solicitud</option>
+										<option value=2>Rechazar Solicitud</option>	
                                 	</select>
                                 </div>
                             </div>

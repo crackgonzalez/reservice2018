@@ -9,6 +9,7 @@ use App\Company;
 use App\Commune;
 use App\Section;
 use App\Service;
+use App\Credit;
 use Exception;
 use Auth;
 
@@ -16,12 +17,13 @@ class QuoteController extends Controller
 {
     //vista presupuesto cliente
     public function presupestoCliente(){
+        $creditos = Auth::user()->cliente->credit;
     	$cliente = Auth::user()->cliente->id;
     	$presupuestos = Quote::where('client_id','=',$cliente)
     					->where('date','=',today())
     					->where('model','=',true)
     					->get();
-        return view('cliente.presupuesto.index')->with(compact('presupuestos'));
+        return view('cliente.presupuesto.index')->with(compact('presupuestos','creditos'));
     }
 
     //vista solicitud cliente

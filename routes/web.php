@@ -159,6 +159,10 @@ Route::middleware(['auth','cliente'])->group(function () {
 	Route::get('/cliente/calificar/{id}/calificar','ClientController@calificar');
 	Route::post('cliente/calificar/{id}/calificar','ClientController@guardarCalificacion');
 
+	//Creditos
+	Route::get('/cliente/creditos/create','CreditController@create');
+	Route::post('/cliente/creditos','CreditController@store');
+
 	
 });
 
