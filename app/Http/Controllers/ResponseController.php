@@ -30,4 +30,27 @@ class ResponseController extends Controller
     	return redirect('empresa/presupuesto');
 
     }
+
+    public function presupuesto($id){
+        $respuesta = Response::find($id);
+        return view('cliente.presupuesto.confirmacion')->with(compact('respuesta'));
+    }
+
+    public function confirmacion(Request $request,$id){
+        $mensajes =[];
+        $reglas = [];
+        $this->validate($request,$reglas,$mensajes);
+
+        $respuesta = Response::find($id);
+        $respuesta->state_client = $request->state_client;
+
+        $exito = $respuesta->update();
+        if($exito){
+            alert()->success('El Presupuesto se respondio correctamente','Se ha Respondido el Presupuesto')->autoclose(3000);
+        }else{
+            alert()->error('El Presupuesto no se pudo responder','Ocurrio un Error')->autoclose(3000);
+        }
+
+        return redirect('cliente/presupuesto');
+    }
 }

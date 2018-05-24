@@ -16,14 +16,13 @@ use Auth;
 class QuoteController extends Controller
 {
     //vista presupuesto cliente
-    public function presupestoCliente(){
-        $creditos = Auth::user()->cliente->credit;
+    public function presupestoCliente(){        
     	$cliente = Auth::user()->cliente->id;
     	$presupuestos = Quote::where('client_id','=',$cliente)
     					->where('date','=',today())
     					->where('model','=',true)
     					->get();
-        return view('cliente.presupuesto.index')->with(compact('presupuestos','creditos'));
+        return view('cliente.presupuesto.index')->with(compact('presupuestos'));
     }
 
     //vista solicitud cliente

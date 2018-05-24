@@ -80,7 +80,7 @@
 							</div>							
 						</div>						
 					</div>
-					<a class="btn btn-sm btn-warning link-1 pull-left margin-arriba" href="/cliente/presupuesto">Anular</a>
+					<a class="btn btn-sm btn-warning link-1 pull-left margin-arriba" href="/cliente/perfil">Anular</a>
 					<button class="btn btn-sm btn-warning link-1 pull-right margin-arriba" type="submit">Pagar</button>
 				</form>				
 			</div>

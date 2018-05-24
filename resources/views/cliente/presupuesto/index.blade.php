@@ -8,17 +8,7 @@
 @section('estilo-footer')
 	<link rel="stylesheet" href="{{asset('css/footer-with-button-logo-black.css')}}">
 @endsection
-@section('contenido')
-	<div class="row">
-		<div class="col-12 col-sm-12 col-md-12">
-			<div class="card margin-arriba margin-abajo card-raised">
-				<div class="card-body text-center">
-					<h4>Creditos Disponibles <span class="badge badge-secondary">{{$creditos}}</span></h4>
-					<a class="btn btn-sm btn-warning link-1" href="{{url('/cliente/creditos/create')}}">Comprar Creditos</a>
-				</div>
-			</div>
-		</div>
-	</div>
+@section('contenido')	
 	<div class="row">
 		<div class="col-12 col-sm-12 col-md-12">
 			@forelse($presupuestos as $presupuesto)
@@ -54,17 +44,26 @@
 													<div class="row">
 														<div class="col-12 col-sm-12 col-md-12 margin-arriba">
 															<h6 class="text-justify"><i class="far fa-comments"></i> {{$respuestas->description}}</h6>
+															@if($respuestas->state_client != 2)
+																@if($respuestas->state_client == 1)
+																	<h5>Presupuesto Confirmado</h5>
+																@elseif($respuestas->state_client == 2)
+																	<h5>Presupuesto Rechazado</h5>
+																@elseif($respuestas->state_client == 3)
+																	<h5>Presupuesto No Considerado</h5>
+																@endif
+															@else
+																<h6><i class="far fa-thumbs-down"></i> El presupuesto fue rechazado</h6>
+															@endif
 														</div>
-													</div>
-													@if($respuestas->presupuesto->cliente->credit>0)
+													</div>													
+													@if($respuestas->presupuesto->cliente->credit!=0)
 													<form class="margin-arriba" action="{{url('/cliente/presupuesto/'.$respuestas->id)}}" method="post">
 														{{csrf_field()}}
 														@if($respuestas->state_client ==0)
-														<a class="tn btn-warning btn-sm link-1 pull-right margin-arriba" style="text-decoration:none;"  href="{{url('/cliente/presupuesto/'.$respuestas->id.'/edit')}}">Responder Presupuesto</a>
+														<a class="tn btn-warning btn-sm link-1 pull-right margin-arriba" style="text-decoration:none;"  href="{{url('/cliente/presupuesto/'.$respuestas->id.'/confirmacion')}}">Responder Presupuesto</a>
 														@endif
 													</form>
-													@else
-														<h5 class="text-justify">Debe comprar creditos para responder los presupuestos enviados y generar una reserva.</h5>
 													@endif
 												</div>
 												</div>

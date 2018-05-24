@@ -34,7 +34,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\CargarCreditUserEvent' => [
             'App\Listeners\CargarCreditUserListener',
         ],
-
+        'App\Events\GenerarReservaMultipleEvent' => [
+            'App\Listeners\GenerarReservaMultipleListener',
+        ],
     ];
 
     /**

@@ -48,6 +48,6 @@ class CreditController extends Controller
             alert()->error('El pago no se pudo realizar debido a un error','Ocurrio un Error')->autoclose(30000);
         }
 
-    	return redirect('cliente/presupuesto');
+    	return redirect('cliente/perfil');
     }
 }

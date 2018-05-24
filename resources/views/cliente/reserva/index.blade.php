@@ -22,7 +22,13 @@
 						@endif							
 						<div class="card-body">
 							<h5><i class="fas fa-suitcase"></i> {{$reserva->orden->servicio->service}}</h5>
-							<h6 class="margin-arriba"><i class="far fa-calendar-alt"></i> {{$reserva->orden->date}} - <i class="far fa-clock"></i> {{$reserva->orden->tramo->section}}</h6>
+							<h6 class="margin-arriba"><i class="far fa-calendar-alt"></i> {{$reserva->orden->date}}</h6>
+							@isset($reserva->orden->tramo->section)
+								<h6><i class="far fa-clock"></i> {{$reserva->orden->tramo->section}}</h6>
+							@endisset
+							@empty($reserva->orden->tramo->section)
+								<h6><i class="far fa-clock"></i> Durante el dia</h6>
+							@endempty
 							<h6><i class="fas fa-map-marker-alt"></i> {{$reserva->orden->comuna->commune}}</h6>
 							@if(!$reserva->orden->cliente->address == null)
 								<h6><i class="fab fa-slack-hash"></i> {{$reserva->orden->cliente->address}}</h6>

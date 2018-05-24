@@ -13,4 +13,8 @@ class Response extends Model
     public function empresa(){
         return $this->belongsTo('App\Company','company_id');
     }
+
+    protected $dispatchesEvents = [
+        'updated' => Events\GenerarReservaMultipleEvent::class,   
+    ];
 }

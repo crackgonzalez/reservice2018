@@ -20,8 +20,9 @@ class ClientController extends Controller
 {
     //
     public function index(){
+        $creditos = Auth::user()->cliente->credit;
     	$clientes = Client::all();
-    	return view('cliente.perfil.index')->with(compact('clientes'));
+    	return view('cliente.perfil.index')->with(compact('clientes','creditos'));
     }
 
     public function edit(Client $cliente){
