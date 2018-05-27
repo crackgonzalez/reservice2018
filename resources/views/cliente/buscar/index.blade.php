@@ -46,9 +46,15 @@
 		<div class="col-12 col-sm-3 col-md-3">
 			<div class="card margin-arriba margin-abajo card-raised">
 				<div class="card-body text-center">
+					@if($creditos> 0)
 					<div class="form-group" style="margin: 8px;">
 						<a class="btn btn-sm btn-success" href="{{url('/cliente/presupuesto/solicitar')}}">Solicitar Servicio Hoy</a>
 					</div>
+					@else
+					<div class="form-group" style="margin: 8px;">
+						<button class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="bottom" title="No tienes creditos en tu cuenta">Solicitar Servicio Hoy</button>
+					</div>
+					@endif
 				</div>
 			</div>
 		</div>

@@ -99,6 +99,7 @@ class ClientController extends Controller
     }
 
     public function buscar(Request $request){
+        $creditos = Auth::user()->cliente->credit;
         $servicios = DB::table('company_service')
                         ->join('services','services.id','=','service_id')
                         ->join('companies','companies.id','=','company_id')
@@ -107,7 +108,7 @@ class ClientController extends Controller
                         ->where('companies.credit','>','0')
                         ->where('users.state','=','1')                        
                         ->orderBy('price',$request->input('price','asc'))->get();
-        return view('cliente.buscar.index')->with(compact('servicios'));
+        return view('cliente.buscar.index')->with(compact('servicios','creditos'));
     }
 
     public function show(Company $empresa){

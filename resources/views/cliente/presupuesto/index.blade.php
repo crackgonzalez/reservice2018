@@ -60,7 +60,7 @@
 													@if($respuestas->presupuesto->cliente->credit!=0)
 													<form class="margin-arriba" action="{{url('/cliente/presupuesto/'.$respuestas->id)}}" method="post">
 														{{csrf_field()}}
-														@if($respuestas->state_client ==0)
+														@if($respuestas->state_client ==0 && $respuestas->state_company != 2)
 														<a class="tn btn-warning btn-sm link-1 pull-right margin-arriba" style="text-decoration:none;"  href="{{url('/cliente/presupuesto/'.$respuestas->id.'/confirmacion')}}">Responder Presupuesto</a>
 														@endif
 													</form>
