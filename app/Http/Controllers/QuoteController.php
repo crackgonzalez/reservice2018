@@ -12,17 +12,19 @@ use App\Service;
 use App\Credit;
 use Exception;
 use Auth;
+use DB;
 
 class QuoteController extends Controller
 {
     //vista presupuesto cliente
-    public function presupestoCliente(){        
+    public function presupestoCliente(){ 
+            
     	$cliente = Auth::user()->cliente->id;
     	$presupuestos = Quote::where('client_id','=',$cliente)
     					->where('date','=',today())
     					->where('model','=',true)
     					->get();
-        return view('cliente.presupuesto.index')->with(compact('presupuestos'));
+        return view('cliente.presupuesto.index')->with(compact('presupuestos','notas'));
     }
 
     //vista solicitud cliente
@@ -144,7 +146,7 @@ class QuoteController extends Controller
 
         $reglas = [
             'answer' => 'required|min:10|max:200|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ!¡¿?.,])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ!¡¿?.,]*)*)+$/',
-            'state_company' => 'integer|between:1,2' ,
+            'state_company' => 'integer|between:1,2',
             
         ];
 
@@ -172,11 +174,11 @@ class QuoteController extends Controller
     public function guardarOferta(Request $request, $id){
         
         $mensajes =[  
-            'state_client.integer' =>'Debe seleccionar una opcion', 
+            'state_client.between' =>'Debe seleccionar una opcion', 
         ];          
 
         $reglas = [
-            'state_client' => 'integer|between:1,2',            
+            'state_client' => 'between:1,2',            
         ];
 
         $this->validate($request,$reglas,$mensajes);

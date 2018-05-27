@@ -31,14 +31,15 @@
 															<img class="img-raised rounded-circle img-thumbnail" style="height: 100px; width: 100px; margin-bottom: : 10px;" src="{{$respuestas->empresa->url}}">
 														</div>
 														<div class="col-12 col-sm-8 col-md-8">
-															<h5><i class="far fa-building"></i> {{$respuestas->empresa->usuario->name}}</h5>
-															<h6>Valoracion Empresa</h6>
+															<h5><i class="far fa-building"></i> {{$respuestas->empresa->usuario->name}}</h5>	
 															@foreach($respuestas->empresa->servicios as $servicio)
 																@if($servicio->service == $presupuesto->servicio->service)
 																	<h6>Precio de Referencia <i class="fas fa-dollar-sign"></i> {{$servicio->pivot->price}}</h6>
 																@endif
 															@endforeach
+															@isset($respuestas->price)
 															<h6>Precio Final Ofrecido <i class="fas fa-dollar-sign"></i> {{$respuestas->price}}</h6>
+															@endisset
 														</div>
 													</div>
 													<div class="row">
@@ -46,14 +47,12 @@
 															<h6 class="text-justify"><i class="far fa-comments"></i> {{$respuestas->description}}</h6>
 															@if($respuestas->state_client != 2)
 																@if($respuestas->state_client == 1)
-																	<h5>Presupuesto Confirmado</h5>
-																@elseif($respuestas->state_client == 2)
-																	<h5>Presupuesto Rechazado</h5>
+																	<h6><i class="far fa-thumbs-up"></i> Presupuesto Confirmado</h6>
 																@elseif($respuestas->state_client == 3)
-																	<h5>Presupuesto No Considerado</h5>
+																	<h6><i class="fas fa-exclamation-triangle"></i> Presupuesto Descartado</h6>
 																@endif
 															@else
-																<h6><i class="far fa-thumbs-down"></i> El presupuesto fue rechazado</h6>
+																<h6><i class="far fa-thumbs-down"></i> Presupuesto Rechazado
 															@endif
 														</div>
 													</div>													

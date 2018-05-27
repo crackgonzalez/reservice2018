@@ -13,10 +13,15 @@ class ResponseController extends Controller
     }
 
     public function guardarPresupuesto(Request $request,$id){
-    	//falta la validacion
     	//falta try catch y en base de datos defir como unique
-    	$mensajes =[];
-    	$reglas = [];
+    	$mensajes =[
+            'state_company.between' =>'Debe seleccionar una opcion',
+            'description.required' => 'El campo respuesta es obligatorio',
+        ];
+    	$reglas = [
+            'state_company' => 'between:1,2',
+            'description' => 'required',
+        ];
     	$this->validate($request,$reglas,$mensajes);
 
     	$presupuesto = Response::find($id);
@@ -37,8 +42,12 @@ class ResponseController extends Controller
     }
 
     public function confirmacion(Request $request,$id){
-        $mensajes =[];
-        $reglas = [];
+        $mensajes =[
+            'state_client.between' =>'Debe seleccionar una opcion',
+        ];
+        $reglas = [
+            'state_client' => 'between:1,2',
+        ];
         $this->validate($request,$reglas,$mensajes);
 
         $respuesta = Response::find($id);

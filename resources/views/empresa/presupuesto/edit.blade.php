@@ -25,7 +25,7 @@
 			@endif
 				<div class="card margin-arriba margin-abajo card-raised">						
 					<div class="card-header text-center">
-						<h4 class="card-title">Prueba</h4>
+						<h4 class="card-title">Enviar un Presupuesto</h4>
 					</div>
 					<div class="card-body">
 						<form action="" method="POST" enctype="multipart/form-data">

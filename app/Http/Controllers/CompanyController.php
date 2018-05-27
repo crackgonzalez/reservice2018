@@ -22,7 +22,7 @@ class CompanyController extends Controller
     public function index(){
     	$empresas = Company::all();
         $id = Auth::user()->empresa->id;
-            $notas = DB::table('client_employe')
+        $notas = DB::table('client_employe')
             ->join('employes','employes.id','=','client_employe.employe_id')
             ->join('companies','companies.id','=','employes.company_id')
             ->join('users','users.id','=','employes.user_id')
