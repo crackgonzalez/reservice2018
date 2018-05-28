@@ -89,13 +89,13 @@
 				@forelse($servicios as $servicio)				
 					<div class="col-12 col-sm-3 col-md-3">									
 						<div class="card margin-arriba margin-abajo card-raised">
-							<img src="imagenes/perfil/{{$servicio->image}}" style="height:200px">
+							<img class="card-img-top" src="imagenes/perfil/{{$servicio->image}}" style="height:200px">
 							<div class="card-body">
-								<h4 class="d-inline">{{$servicio->name}}</h4>
+								<h5 class="d-inline"><i class="far fa-building"></i> {{$servicio->name}}</h5>
 								@if($servicio->validation)
 									<img class="img-raised rounded-circle" style="height: 30px; width: 30px;" src="{{asset('imagenes/verificado.png')}}" data-toggle="tooltip" data-placement="right" title="Cuenta Verficada">
 								@endif
-								<h6 class="margin-arriba">{{$servicio->service}}</h6>
+								<h6 class="margin-arriba"><i class="fas fa-suitcase"></i> {{$servicio->service}}</h6>
 								<h6 class="margin-arriba"><i class="fas fa-dollar-sign"></i> {{$servicio->price}}</h6>
 								<h6 class="margin-arriba"><i class="far fa-comments"></i> Descripcion de la Empresa</h6>
 								<small class="text-justify">{{$servicio->description}}</small>

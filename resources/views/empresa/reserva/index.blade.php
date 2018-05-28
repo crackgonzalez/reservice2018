@@ -26,7 +26,7 @@
 							@isset($reserva->orden->tramo->section)
 							<h6><i class="far fa-clock"></i> {{$reserva->orden->tramo->section}}</h6>
 							@endisset
-							@empty($reserva->orden->orden->section)
+							@empty($reserva->orden->tramo->section)
 								<h6><i class="far fa-clock"></i> Durante el dia</h6>
 							@endempty
 							<h6><i class="fas fa-map-marker-alt"></i> {{$reserva->orden->comuna->commune}}</h6>

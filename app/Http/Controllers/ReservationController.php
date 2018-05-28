@@ -15,7 +15,9 @@ class ReservationController extends Controller
     public function index(){ 
         $reservas = Reservation::whereHas('orden', function($query){
             $empresa = Auth::user()->empresa->id;
-            $query->where('company_id',$empresa)->orderBy('date','desc');
+            $query->where('company_id',$empresa)
+                    ->where('date','>=',today())
+                    ->orderBy('date','desc');
         })->get();
         return view('empresa.reserva.index')->with(compact('reservas'));
     }
@@ -24,7 +26,9 @@ class ReservationController extends Controller
 	public function inicio(){ 
     	$reservas = Reservation::whereHas('orden', function($query){
             $cliente = Auth::user()->cliente->id;
-            $query->where('client_id',$cliente)->orderBy('date','desc');
+            $query->where('client_id',$cliente)
+                    ->where('date','>=',today())
+                    ->orderBy('date','desc');
         })->get();        
         return view('cliente.reserva.index')->with(compact('reservas'));
     }

@@ -2,7 +2,7 @@
 	<div class="navbar-nav">
 		<a class="nav-item nav-link nav-pills-estilo" href="{{url('/trabajador/perfil')}}">Perfil</a>
 		<a class="nav-item nav-link nav-pills-estilo" href="{{url('/trabajador/reserva')}}">Trabajos Asignados</a>
-		<a class="nav-item nav-link nav-pills-estilo" href="">Calificacines</a>
+		<a class="nav-item nav-link nav-pills-estilo" href="">Calificaciones</a>
 		<a class="nav-item nav-link nav-pills-estilo" href="">Ruta</a>
 	</div>
 </div>
