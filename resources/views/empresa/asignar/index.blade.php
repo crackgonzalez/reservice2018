@@ -22,7 +22,13 @@
 						@endif
 						<div class="card-body">
 							<h5>Servicio {{$reserva->orden->servicio->service}}</h5>
-							<h6 class="margin-arriba">Fecha {{$reserva->orden->date}} - Horario {{$reserva->orden->tramo->section}}</h6>
+							<h6 class="margin-arriba">Fecha {{$reserva->orden->date}}</h6>
+							@isset($reserva->orden->tramo->section)
+							<h6><i class="far fa-clock"></i> {{$reserva->orden->tramo->section}}</h6>
+							@endisset
+							@empty($reserva->orden->orden->section)
+								<h6><i class="far fa-clock"></i> Durante el dia</h6>
+							@endempty
 							<h6>Comuna {{$reserva->orden->comuna->commune}}</h6>
 							@if(!$reserva->orden->cliente->address == null)
 								<h6>{{$reserva->orden->cliente->address}}</h6>
