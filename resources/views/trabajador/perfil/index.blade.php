@@ -22,7 +22,9 @@
                 				<div class="col-12 col-sm-8 col-md-6 text-center">
                 					<img class="img-raised rounded-circle tamaño-imagen-normal img-thumbnail" src="{{$empleado->url}}" style="background: #fff; margin-top: 15px;" alt="">
                 					<h2 class="link-1">{{$empleado->usuario->name}}</h2>
-									<h5 class="link-1">Calificacion {{round($contador,1)}} <i class="far fa-star"></i></h5>
+                					@if($contador>0)
+										<h5 class="link-1">Calificacion {{round($contador,1)}} <i class="far fa-star"></i></h5>
+									@endif
                 					<h6 class="link-1"><i class="fas fa-envelope"></i> {{$empleado->usuario->email}}</h6>
                 					
                 					@empty($empleado->phone)

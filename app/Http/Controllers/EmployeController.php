@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Employe;
 use App\Company;
 use App\Client;
+use App\Reservation;
 use File;
 use Exception;
 use Auth;
@@ -130,11 +131,11 @@ class EmployeController extends Controller
         return redirect('empresa/trabajador');
         
     }
+
+    public function calificaciones(){
+        $trabajadores = Employe::where('id',Auth::user()->trabajador->id)->get();
+        $reservas = Reservation::all();
+        return view('trabajador.calificar.index')->with(compact('reservas','trabajadores'));
+    }
     
 }
-
-
-//nota empresa
-
-
-//         return view ('empresa.resumen-calificacion.index')->with(compact('notas'));
