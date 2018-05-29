@@ -58,6 +58,10 @@ class ReservationController extends Controller
         return view('trabajador.reserva.mapa')->with(compact('cliente','empresa'));
     }
 
+    public function ruta(){
+        return view('trabajador.mapa.index');
+    }
+
     public function resumenEmpresa(){       
         $reservas = Reservation::join('quotes','quotes.id','=','quote_id')
                                 ->select('quotes.date','quotes.company_id',DB::raw("COUNT(quotes.company_id) as reserva"))->groupBy('quotes.company_id','quotes.date')->get();

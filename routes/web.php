@@ -180,7 +180,8 @@ Route::middleware(['auth','trabajador'])->group(function () {
 	Route::get('/trabajador/reserva','ReservationController@trabajos');
 
 	//Mapa hay que modificarla - fuera de la version actual
-	Route::get('/trabajador/reserva/{orden}/mapa','ReservationController@mapa');
+	//Route::get('/trabajador/reserva/{orden}/mapa','ReservationController@mapa');
+	Route::get('/trabajador/mapa','ReservationController@ruta');
 
 	Route::get('/trabajador/calificar','EmployeController@calificaciones');
 	

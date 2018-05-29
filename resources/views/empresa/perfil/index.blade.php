@@ -190,7 +190,7 @@
 	<script>
 		function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
-        	zoom: 17,
+        	zoom: 15,
         	center: {lat: -33.4378394, lng: -70.6526683}
         });
         var geocoder = new google.maps.Geocoder();
