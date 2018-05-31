@@ -110,6 +110,7 @@
 	@include('sweet::alert')
 	<script>$('[data-toggle="tooltip"]').tooltip();</script>
 	<script type="text/javascript" src="{{asset('js/jquery.rut.js')}}"></script>
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b0cab7a33fcfa5d"></script>
 	@yield('scripts')
 </body>
 </html>

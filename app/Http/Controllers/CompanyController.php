@@ -55,7 +55,7 @@ class CompanyController extends Controller
             'phone.numeric' =>'El telefono no cumple con el formato solicitado (Ej:998773251)',
             'phone.digits_between' => 'El numero de telefono debe estar en el rango de 8 a 11 digitos',
             'address.required' =>'El campo direccion es obligatorio',
-            'address.regex' => 'El campo description solo acepta cadenas de texto y valores numericos',
+            'address.regex' => 'El campo direccion solo acepta cadenas de texto y valores numericos',
             'description.required' =>'El campo descripcion es obligatorio',
             'description.min' =>'El campo descripcion debe tener al menos 10 caracteres',
             'description.max' =>'El campo descripcion debe tener como maximo 200 caracteres',
