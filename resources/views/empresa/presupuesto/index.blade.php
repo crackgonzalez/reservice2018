@@ -45,7 +45,7 @@
 											<h6><i class="far fa-thumbs-down"></i> La solicitud a sido rechazada</h6>
 										@endif
 										<h6><i class="far fa-comments"></i> Descripcion del Problema</h6>
-										<small class="text-justify">{{$reserva->presupuesto->description}}</small>
+										<small class="text-justify">{{$respuesta->presupuesto->description}}</small>
 										@if($respuesta->state_company == 0)
 											<form action="" method="post" enctype="multipart/form-data">
 												{{csrf_field()}}
