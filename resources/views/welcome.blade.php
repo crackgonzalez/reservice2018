@@ -98,7 +98,7 @@
 								<h6 class="margin-arriba"><i class="fas fa-suitcase"></i> {{$servicio->service}}</h6>
 								<h6 class="margin-arriba"><i class="fas fa-dollar-sign"></i> {{$servicio->price}}</h6>
 								<h6 class="margin-arriba"><i class="far fa-comments"></i> Descripcion de la Empresa</h6>
-								<small class="text-justify">{{$servicio->description}}</small>
+								<small class="">{{$servicio->description}}</small>
 								<div class="margin-arriba">
 									<a class="btn btn-warning btn-sm pull-right link-1" href="{{ route('register') }}">Registrarse</a>
 									<a class="btn btn-warning btn-sm pull-right link-1 margin-derecho" href="{{ route('login') }}">Iniciar Sesion</a>

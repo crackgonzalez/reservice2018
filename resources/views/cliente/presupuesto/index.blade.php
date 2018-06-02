@@ -13,10 +13,18 @@
 		<div class="col-12 col-sm-12 col-md-12">
 			@forelse($presupuestos as $presupuesto)
 				<div class="card margin-arriba margin-abajo card-raised">
+					@if($presupuesto->image == null)
 					<div class="card-header text-center" style="background-image: url({{$presupuesto->servicio->url}}); background-position: center center; width: 100%;">						
 						<h2><span class="badge badge-secondary"><i class="fas fa-suitcase"></i> {{$presupuesto->servicio->service}}</span></h2>
 						<h2><span class="badge badge-secondary"><i class="far fa-calendar-alt"></i> {{$presupuesto->date}}</span></h2>
 					</div>
+					@else
+					<div class="card-header text-center" style="background-image: url({{$presupuesto->url}}); background-position: center center; width: 100%;">						
+						<h2><span class="badge badge-secondary"><i class="fas fa-suitcase"></i> {{$presupuesto->servicio->service}}</span></h2>
+						<h2><span class="badge badge-secondary"><i class="far fa-calendar-alt"></i> {{$presupuesto->date}}</span></h2>
+					</div>
+
+					@endif
 					<div class="card-body">
 						<div class="row">
 							@foreach($presupuesto->respuestas as $respuestas)
