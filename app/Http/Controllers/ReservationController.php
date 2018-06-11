@@ -58,8 +58,15 @@ class ReservationController extends Controller
         return view('trabajador.reserva.mapa')->with(compact('cliente','empresa'));
     }
 
+    // trabajado en este metodo
     public function ruta(){
-        return view('trabajador.mapa.index');
+        $reservas = Reservation::whereHas('orden', function($query){
+            $trabajador = Auth::user()->trabajador->id;
+            $query->where('employe_id',$trabajador)
+                    ->where('date','=',today())
+                    ->orderBy('date','desc');
+        })->get();
+        return view('trabajador.mapa.index')->with(compact('reservas'));
     }
 
     public function resumenEmpresa(){       

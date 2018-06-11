@@ -17,14 +17,15 @@
 			</div>
 			<div class="col-12 col-sm-4 col-md-4">
 				<div class="card margin-arriba margin-abajo card-raised">
-					<div class="card-body">
-						
-						<!-- Elimine el formulario -->
+					<div class="card-body">					
 							<h6>Inicio</h6>
 							<div class="form-group">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-play" aria-hidden="true"></i></span>
 									<select id="inicio" name="inicio" class="form-control">
+										@foreach($reservas as $reserva)
+											<option value="{{$reserva->orden->cliente->address}}, {{$reserva->orden->cliente->comuna->commune}}">{{$reserva->orden->cliente->address}}, {{$reserva->orden->cliente->comuna->commune}}</option>
+										@endforeach
 									</select>									
 								</div>
 							</div>
@@ -33,6 +34,9 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-map-pin" aria-hidden="true"></i></span>
 									<select multiple="" id="intermedio" name="intermedio" class="form-control">
+										@foreach($reservas as $reserva)
+											<option value="{{$reserva->orden->cliente->address}}, {{$reserva->orden->cliente->comuna->commune}}">{{$reserva->orden->cliente->address}}, {{$reserva->orden->cliente->comuna->commune}}</option>
+										@endforeach
 									</select>									
 								</div>
 							</div>
@@ -41,6 +45,9 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-stop" aria-hidden="true"></i></span>
 									<select id="fin" name="fin" class="form-control">
+										@foreach($reservas as $reserva)
+											<option value="{{$reserva->orden->cliente->address}}, {{$reserva->orden->cliente->comuna->commune}}">{{$reserva->orden->cliente->address}}, {{$reserva->orden->cliente->comuna->commune}}</option>
+										@endforeach
 									</select>									
 								</div>
 							</div>
@@ -50,6 +57,23 @@
 						
 					</div>
 				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 col-sm-12 col-md-12 text-center">
+				<div class="card margin-arriba margin-abajo card-raised">
+					<div class="card-header">
+						<h3>Distacia Total: <span id="total"></span></h3>
+					</div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-12 col-sm-3 col-md-3"></div>
+							<div class="col-12 col-sm-6 col-md-6">
+								<div id="right-panel"></div>
+							</div>
+						</div>
+					</div>			
+	    		</div>
 			</div>
 		</div>
 	</div>
@@ -66,8 +90,53 @@
         });
 
         directionsDisplay.setMap(map);
+        directionsDisplay.setPanel(document.getElementById('right-panel'));
 
+        directionsDisplay.addListener('directions_changed', function() {
+          computeTotalDistance(directionsDisplay.getDirections());
+        });
+
+        document.getElementById('submit').addEventListener('click', function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        });
 	}
+
+	function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+		var waypts = [];
+		var checkboxArray = document.getElementById('intermedio');
+		for (var i = 0; i < checkboxArray.length; i++) {
+			if (checkboxArray.options[i].selected) {
+				waypts.push({
+					location: checkboxArray[i].value,
+              		stopover: true
+				});
+			}
+		}
+
+		directionsService.route({
+			origin: document.getElementById('inicio').value,
+			destination: document.getElementById('fin').value,
+			waypoints: waypts,
+         	optimizeWaypoints: true,
+         	travelMode: 'DRIVING'
+         }, function(response, status) {
+         	if (status === 'OK') {
+         		directionsDisplay.setDirections(response);
+         	}else {
+            	window.alert('Directions request failed due to ' + status);
+            }
+        });		
+	}
+
+	function computeTotalDistance(result) {
+        var total = 0;
+        var myroute = result.routes[0];
+        for (var i = 0; i < myroute.legs.length; i++) {
+          total += myroute.legs[i].distance.value;
+        }
+        total = total / 1000;
+        document.getElementById('total').innerHTML = total + ' km';
+      }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmodiJXhAJMxo-fS9PMpxiNd2JvaDt7Fs&callback=initMap">  	
 </script>
