@@ -12,10 +12,10 @@
 <div class="row">
 	<div class="col-12 col-sm-12 col-md-12">
 		<div class="row">
-			<div class="col-12 col-sm-8 col-md-8">
+			<div class="col-12 col-sm-7 col-md-7">
 				<div id="map" class="mapa margin-arriba"></div>
 			</div>
-			<div class="col-12 col-sm-4 col-md-4">
+			<div class="col-12 col-sm-5 col-md-5">
 				<div class="card margin-arriba margin-abajo card-raised">
 					<div class="card-body">					
 							<h6>Inicio</h6>
@@ -23,8 +23,9 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-play" aria-hidden="true"></i></span>
 									<select id="inicio" name="inicio" class="form-control">
+										<option>Seleccione un Inicio</option>
 										@foreach($reservas as $reserva)
-											<option value="{{$reserva->orden->cliente->address}}, {{$reserva->orden->cliente->comuna->commune}}">{{$reserva->orden->cliente->address}}, {{$reserva->orden->cliente->comuna->commune}}</option>
+											<option value="{{$reserva->orden->cliente->address}}, {{$reserva->orden->cliente->comuna->commune}}">{{$reserva->orden->cliente->usuario->name}} - {{$reserva->orden->cliente->address}}, {{$reserva->orden->cliente->comuna->commune}}</option>
 										@endforeach
 									</select>									
 								</div>
@@ -34,8 +35,10 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-map-pin" aria-hidden="true"></i></span>
 									<select multiple="" id="intermedio" name="intermedio" class="form-control">
-										@foreach($reservas as $reserva)
-											<option value="{{$reserva->orden->cliente->address}}, {{$reserva->orden->cliente->comuna->commune}}">{{$reserva->orden->cliente->address}}, {{$reserva->orden->cliente->comuna->commune}}</option>
+										@foreach($reservas as $reserva)										
+											<option value="{{$reserva->orden->cliente->address}}, {{$reserva->orden->cliente->comuna->commune}}">
+											{{$reserva->orden->cliente->usuario->name}} - 
+											{{$reserva->orden->cliente->address}}, {{$reserva->orden->cliente->comuna->commune}}</option>
 										@endforeach
 									</select>									
 								</div>
@@ -45,8 +48,11 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-stop" aria-hidden="true"></i></span>
 									<select id="fin" name="fin" class="form-control">
+										<option>Seleccione un Termino</option>
 										@foreach($reservas as $reserva)
-											<option value="{{$reserva->orden->cliente->address}}, {{$reserva->orden->cliente->comuna->commune}}">{{$reserva->orden->cliente->address}}, {{$reserva->orden->cliente->comuna->commune}}</option>
+											<option value="{{$reserva->orden->cliente->address}}, {{$reserva->orden->cliente->comuna->commune}}">
+											{{$reserva->orden->cliente->usuario->name}} - 
+											{{$reserva->orden->cliente->address}}, {{$reserva->orden->cliente->comuna->commune}}</option>
 										@endforeach
 									</select>									
 								</div>
@@ -123,7 +129,7 @@
          	if (status === 'OK') {
          		directionsDisplay.setDirections(response);
          	}else {
-            	window.alert('Directions request failed due to ' + status);
+            	window.alert('Ha Ocurrido un Error al Generar la Ruta ' + status);
             }
         });		
 	}
