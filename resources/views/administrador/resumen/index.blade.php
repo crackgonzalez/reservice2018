@@ -47,10 +47,6 @@
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
         chart.draw(data, options);
-
-        $(window).resize(function(){
-  			drawChart();
-		});
     }
 </script>
 @endsection

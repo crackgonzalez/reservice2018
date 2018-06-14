@@ -42,7 +42,6 @@ function drawBasic() {
       ]);
 
       var options = {
-        title: 'Calificacion',
         hAxis: {
           title: 'Trabajadores'
         },
