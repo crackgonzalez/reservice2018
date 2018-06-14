@@ -17,7 +17,7 @@
             <div class="card text-center margin-arriba margin-abajo">
                 <div class="card-header"><h4>Resumen de Trabajadores</h4></div>
                 <div class="card-body">
-                    <div id="piechart" style="width: 100%; height: 100%;"></div>
+                    <div id="chart_div" style="width: 100%; height: 100%;"></div>
                 </div>
             </div>
         </div>
@@ -27,6 +27,37 @@
 @section('scripts')
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
+        google.charts.load('current', {packages: ['corechart', 'bar']});
+        google.charts.setOnLoadCallback(drawBasic);
+
+        function drawBasic() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string','Nombre');
+            data.addColumn('number', 'Reservas');
+            data.addRows([
+                @foreach($trabajadores as $trabajador)
+                    ['{{$trabajador->name}}',{{$trabajador->trabajador}}],
+                @endforeach
+            ]);
+
+            var options = {                
+                hAxis: {
+                title: 'Trabajadores'
+                },
+                vAxis: {
+                title: 'Reservas',
+                minValue: 0,
+                }
+            };
+
+            var chart = new google.visualization.ColumnChart(
+                document.getElementById('chart_div'));
+
+            chart.draw(data, options);
+        }
+    </script> 
+
+    <!-- <script type="text/javascript">
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
 
@@ -46,7 +77,7 @@
 
         chart.draw(data, options);
     }
-    </script>
+    </script> -->
 @endsection
                     
 				
