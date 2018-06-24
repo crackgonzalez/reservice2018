@@ -18,7 +18,7 @@
             <div class="card text-center margin-arriba margin-abajo">
                 <div class="card-header"><h4>Resumen de Reservas</h4></div>
                 <div class="card-body">
-                    <div id="piechart" style="width: 100%; height: 100%;"></div>
+                    <div id="piechart"></div>
                 </div>
             </div>
         </div>

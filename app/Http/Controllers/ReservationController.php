@@ -69,11 +69,32 @@ class ReservationController extends Controller
         return view('trabajador.mapa.index')->with(compact('reservas'));
     }
 
-    public function resumenEmpresa(){       
+    public function resumenEmpresa(){ 
+
+        $id = Auth::user()->empresa->id;
         $reservas = Reservation::join('quotes','quotes.id','=','quote_id')
-                                ->select('quotes.date','quotes.company_id',DB::raw("COUNT(quotes.company_id) as reserva"))->groupBy('quotes.company_id','quotes.date')->get();
+        ->select('quotes.date','quotes.company_id',DB::raw("COUNT(quotes.company_id) as reserva"))
+        ->where('quotes.company_id',$id)
+        ->whereYear('quotes.date','2018')
+        ->groupBy('quotes.company_id','quotes.date')
+        ->get();
+
+        
+        $servicios = Reservation
+        ::join('quotes','quotes.id','=','quote_id')
+        ->join('companies','companies.id','=','quotes.company_id')
+        ->join('services','services.id','=','quotes.service_id')
+        ->select('services.service',DB::raw("COUNT(quotes.service_id) as cont"),DB::raw("MONTH(quotes.date) as mes"),DB::raw("SUM(quotes.service_id) as suma"))
+        ->where('quotes.company_id',$id)
+        ->whereYear('quotes.date','2018')
+        ->groupBy('services.service','mes')
+        ->orderBy('mes')
+        ->orderBy('cont','desc')
+        ->get();
+
+        
          
-        return view('empresa.resumen-reserva.index')->with(compact('reservas'));
+        return view('empresa.resumen-reserva.index')->with(compact('reservas','servicios'));
     }
 
     public function resumenTrabajadores(){

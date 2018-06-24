@@ -26,7 +26,30 @@
                     <div class="card text-center margin-arriba margin-abajo">
                         <div class="card-header"><h4>Detalle por Mes</h4></div>
                         <div class="card-body">
-                            @include('includes.tabla-reservas')
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Servicio</th>
+                                        <th>Cantidad</th>
+                                        <th>Mes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($servicios as $servicio)                                    
+                                        <tr class="{{$servicio->mes % 2 ? 'table-warning' : 'table-info' }}">
+                                            <td>{{$servicio->service}}</td>
+                                            <td>{{$servicio->cont}}</td>
+                                            <td>{{$servicio->mes}}</td>
+                                        </tr>                                        
+                                    @endforeach
+                                        <tr class="table-success">
+                                            <td>Total</td>
+                                            <td><h5 id="annio"></h5></td>
+                                            <td>-</td>
+                                        </tr>  
+                                </tbody>
+                            </table>  
+                                                    
                         </div>
                     </div>
                 </div>                
@@ -47,9 +70,11 @@
             dataTable.addColumn({ type: 'number', id: 'Won/Loss' });
 
             var enero = 0, febrero = 0 , marzo = 0, abril = 0, mayo = 0, junio = 0, julio = 0, agosto = 0, septiembre = 0, octubre = 0, noviembre = 0, diciembre = 0;
+
+
         
             @foreach($reservas as $reserva)
-                @if($reserva->company_id == Auth::user()->empresa->id)
+             
                     var fecha = '{{$reserva->date}}';
                     var year = fecha.substring(0, 4);
                     var mes = fecha.substring(5,7);
@@ -84,13 +109,15 @@
                             }
                         }
                     }
+                    document.getElementById("annio").innerHTML = enero+febrero+marzo+abril+mayo+junio+julio+agosto+septiembre+octubre+noviembre+diciembre;
 
                     dataTable.addRows([
                         [new Date(year,(mes-1),dia), {{$reserva->reserva}} ],
                     ]);
 
-                @endif
+         
             @endforeach
+
             var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
             var options = {
                 
@@ -105,32 +132,6 @@
                 };
 
             chart.draw(dataTable, options);
-        
-            document.getElementById('enero').innerHTML = enero;
-
-            document.getElementById('febrero').innerHTML = febrero;
-
-            document.getElementById('marzo').innerHTML = marzo;
-
-            document.getElementById('abril').innerHTML = abril;
-
-            document.getElementById('mayo').innerHTML = mayo;
-
-            document.getElementById('junio').innerHTML = junio;
-
-            document.getElementById('julio').innerHTML = julio;
-
-            document.getElementById('agosto').innerHTML = agosto;
-
-            document.getElementById('septiembre').innerHTML = septiembre;
-
-            document.getElementById('octubre').innerHTML = octubre;
-
-            document.getElementById('noviembre').innerHTML = noviembre;
-
-            document.getElementById('diciembre').innerHTML = diciembre;
-
-            document.getElementById('annio').innerHTML = enero+febrero+marzo+abril+mayo+junio+julio+agosto+septiembre+octubre+noviembre+diciembre;
         }
     </script>
 @endsection
