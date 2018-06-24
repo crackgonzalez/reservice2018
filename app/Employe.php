@@ -25,6 +25,7 @@ class Employe extends Model
         return $this->belongsToMany('App\Client')
         ->withPivot('score')
         ->withPivot('reservation_id')
+        ->withPivot('comment')
         ->withTimestamps();
     }
 

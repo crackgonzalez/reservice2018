@@ -65,7 +65,7 @@
 				@forelse($servicios as $servicio)				
 					<div class="col-12 col-sm-3 col-md-3">									
 						<div class="card margin-arriba margin-abajo card-raised">
-							<img src="../imagenes/perfil/{{$servicio->image}}" style="height:200px">
+							<img class="card-img-top" src="../imagenes/perfil/{{$servicio->image}}" style="height:200px">
 							<div class="card-body">
 								<h4 class="d-inline">{{$servicio->name}}</h4>
 								@if($servicio->validation)

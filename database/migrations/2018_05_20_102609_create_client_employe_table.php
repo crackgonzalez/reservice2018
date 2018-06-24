@@ -20,6 +20,7 @@ class CreateClientEmployeTable extends Migration
             $table->integer('reservation_id')->unsigned();
             $table->unique(['client_id','employe_id','reservation_id']);
             $table->integer('score');
+            $table->string('comment')->nullable();
             $table->foreign('client_id')->references('id')->on('clients')->onUpdate('cascade');
             $table->foreign('employe_id')->references('id')->on('employes')->onUpdate('cascade');
             $table->foreign('reservation_id')->references('id')->on('reservations')->onUpdate('cascade');

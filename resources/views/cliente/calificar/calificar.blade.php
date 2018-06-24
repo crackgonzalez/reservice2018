@@ -47,6 +47,12 @@
                                 	</select>
                                 </div>
                             </div>
+                            <div class="form-group">
+                            	<div class="input-group">
+                                	<span class="input-group-addon"><i class="material-icons">description</i></span>
+										<textarea name="commets" placeholder="Comentario" class="form-control" cols="30" rows="4"></textarea>
+                                </div>
+                            </div>
                             
 							<div class="form-group">
 								<a href="{{url('/cliente/reserva')}}" class="btn btn-secondary btn-sm pull-right">Cancelar</a>

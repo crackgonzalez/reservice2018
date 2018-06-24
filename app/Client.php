@@ -33,6 +33,7 @@ class Client extends Model
         return $this->belongsToMany('App\Employe')
         ->withPivot('score')
         ->withPivot('reservation_id')
+        ->withPivot('comment')
         ->withTimestamps();
     }
        

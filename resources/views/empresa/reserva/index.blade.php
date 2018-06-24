@@ -40,11 +40,15 @@
 							<h5 class="margin-arriba">Cliente</h5>			
 							<img class="img-raised rounded-circle" style="height: 35px; width: 35px;" src="{{$reserva->orden->cliente->url}}">
 							<h6 class="d-inline">{{$reserva->orden->cliente->usuario->name}}</h6>
-							<a class="pull-right" target="_blank" href="https://api.whatsapp.com/send?phone=56{{$reserva->orden->cliente->phone}}"><img src="https://png.icons8.com/color/30/000000/whatsapp.png"><small>Whatsapp</small></a>@if(!$reserva->employe_id == null)
+
+							<a style="color: #00e676" class="pull-right" target="_blank" href="https://api.whatsapp.com/send?phone=56{{$reserva->orden->cliente->phone}}"><h6><i class="fab fa-whatsapp"></i> WhatsApp</h6></a>
+
+							@if(!$reserva->employe_id == null)
 								<h5 class="margin-arriba">Trabajador</h5>
 								<img class="img-raised rounded-circle" style="height: 35px; width: 35px;" src="{{$reserva->trabajador->url}}">
 								<h6 class="d-inline">{{$reserva->trabajador->usuario->name}}</h6>
-								<a class="pull-right" target="_blank" href="https://api.whatsapp.com/send?phone=56{{$reserva->trabajador->phone}}"><img src="https://png.icons8.com/color/30/000000/whatsapp.png"><small>Whatsapp</small></a>
+
+								<a style="color: #00e676" class="pull-right" target="_blank" href="https://api.whatsapp.com/send?phone=56{{$reserva->trabajador->phone}}"><h6><i class="fab fa-whatsapp"></i> WhatsApp</h6></a>
 							@else
 								<h5 class="margin-arriba">No hay trabajador asignado</h5>
 							@endif

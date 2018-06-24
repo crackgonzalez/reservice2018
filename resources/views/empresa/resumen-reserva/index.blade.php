@@ -28,7 +28,7 @@
                         <div class="card-body">
                             <table class="table table-hover">
                                 <thead>
-                                    <tr>
+                                    <tr>                                        
                                         <th>Servicio</th>
                                         <th>Cantidad</th>
                                         <th>Mes</th>
@@ -39,12 +39,38 @@
                                         <tr class="{{$servicio->mes % 2 ? 'table-warning' : 'table-info' }}">
                                             <td>{{$servicio->service}}</td>
                                             <td>{{$servicio->cont}}</td>
-                                            <td>{{$servicio->mes}}</td>
+                                            <td>
+                                                @if($servicio->mes==1)
+                                                    Enero
+                                                @elseif($servicio->mes==2)
+                                                    Febrero
+                                                @elseif($servicio->mes==3)
+                                                    Marzo
+                                                @elseif($servicio->mes==4)
+                                                    Abril
+                                                @elseif($servicio->mes==5)
+                                                    Mayo
+                                                @elseif($servicio->mes==6)
+                                                    Junio
+                                                @elseif($servicio->mes==7)
+                                                    Julio
+                                                @elseif($servicio->mes==8)
+                                                    Agosto
+                                                @elseif($servicio->mes==9)
+                                                    Septiembre
+                                                @elseif($servicio->mes==10)
+                                                    Octubre
+                                                @elseif($servicio->mes==11)
+                                                    Noviembre
+                                                @else
+                                                    Diciembre
+                                                @endif
+                                            </td>
                                         </tr>                                        
                                     @endforeach
-                                        <tr class="table-success">
-                                            <td>Total</td>
-                                            <td><h5 id="annio"></h5></td>
+                                        <tr class="table-dark">
+                                            <td><strong>Total Año 2018</strong></td>
+                                            <td><strong id="annio"></strong></td>
                                             <td>-</td>
                                         </tr>  
                                 </tbody>

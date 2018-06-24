@@ -36,7 +36,8 @@ class ReservationController extends Controller
     public function asignar(){
         $reservas = Reservation::whereHas('orden', function($query){
             $empresa = Auth::user()->empresa->id;
-            $query->where('company_id',$empresa)->orderBy('date','desc');
+            $query->where('company_id',$empresa)
+            ->orderBy('date','desc');
         })
         ->where('employe_id',null)->get();
         return view('empresa.asignar.index')->with(compact('reservas'));
