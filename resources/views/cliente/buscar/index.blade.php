@@ -20,7 +20,7 @@
 							<form class="form-inline text-center" method="get" autocomplete="off">
 								<div class="form-group" style="margin: 5px;">
 									<div class="input-group">
-										<span class="input-group-addon"><i class="material-icons">terrain</i></span>
+										<span class="input-group-addon"><i class="fas fa-suitcase"></i></span>
 										<input type="text" class="form-control" name="search_text" id="search_text" placeholder="Buscar Servicio">
 									</div>
 								</div>								
@@ -67,11 +67,11 @@
 						<div class="card margin-arriba margin-abajo card-raised">
 							<img class="card-img-top" src="../imagenes/perfil/{{$servicio->image}}" style="height:200px">
 							<div class="card-body">
-								<h4 class="d-inline">{{$servicio->name}}</h4>
+								<h4 class="d-inline"><i class="far fa-building"></i> {{$servicio->name}}</h4>
 								@if($servicio->validation)
 									<img class="img-raised rounded-circle" style="height: 30px; width: 30px;" src="{{asset('imagenes/verificado.png')}}" data-toggle="tooltip" data-placement="right" title="Cuenta Verficada">
 								@endif
-								<h6 class="margin-arriba">{{$servicio->service}}</h6>
+								<h6 class="margin-arriba"><i class="fas fa-suitcase"></i> {{$servicio->service}}</h6>
 								<h6 class="margin-arriba"><i class="fas fa-dollar-sign"></i> {{$servicio->price}}</h6>
 								<h6 class="margin-arriba"><i class="far fa-comments"></i> Descripcion de la Empresa</h6>
 								<small class="text-justify">{{$servicio->description}}</small>			

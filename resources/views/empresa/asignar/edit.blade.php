@@ -32,7 +32,7 @@
 						{{csrf_field()}}
 							<div class="form-group">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="material-icons">terrain</i></span>
+									<span class="input-group-addon"><i class="fas fa-user-plus"></i></span>
 									<select name="employe_id" class="form-control">
 										<option value="">Seleccione Trabajador</option>
 										@foreach($reserva->orden->empresa->trabajadores as $trabajadores)

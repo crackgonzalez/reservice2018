@@ -138,20 +138,23 @@ class ClientController extends Controller
         
         $mensajes =[
             'score.required' => 'Debe seleccionar una calificacion',
+            'comment.required' => 'Debe dejar un comentario',
         ];
 
         $reglas = [
-            'score' => 'required'
+            'score' => 'required',
+            'comment' => 'required',
         ];
 
         $this->validate($request,$reglas,$mensajes);
 
         try{
             $nota = $request->input('score');
+            $comentario = $request->input('comment');
             $cliente = Auth::user()->cliente;
             $reserva = Reservation::find($id);
             $trabajador = Employe::find($reserva->employe_id);
-            $cliente->trabajadores()->attach($trabajador,array('reservation_id'=>$id,'score'=>$nota));
+            $cliente->trabajadores()->attach($trabajador,array('reservation_id'=>$id,'score'=>$nota,'comment'=>$comentario));
             alert()->success('El trabajador fue calificado de forma exitosa','Trabajador Calificado')->autoclose(3000);
         }catch(Exception $e){
             alert()->error('El trabajador ya fue calificado','Ocurrio un Error')->autoclose(3000);

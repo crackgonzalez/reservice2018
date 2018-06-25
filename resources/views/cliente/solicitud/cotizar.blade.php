@@ -33,7 +33,7 @@
 								<input name="company_id" type="hidden" value="{{$compania->id}}">
 								<div class="form-group">
 									<div class="input-group">
-										<span class="input-group-addon"><i class="material-icons">terrain</i></span>
+										<span class="input-group-addon"><i class="fas fa-suitcase"></i></span>
 										<select name="service_id" class="form-control">
 											<option value="">Seleccione Servicio</option>
 											@foreach($compania->servicios as $servicios)
@@ -45,13 +45,13 @@
                            		</div>
                            		<div class="form-group">
 									<div class="input-group">
-										<span class="input-group-addon"><i class="material-icons">account_circle</i></span>
+										<span class="input-group-addon"><i class="far fa-calendar-alt"></i></span>
 										<input name="date" type="date" class="form-control" value="{{old('date')}}">
                                		</div>
                            		</div>
                            		<div class="form-group">
 									<div class="input-group">
-										<span class="input-group-addon"><i class="material-icons">terrain</i></span>
+										<span class="input-group-addon"><i class="fas fa-map-marker-alt"></i></span>
 										<select name="commune_id" class="form-control">
 											<option value="">Seleccione Comuna</option>
 											@foreach($comunas as $comuna)
@@ -63,7 +63,7 @@
                            		</div>
                            		<div class="form-group">
 									<div class="input-group">
-										<span class="input-group-addon"><i class="material-icons">terrain</i></span>
+										<span class="input-group-addon"><i class="far fa-clock"></i></span>
 										<select name="section_id" class="form-control">
 											<option value="">Seleccione Tramo Horario</option>
 											@foreach($tramos as $tramo)
@@ -75,7 +75,7 @@
                            		</div>
                            		<div class="form-group">
 									<div class="input-group">
-										<span class="input-group-addon"><i class="material-icons">description</i></span>
+										<span class="input-group-addon"><i class="fas fa-align-left"></i></span>
 										<textarea name="description" placeholder="Descripcion del Problema" class="form-control" cols="30" rows="4">{{old('description')}}</textarea>
 									</div>
 								</div>

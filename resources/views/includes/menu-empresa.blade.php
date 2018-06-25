@@ -7,7 +7,6 @@
 		<a class="{{ request()->is('empresa/reserva') ? 'nav-item nav-link nav-pills-estilo activo' : 'nav-item nav-link nav-pills-estilo' }}" href="{{url('/empresa/reserva')}}">Reservas</a>
 		<a class="{{ request()->is('empresa/asignar') ? 'nav-item nav-link nav-pills-estilo activo' : 'nav-item nav-link nav-pills-estilo' }}" href="{{url('/empresa/asignar')}}">Asignar Trabajador</a>
 		<a class="{{ request()->is('empresa/resumen-reserva') ? 'nav-item nav-link nav-pills-estilo activo' : 'nav-item nav-link nav-pills-estilo' }}" href="{{url('/empresa/resumen-reserva')}}">Info Reservas</a>
-		<a class="{{ request()->is('empresa/resumen-trabajador') ? 'nav-item nav-link nav-pills-estilo activo' : 'nav-item nav-link nav-pills-estilo' }}" href="{{url('/empresa/resumen-trabajador')}}">Info Trabajadores</a>
 		<a class="{{ request()->is('empresa/resumen-calificacion') ? 'nav-item nav-link nav-pills-estilo activo' : 'nav-item nav-link nav-pills-estilo' }}" href="{{url('/empresa/resumen-calificacion')}}">Info Calificacion</a>
 	</div>
 </div>

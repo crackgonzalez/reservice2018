@@ -21,7 +21,6 @@
                 </div>
             </div>
             <div class="row">
-
                 <div class="col-12 col-sm-12 col-md-12">
                     <div class="card text-center margin-arriba margin-abajo">
                         <div class="card-header"><h4>Detalle por Mes</h4></div>

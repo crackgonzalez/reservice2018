@@ -32,7 +32,7 @@
 						{{csrf_field()}}							
 							<div class="form-group">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="material-icons">terrain</i></span>
+									<span class="input-group-addon"><i class="fas fa-clipboard-check"></i></span>
 									<select name="state_company" class="form-control">
 										<option value=null>Seleccione una Opcion</option>
 										<option value=1>Confirmar Solicitud</option>
@@ -42,7 +42,7 @@
                             </div>
                             <div class="form-group">
                             	<div class="input-group">
-                            		<span class="input-group-addon"><i class="material-icons">terrain</i></span>
+                            		<span class="input-group-addon"><i class="far fa-comments"></i></span>
                             		<textarea name="answer" placeholder="Respuesta" class="form-control" cols="30" rows="4">{{old('answer',$solicitud->answer)}}</textarea>
                             	</div>
                             </div>

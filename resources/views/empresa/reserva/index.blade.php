@@ -50,7 +50,7 @@
 
 								<a style="color: #00e676" class="pull-right" target="_blank" href="https://api.whatsapp.com/send?phone=56{{$reserva->trabajador->phone}}"><h6><i class="fab fa-whatsapp"></i> WhatsApp</h6></a>
 							@else
-								<h5 class="margin-arriba">No hay trabajador asignado</h5>
+								<h6 class="margin-arriba"><i class="fas fa-exclamation-triangle"></i> No hay trabajador asignado</h6>
 							@endif
 						</div>
 					</div>

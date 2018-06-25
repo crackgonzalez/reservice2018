@@ -118,8 +118,8 @@ Route::middleware(['auth','empresa'])->group(function () {
 
 	//Resumen
 	Route::get('/empresa/resumen-reserva','ReservationController@resumenEmpresa');
-	Route::get('/empresa/resumen-trabajador','ReservationController@resumenTrabajadores');
 	Route::get('/empresa/resumen-calificacion','EmployeController@resumenCalificacion');
+	Route::get('/empresa/detalle-calificacion/{id}','EmployeController@detalle');
 
 	//Creditos
 	Route::get('/empresa/creditos/create','WebpayController@create');
