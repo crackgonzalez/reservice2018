@@ -11,20 +11,28 @@
 	<div class="row">
 		<div class="col-12 col-sm-12 col-md-12">
 			<div class="row">
-				<div class="col-12 col-sm-3 col-md-3">
-					<img src="" alt="" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo img-thumbnail">
-					<h1>Foto</h1>
+				<div class="col-12 col-sm-3 col-md-3 text-center">
+					@foreach($trabajadores as $trabajador)
+					<img src="{{$trabajador->url}}" alt="" class="img-raised rounded-circle tamaño-imagen-normal margin-arriba margin-abajo img-thumbnail">
+					<h6>{{$trabajador->usuario->name}}</h6>
+					@endforeach
 				</div>
-				<div class="col-12 col-sm-4 col-md-4">
+				<div class="col-12 col-sm-3 col-md-3">
 					<div class="card margin-arriba margin-abajo card-raised">
 						<div class="card-header">
-							<h4>Promedio Calificacion</h4>
+							<h5>Promedio Calificacion</h5>
 						</div>
-						<div class="card-body"> 
+						<div class="card-body">							
+							@foreach($promedios as $promedio)
+								<h6>Trabajador {{round($promedio->promedio,1)}} <i class="far fa-star"></i></h6>
+							@endforeach
+							@foreach($empresas as $empresa)
+								<h6>Empresa {{round($empresa->promedio,1)}} <i class="far fa-star"></i></h6>
+							@endforeach
 						</div>
 					</div>
 				</div>
-				<div class="col-12 col-sm-5 col-md-5">
+				<div class="col-12 col-sm-6 col-md-6">
 					<div class="card margin-arriba margin-abajo card-raised">
 						<div class="card-header">
 							<h4>Grafico</h4>
@@ -36,21 +44,37 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">		
-		@foreach($notas as $nota)
-		<div class="col-12 col-sm-3 col-md-3">
-            <div class="card margin-arriba margin-abajo card-raised">
-                <img class="card-img-top" style="height:180px" src="{{url('/imagenes/perfil/'.$nota->image)}}">
-                <div class="card-body"> 
-                	<h6><i class="fas fa-user"></i> {{$nota->name}}</h6>
-                	<h6><i class="fas fa-suitcase"></i> {{$nota->service}}</h6>
-                	<h6><i class="far fa-calendar-alt"></i> {{$nota->date}}</h6>
-                	<h6>Calificacion {{$nota->score}} <i class="far fa-star"></i></h6>
-                	<h6><i class="far fa-comments"></i> Comentario</h6>
-                	<small class="text-justify">{{$nota->comment}}</small>
-                </div>
-            </div>			
+	<div class="row">
+		<div class="col-12 col-sm-12 col-md-12">
+			<div class="card margin-arriba margin-abajo card-raised">
+				<div class="card-header text-center">
+					<h5>Detalle de las calificaciones</h5>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-12 col-sm-12 col-md-12">
+							<div class="row">
+								@foreach($notas as $nota)
+								<div class="col-12 col-sm-3 col-md-3">
+									<div class="card margin-arriba margin-abajo card-raised">
+										<img class="card-img-top" style="height:180px" src="{{url('/imagenes/perfil/'.$nota->image)}}">
+										<div class="card-body"> 
+											<h6><i class="fas fa-user"></i> {{$nota->name}}</h6>
+				                			<h6><i class="fas fa-suitcase"></i> {{$nota->service}}</h6>
+				                			<h6><i class="far fa-calendar-alt"></i> {{$nota->date}}</h6>
+				                			<h6>Calificacion {{$nota->score}} <i class="far fa-star"></i></h6>
+				                			<h6><i class="far fa-comments"></i> Comentario</h6>
+				                			<small class="text-justify">{{$nota->comment}}</small>
+										</div>
+									</div>
+								</div>
+								@endforeach
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		@endforeach
 	</div>
 @endsection
+						

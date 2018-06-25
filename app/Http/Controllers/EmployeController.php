@@ -152,6 +152,7 @@ class EmployeController extends Controller
 
     public function detalle($id){
         $idEmpresa = Auth::user()->empresa->id;
+        $trabajadores = Employe::where('id',$id)->get();
         $notas = DB::table('client_employe')
         ->join('employes','employes.id','=','client_employe.employe_id')
         ->join('reservations','reservations.id','=','client_employe.reservation_id')
@@ -164,7 +165,23 @@ class EmployeController extends Controller
         ->where('employes.id',$id)
         ->orderBy('quotes.date','desc')
         ->get();
-        return view('empresa.detalle-calificacion.index')->with(compact('notas'));
+
+        $promedios = DB::table('client_employe')
+        ->join('employes','employes.id','=','client_employe.employe_id')
+        ->join('users','users.id','=','employes.user_id')
+        ->select('employes.id',DB::raw('avg(client_employe.score) AS promedio'),'users.name')
+        ->where('employes.id',$id)
+        ->groupBy('employes.id','employes.image','users.name')
+        ->get();
+
+        $empresas = DB::table('client_employe')
+        ->join('employes','employes.id','=','client_employe.employe_id')
+        ->select('employes.company_id',DB::raw('avg(client_employe.score) AS promedio'))
+        ->where('employes.company_id',$idEmpresa)
+        ->groupBy('employes.company_id')
+        ->get();
+
+        return view('empresa.detalle-calificacion.index')->with(compact('notas','trabajadores','promedios','empresas'));
     }
     
 }
