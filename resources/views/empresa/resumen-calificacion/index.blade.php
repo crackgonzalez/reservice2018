@@ -26,7 +26,10 @@
                             </div>                            
                         </div>
                     @empty
-                        <h1>Vacio</h1>
+                        <div class="col-12 col-sm-12 col-md-12 text-center">
+                            <h4 class="card-text d-inline" style="color: #5b5b5f">No se encontraron datos para mostrar la informacion</h4>
+                            <img src="{{asset('imagenes/noencontrado.png')}}" height="100%" width="3%" alt="">                
+                        </div>
                     @endforelse
                     </div>
                 </div>

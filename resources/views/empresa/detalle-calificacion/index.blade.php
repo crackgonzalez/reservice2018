@@ -24,10 +24,18 @@
 						</div>
 						<div class="card-body">							
 							@foreach($promedios as $promedio)
+								@if($promedio!= null)								
 								<h6>Trabajador {{round($promedio->promedio,1)}} <i class="far fa-star"></i></h6>
+								@else
+									<h6>El Trabajador no cuenta con calificaciones para mostrar la informacion</h6>
+								@endif
 							@endforeach
 							@foreach($empresas as $empresa)
+								@if($empresa!=null)
 								<h6>Empresa {{round($empresa->promedio,1)}} <i class="far fa-star"></i></h6>
+								@else
+									<h6>La Empresa no cuenta con calificaciones para mostrar la informacion</h6>
+								@endif
 							@endforeach
 						</div>
 					</div>
