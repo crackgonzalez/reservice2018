@@ -176,12 +176,25 @@ class EmployeController extends Controller
 
         $empresas = DB::table('client_employe')
         ->join('employes','employes.id','=','client_employe.employe_id')
-        ->select('employes.company_id',DB::raw('avg(client_employe.score) AS promedio'))
-        ->where('employes.company_id',$idEmpresa)
-        ->groupBy('employes.company_id')
+        ->join('companies','companies.id','=','employes.company_id')
+        ->join('users','users.id','=','companies.user_id')
+        ->select('companies.id','users.name',DB::raw('avg(client_employe.score) AS promedio'))
+        ->where('companies.id',$idEmpresa)
+        ->groupBy('companies.id','users.name')
         ->get();
 
-        return view('empresa.detalle-calificacion.index')->with(compact('notas','trabajadores','promedios','empresas'));
+        $servicios = DB::table('client_employe')
+        ->join('employes','employes.id','=','client_employe.employe_id')
+        ->join('reservations','reservations.id','=','client_employe.reservation_id')
+        ->join('quotes','quotes.id','=','reservations.quote_id')
+        ->join('services','services.id','=','quotes.service_id')
+        ->select('services.service',DB::raw('avg(client_employe.score) AS promedio'))
+        ->where('employes.company_id',$idEmpresa)
+        ->where('employes.id',$id)
+        ->groupBy('services.service')
+        ->get();
+
+        return view('empresa.detalle-calificacion.index')->with(compact('notas','trabajadores','promedios','empresas','servicios'));
     }
     
 }
